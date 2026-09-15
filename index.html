@@ -1,0 +1,1828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<title>Campaign Classic Bootcamp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F2F4F3; --paper:#FFFFFF; --ink:#16211F; --ink-2:#44524F; --ink-3:#6B7976;
+  --rule:#D6DDDA; --rule-2:#E6EBE9;
+  --accent:#0F7B5F; --accent-ink:#FFFFFF; --accent-soft:#E0F1EB;
+  --amber:#9A5B00; --amber-soft:#FBF0DD;
+  --red:#A53A2B; --red-soft:#F8E6E2;
+  --blue:#2C5A93; --blue-soft:#E4ECF6;
+  --code-bg:#1A2422; --code-ink:#DCE7E3; --code-dim:#8FA39D;
+  --shadow:0 1px 2px rgba(20,35,30,.06),0 4px 16px rgba(20,35,30,.05);
+  --f-display:"Familjen Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101614; --paper:#161E1C; --ink:#E4ECE9; --ink-2:#B3C1BD; --ink-3:#8A9A96;
+    --rule:#2A3633; --rule-2:#212B29;
+    --accent:#3FC39C; --accent-ink:#06231A; --accent-soft:#16332B;
+    --amber:#E3A64A; --amber-soft:#2E2413;
+    --red:#EE8B7A; --red-soft:#351C18;
+    --blue:#8DB6EA; --blue-soft:#18263A;
+    --code-bg:#0B100F; --code-ink:#DCE7E3; --code-dim:#7C8F8A;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+    --ground:#101614; --paper:#161E1C; --ink:#E4ECE9; --ink-2:#B3C1BD; --ink-3:#8A9A96;
+    --rule:#2A3633; --rule-2:#212B29;
+    --accent:#3FC39C; --accent-ink:#06231A; --accent-soft:#16332B;
+    --amber:#E3A64A; --amber-soft:#2E2413;
+    --red:#EE8B7A; --red-soft:#351C18;
+    --blue:#8DB6EA; --blue-soft:#18263A;
+    --code-bg:#0B100F; --code-ink:#DCE7E3; --code-dim:#7C8F8A;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.2;text-wrap:balance;margin:0}
+code,kbd{font-family:var(--f-mono);font-size:.88em;background:var(--rule-2);padding:.08em .35em;border-radius:4px}
+p{margin:.5em 0}
+ul,ol{margin:.4em 0;padding-left:1.3em}
+li{margin:.18em 0}
+
+/* header */
+.top{padding-block:36px 20px;display:grid;gap:18px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.top h1{font-size:clamp(34px,5vw,56px);font-weight:700;letter-spacing:-.02em}
+.top h1 span{color:var(--accent)}
+.lede{max-width:70ch;color:var(--ink-2);font-size:17px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+.facts b{color:var(--ink);font-weight:500}
+.flow{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);border-radius:10px;padding:14px 10px}
+.flow svg{display:block;min-width:860px;width:100%;height:auto}
+.flow text{font-family:var(--f-mono);fill:var(--ink)}
+.flow .sub{fill:var(--ink-3)}
+
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);border-bottom:1px solid var(--rule);margin-top:20px}
+.tabs .row{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:thin}
+.tab{flex:none;font:500 13.5px var(--f-body);border:1px solid transparent;background:none;color:var(--ink-2);padding:7px 12px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.tab small{font-family:var(--f-mono);color:var(--ink-3);margin-right:6px}
+.tab:hover{background:var(--rule-2);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--ground)}
+.tab[aria-selected="true"] small{color:var(--ground);opacity:.7}
+
+/* level layout */
+.level{padding-top:28px}
+.lvhead{display:grid;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--rule);margin-bottom:22px}
+.lvhead h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.01em}
+.lvhead .meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-mono);font-size:11.5px;padding:2px 8px;border-radius:99px;border:1px solid var(--rule);color:var(--ink-2);background:var(--paper);white-space:nowrap}
+.chip.v7{border-color:var(--blue);color:var(--blue)}
+.chip.v8{border-color:var(--accent);color:var(--accent)}
+.chip.both{border-color:var(--ink-3)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;align-items:start}
+@media (max-width:900px){.grid2{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);font-size:13px;border-left:1px solid var(--rule);padding-left:14px;max-height:calc(100vh - 100px);overflow:auto}
+.toc h4{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.toc a{display:block;color:var(--ink-2);text-decoration:none;padding:3px 0;line-height:1.35}
+.toc a:hover{color:var(--accent)}
+.toc a.asg-l{color:var(--amber)}
+.toc .prog{margin-top:14px;font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.bar{height:4px;background:var(--rule);border-radius:4px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+
+.outcomes{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin-bottom:20px}
+.outcomes h3{font-size:15px;margin-bottom:4px}
+
+/* modules */
+.mod{border-top:1px solid var(--rule);scroll-margin-top:80px}
+.mod>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:14px 0}
+.mod>summary::-webkit-details-marker{display:none}
+.mod .no{font-family:var(--f-mono);font-size:13px;color:var(--ink-3)}
+.mod .t{font-family:var(--f-display);font-size:19px;font-weight:600}
+.mod .tags{display:flex;gap:6px;align-items:center}
+.mod .done-box{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.mod[open]>summary .t{color:var(--accent)}
+.mod>summary:hover .t{color:var(--accent)}
+.body{padding:0 0 22px 64px;max-width:78ch}
+@media (max-width:600px){.body{padding-left:0}.mod>summary{grid-template-columns:40px minmax(0,1fr)}.mod .tags{grid-column:2}}
+.body h4{font-size:13px;font-family:var(--f-mono);font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin:16px 0 4px}
+.lab{border:1px dashed var(--accent);background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:14px 0}
+.lab>b:first-child{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.note{border-left:3px solid var(--amber);background:var(--amber-soft);padding:8px 12px;border-radius:0 6px 6px 0;margin:12px 0;font-size:14.5px}
+.warn{border-left:3px solid var(--red);background:var(--red-soft);padding:8px 12px;border-radius:0 6px 6px 0;margin:12px 0;font-size:14.5px}
+.tw{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);background:var(--rule-2)}
+td code{white-space:nowrap}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+pre{background:var(--code-bg);color:var(--code-ink);font-family:var(--f-mono);font-size:13px;line-height:1.55;padding:14px 16px;border-radius:8px;overflow-x:auto;margin:10px 0;tab-size:2}
+pre code{background:none;padding:0;font-size:inherit;color:inherit}
+pre .c{color:var(--code-dim)}
+.cap{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);margin:12px 0 -6px}
+
+/* activity palette */
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin:12px 0}
+.act{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.45}
+.act b{font-family:var(--f-display);font-size:15px;display:block}
+.act .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:2px}
+.k.key{background:var(--accent);color:var(--accent-ink)}
+.k.ref{background:var(--rule-2);color:var(--ink-3)}
+.pal-h{font-family:var(--f-display);font-size:17px;margin:20px 0 0}
+
+/* assignment */
+.asg{background:var(--paper);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);margin:28px 0;scroll-margin-top:80px;overflow:hidden}
+.asg header{padding:16px 20px;border-bottom:1px solid var(--rule);display:grid;gap:6px;background:var(--amber-soft)}
+.asg header .k2{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.asg header h3{font-size:22px}
+.asg .in{padding:6px 20px 18px;max-width:82ch}
+.asg h4{font-size:13px;font-family:var(--f-mono);font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin:16px 0 4px}
+.done{list-style:none;padding:0}
+.done li{padding-left:24px;position:relative}
+.done li::before{content:"";position:absolute;left:2px;top:.45em;width:11px;height:11px;border:1.5px solid var(--accent);border-radius:3px}
+.asg details.key{margin-top:14px;border:1px solid var(--rule);border-radius:8px;padding:0 14px}
+.asg details.key>summary{cursor:pointer;padding:10px 0;font-weight:600;color:var(--accent)}
+
+/* quiz */
+.quiz ol>li{margin:10px 0}
+.quiz details{display:inline}
+.quiz details summary{display:inline;cursor:pointer;color:var(--accent);font-size:13px;margin-left:6px}
+.quiz .opt{display:block;color:var(--ink-2)}
+
+.foot{margin-top:40px;border-top:1px solid var(--rule);padding-top:16px;font-size:13px;color:var(--ink-3)}
+.foot a{color:var(--ink-2)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:500 13px var(--f-body);border:1px solid var(--rule);background:var(--paper);color:var(--ink);padding:6px 12px;border-radius:7px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.tabs,.toc,.toolbar{display:none}.level{display:block!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Hands-on programme · v7 + v8 · NovaBank scenario</div>
+  <h1>Campaign Classic <span>Bootcamp</span></h1>
+  <p class="lede">A zero-to-expert path through Adobe Campaign Classic: seven levels, sixty modules, fourteen graded assignments and a capstone. Every lab runs on a fictional retail bank, <b>NovaBank</b>, so nothing here touches client data. Work on a <b>non-production</b> instance only.</p>
+  <div class="facts">
+    <span><b>60</b> modules</span><span><b>14</b> assignments</span><span><b>1</b> capstone</span><span><b>75</b>-question mock exam</span><span>Est. <b>8–10 weeks</b> part-time</span>
+  </div>
+  <div class="flow" aria-label="The bootcamp path drawn as a Campaign workflow">
+  <svg viewBox="0 0 1100 120" role="img">
+    <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker></defs>
+    <g stroke="var(--accent)" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+      <path d="M62 50 H108"/><path d="M188 50 H234"/><path d="M314 50 H360"/><path d="M440 50 H486"/><path d="M566 50 H612"/><path d="M692 50 H738"/><path d="M818 50 H864"/><path d="M944 50 H990"/>
+    </g>
+    <g>
+      <circle cx="40" cy="50" r="20" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/><text x="40" y="54" font-size="11" text-anchor="middle">Start</text>
+      <g fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4">
+        <rect x="110" y="26" width="78" height="48" rx="8"/><rect x="236" y="26" width="78" height="48" rx="8"/><rect x="362" y="26" width="78" height="48" rx="8"/><rect x="488" y="26" width="78" height="48" rx="8"/><rect x="614" y="26" width="78" height="48" rx="8"/><rect x="740" y="26" width="78" height="48" rx="8"/><rect x="866" y="26" width="78" height="48" rx="8"/>
+      </g>
+      <g font-size="12" text-anchor="middle">
+        <text x="149" y="47">L0</text><text x="275" y="47">L1</text><text x="401" y="47">L2</text><text x="527" y="47">L3</text><text x="653" y="47">L4</text><text x="779" y="47">L5</text><text x="905" y="47">L6</text>
+      </g>
+      <g font-size="9.5" text-anchor="middle" class="sub">
+        <text class="sub" x="149" y="63">Orient</text><text class="sub" x="275" y="63">Foundation</text><text class="sub" x="401" y="63">Workflows</text><text class="sub" x="527" y="63">Campaign ops</text><text class="sub" x="653" y="63">Schemas</text><text class="sub" x="779" y="63">Dev + TW</text><text class="sub" x="905" y="63">Integrate</text>
+      </g>
+      <rect x="992" y="26" width="92" height="48" rx="24" fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="1.6"/><text x="1038" y="54" font-size="11" text-anchor="middle">Capstone</text>
+      <g font-size="9.5" class="sub"><text class="sub" x="236" y="100">transitions carry the work table forward: each level consumes the previous level's output</text></g>
+    </g>
+  </svg>
+  </div>
+  <div class="toolbar">
+    <button class="btn" id="expandAll" type="button">Expand all modules</button>
+    <button class="btn" id="collapseAll" type="button">Collapse all</button>
+    <button class="btn" id="resetProg" type="button">Reset my progress</button>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Levels"><div class="row" role="tablist" id="tablist"></div></nav>
+
+<main>
+<!-- ============ LEVEL 0 ============ -->
+<section class="level" id="L0" data-tab="L0" data-label="Orientation">
+<div class="lvhead">
+  <div class="eyebrow">Level 0 · ~4 hours</div>
+  <h2>Orientation: what Campaign Classic is and how it runs</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 1–5</span><span class="chip">No assignment · quiz only</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Explain where Campaign sits in the Adobe Experience Cloud and what it is (and isn't) responsible for.</li><li>Tell a v7 instance from a v8 instance, and a v8 FFDA (Enterprise) instance from a non-FFDA one.</li><li>Name the server modules and say what each one does.</li><li>Find your way around the client console and read an internal name.</li></ul></div>
+
+<details class="mod" id="m1"><summary><span class="no">M01</span><span class="t">Campaign Classic in the Adobe stack</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<p>Campaign Classic (ACC) is Adobe's <b>batch- and workflow-centric, cross-channel campaign management platform</b>. It owns its own marketing database, segments it, orchestrates multi-step programs, and sends email, SMS, push, direct mail and other channels at scale.</p>
+<div class="tw"><table><tr><th>Product</th><th>Role next to Campaign</th></tr>
+<tr><td>Adobe Experience Platform / Real-Time CDP</td><td>Unified profiles and audiences; audiences can be shared into Campaign</td></tr>
+<tr><td>Adobe Target</td><td>On-site personalization and testing, fed by segments Campaign produces</td></tr>
+<tr><td>Adobe Analytics</td><td>Web behaviour; Campaign can send campaign metadata and receive re-marketing segments (v7 web analytics connectors)</td></tr>
+<tr><td>Journey Optimizer (AJO)</td><td>Real-time, event-triggered journeys; Campaign stays strong for batch, complex data and heavy workflow logic</td></tr>
+<tr><td>AEM / Assets</td><td>Content authoring and asset storage that Campaign deliveries can reuse</td></tr></table></div>
+<h4>Think of it as</h4><p>A <b>database + workflow engine + delivery engine</b>, all driven by XML schemas. Almost every object you click on (a delivery, a workflow, an operator) is a row in a table described by a schema.</p>
+<div class="lab"><b>Mini-lab</b><br>Draw your organisation's (or NovaBank's) data flow: source systems → Campaign → channels → tracking → reporting → downstream (CDP/Target). Keep it; you will extend it in Module 29.</div>
+</div></details>
+
+<details class="mod" id="m2"><summary><span class="no">M02</span><span class="t">v7 vs v8: what changed and why it matters</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Topic</th><th>Campaign Classic v7</th><th>Campaign v8</th></tr>
+<tr><td>Hosting</td><td>On-premise, hybrid or managed</td><td><b>Managed Cloud Services only</b></td></tr>
+<tr><td>Database</td><td>One RDBMS (PostgreSQL, Oracle, SQL Server…)</td><td>Non-FFDA: local DB. <b>Enterprise (FFDA)</b>: local PostgreSQL + <b>Snowflake</b> cloud DB</td></tr>
+<tr><td>Sign-in</td><td>Login/password, LDAP, Adobe ID</td><td><b>Adobe ID (IMS) only</b></td></tr>
+<tr><td>Sending</td><td>Internal routing or mid-sourcing</td><td>All deliveries go through <b>mid-sourcing</b></td></tr>
+<tr><td>Keys</td><td>Integer sequences, DB-enforced unicity</td><td>FFDA: UUIDs (<code>autouuid</code>); Snowflake does <b>not</b> enforce key unicity</td></tr>
+<tr><td>Writes</td><td>Unitary writes are fine at modest volume</td><td>FFDA: batch writes; staging APIs <code>xtk.session.Ingest</code> / <code>IngestExt</code></td></tr>
+<tr><td>UI</td><td>Client console</td><td>Client console + <b>Campaign Web UI</b></td></tr>
+<tr><td>Removed</td><td colspan="2">Social Marketing (Facebook/X), ACS Connector, LDAP, login/password sign-in, hybrid/on-prem. Not available on FFDA: MRM, coupons, web tracking, surveys.</td></tr></table></div>
+<div class="note">v7 is on an end-of-life path. Check Adobe's Campaign Classic v7 FAQ for the current dates before you quote them to a stakeholder.</div>
+<div class="lab"><b>Mini-lab</b><br>Open <i>Help › About</i> in your console and record the build number. Then check whether <code>xtk:session</code> exposes <code>Ingest</code> in your schema list (Administration › Configuration › Data schemas). Write one line: "My instance is v__ , FFDA yes/no."</div>
+</div></details>
+
+<details class="mod" id="m3"><summary><span class="no">M03</span><span class="t">Architecture and server modules</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<p>Campaign is a three-tier application: a <b>thick client console</b> (and web UI) talks SOAP over HTTP(S) to <b>application servers</b>, which read and write the <b>database</b>.</p>
+<div class="tw"><table><tr><th>Module</th><th>Job</th></tr>
+<tr><td><code>web</code></td><td>Web server / SOAP router: serves the console, web apps, JSSPs, tracking redirects</td></tr>
+<tr><td><code>wfserver</code></td><td>Workflow server: runs workflows (technical and campaign)</td></tr>
+<tr><td><code>mta</code> / <code>mtachild</code></td><td>Delivery engine: builds and sends messages</td></tr>
+<tr><td><code>inMail</code></td><td>Reads bounce mailbox and qualifies bounces</td></tr>
+<tr><td><code>sms</code></td><td>SMS routing / status reports</td></tr>
+<tr><td><code>stat</code></td><td>Connection statistics per MTA (throughput limits)</td></tr>
+<tr><td><code>trackinglogd</code></td><td>Writes tracking logs from redirection servers</td></tr>
+<tr><td><code>watchdog</code></td><td>Starts and monitors the other processes</td></tr></table></div>
+<p><b>Instance roles</b> you will meet: marketing instance, <b>mid-sourcing</b> (sending) instance, Message Center <b>control</b> and <b>execution</b> instances, redirection/tracking servers.</p>
+<div class="note">On managed v8 you don't start/stop modules yourself; you read their health in the Control Panel and logs. Knowing the modules still tells you where a fault lives.</div>
+</div></details>
+
+<details class="mod" id="m4"><summary><span class="no">M04</span><span class="t">Getting around the console and the Web UI</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Home / Campaigns / Profiles &amp; Targets / Reports / Explorer</b> tabs (console).</li>
+<li><b>Explorer</b>: the tree of folders. Folder <i>type</i> decides what it holds (deliveries, recipients, workflows…).</li>
+<li><b>Lists</b>: right-click column headers → <i>Configure list</i> to add fields; <i>Filters</i> save reusable conditions.</li>
+<li><b>Views</b>: a folder can be a <i>view</i> (shows content from sub-folders or by filter).</li>
+<li><b>Campaign Web UI</b> (v8): browser interface for deliveries, audiences, workflows, reports; the console remains the full admin/developer tool.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Create the folder tree <code>NovaBank / Recipients</code>, <code>NovaBank / Workflows</code>, <code>NovaBank / Deliveries</code>, <code>NovaBank / Lists</code>. Configure the recipients list to show email, mobile, created date and blocklist columns, and save a filter "Created last 30 days".</div>
+</div></details>
+
+<details class="mod" id="m5"><summary><span class="no">M05</span><span class="t">The vocabulary you'll need</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>Internal name vs label</td><td>Internal name is the technical ID (unique, no spaces); label is what users see</td></tr>
+<tr><td>Namespace</td><td><code>xtk</code> platform, <code>nms</code> marketing, <code>nl</code>/<code>crm</code>/<code>ncm</code> modules; your own e.g. <code>cus</code> or <code>nvb</code>. Never create objects in Adobe namespaces</td></tr>
+<tr><td>Schema</td><td>XML description of a table, fields, keys and links</td></tr>
+<tr><td>Targeting dimension</td><td>The entity a query returns (recipients, accounts…)</td></tr>
+<tr><td>Filtering dimension</td><td>The entity you filter on to find it (e.g. recipients <i>who have</i> a transaction)</td></tr>
+<tr><td>Work table</td><td>Temporary table (<code>temp:…</code>) a workflow passes between activities</td></tr>
+<tr><td>Target mapping</td><td>Tells a delivery how to reach and log against a targeting schema</td></tr>
+<tr><td>broadLog / trackingLog</td><td>Per-message sending log / per-event tracking log</td></tr>
+<tr><td>Typology</td><td>A set of rules applied to a delivery at analysis time</td></tr></table></div>
+</div></details>
+
+<section class="quiz" id="q0"><h3 style="margin-top:28px">Level 0 check</h3>
+<ol>
+<li>Which deployment model is available for Campaign v8? <details><summary>Answer</summary>Managed Cloud Services only.</details></li>
+<li>In an FFDA deployment, which database holds the bulk of marketing data? <details><summary>Answer</summary>Snowflake (cloud database), alongside a local PostgreSQL database.</details></li>
+<li>Which module qualifies bounce emails? <details><summary>Answer</summary><code>inMail</code>.</details></li>
+<li>What's the difference between a targeting and a filtering dimension? <details><summary>Answer</summary>Targeting = what you get back; filtering = what you apply conditions to.</details></li>
+<li>Why never create a schema in the <code>nms</code> namespace? <details><summary>Answer</summary>It's Adobe's; upgrades can overwrite it. Use your own namespace and <code>extendSchema</code>.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 1 ============ -->
+<section class="level" id="L1" data-tab="L1" data-label="Foundation" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 1 · ~1.5 weeks · Business practitioner</div>
+  <h2>Foundation: data, targeting and your first deliveries</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 6–16</span><span class="chip">Assignments 1–2</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Read the out-of-the-box data model and query it with the query editor.</li><li>Build, personalise, proof and send email and SMS deliveries.</li><li>Manage subscriptions, opt-outs and the blocklist correctly.</li><li>Read tracking and standard delivery reports.</li></ul></div>
+
+<details class="mod" id="m6"><summary><span class="no">M06</span><span class="t">The out-of-the-box data model</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Schema</th><th>SQL table</th><th>Holds</th></tr>
+<tr><td><code>nms:recipient</code></td><td><code>NmsRecipient</code></td><td>Profiles: name, email, mobile, address, blocklist flags, folder</td></tr>
+<tr><td><code>nms:group</code> / <code>nms:rcpGrpRel</code></td><td><code>NmsGroup</code></td><td>Lists and list membership</td></tr>
+<tr><td><code>nms:service</code> / <code>nms:subscription</code></td><td><code>NmsService</code>, <code>NmsSubscription</code></td><td>Information services and who subscribes</td></tr>
+<tr><td><code>nms:operation</code></td><td><code>NmsOperation</code></td><td>Campaigns</td></tr>
+<tr><td><code>nms:delivery</code></td><td><code>NmsDelivery</code></td><td>Deliveries (and templates)</td></tr>
+<tr><td><code>nms:broadLogRcp</code></td><td><code>NmsBroadLogRcp</code></td><td>One row per message sent to a recipient</td></tr>
+<tr><td><code>nms:trackingLogRcp</code></td><td><code>NmsTrackingLogRcp</code></td><td>Opens and clicks</td></tr>
+<tr><td><code>nms:address</code></td><td><code>NmsAddress</code></td><td>Quarantined addresses</td></tr></table></div>
+<div class="note">Blocklist flags on recipients: <code>@blackList</code> (all channels), <code>@blackListEmail</code>, <code>@blackListMobile</code>, <code>@blackListFax</code>, <code>@blackListPostalMail</code>. Verify the exact names in your schema.</div>
+<div class="lab"><b>Mini-lab</b><br>Open <code>nms:recipient</code> in Administration › Configuration › Data schemas, go to the <i>Data</i> view and the <i>Structure</i> tab. List five links leaving the recipient and their cardinality.</div>
+</div></details>
+
+<details class="mod" id="m7"><summary><span class="no">M07</span><span class="t">Lists, folders and folder types</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Lists</b> (<code>nms:group</code>): static sets of recipients. Created manually, by import, or by a workflow's <i>List update</i> / <i>Save audience</i>.</li>
+<li><b>Folders</b> organise data and carry <b>permissions</b>. A recipient belongs to exactly one folder.</li>
+<li><b>Folder types</b> restrict content (a "Recipients" folder only holds recipients).</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Import a 50-row CSV into <code>NovaBank / Recipients</code> with the generic import wizard, creating a list "NVB Import Test" at the same time. Inspect the import's rejects.</div>
+</div></details>
+
+<details class="mod" id="m8"><summary><span class="no">M08</span><span class="t">Queries, the expression editor and functions</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Generic query editor</b> (Tools › Generic query editor): choose table, fields, filter, sort, format, preview SQL.</li>
+<li><b>Operators</b>: equal, like, in list, is empty, is null, greater than… and <b>relative dates</b>.</li>
+<li><b>Functions</b>: <code>Lower</code>, <code>Upper</code>, <code>Trim</code>, <code>Left</code>, <code>Substring</code>, <code>Iif</code>, <code>IsNull</code>, <code>DaysAgo</code>, <code>GetDate</code>, <code>AddDays</code>, <code>ToDate</code>, <code>Year</code>, <code>Month</code>, <code>Age</code>.</li>
+<li><b>Aggregates</b> over a collection link: <code>Count</code>, <code>Sum</code>, <code>Max</code>, <code>Countdistinct</code>, e.g. "count of broadLogs in last 30 days".</li>
+<li><b>Predefined filters</b>: saved, reusable conditions (Administration › Configuration › Predefined filters).</li></ul>
+<pre>// XTK expression examples (query editor / workflow)
+Lower(@email) LIKE '%@novabank.test'
+DaysAgo(30) &lt;= @created
+Iif(@gender = 1, 'Mr', Iif(@gender = 2, 'Ms', ''))
+Count([broadLog-id])   // aggregate over a collection link</pre>
+<div class="lab"><b>Mini-lab</b><br>Write and preview queries: (a) recipients created in the last 30 days with an email but no mobile, (b) recipients who received more than 3 messages in 7 days, (c) the SQL generated for (b). Save (a) as a predefined filter.</div>
+</div></details>
+
+<details class="mod" id="m9"><summary><span class="no">M09</span><span class="t">Email deliveries: templates, content and personalisation</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Always start from a <b>delivery template</b> (Resources › Templates › Delivery templates). Templates carry routing, typology, tracking and approval defaults.</li>
+<li>Tabs: <b>Target</b> (main target, seed, control group), <b>Content</b> (HTML, text, subject, sender), <b>Properties</b> (routing, validity, typology).</li>
+<li><b>Personalisation fields</b>: <code>&lt;%= recipient.firstName %&gt;</code>. <b>Personalisation blocks</b>: greeting, mirror page link, unsubscribe link, formatted address.</li>
+<li><b>Content blocks</b>: reusable snippets (Resources › Campaign management › Personalization blocks).</li>
+<li>Digital Content Editor (DCE) for drag-and-drop; HTML import for coded templates.</li></ul>
+<pre>Hello &lt;%= recipient.firstName || "there" %&gt;,
+&lt;% if (recipient.age &gt;= 60) { %&gt;Senior-citizen FD rates are live.&lt;% } else { %&gt;Grow your savings with NovaBank.&lt;% } %&gt;
+&lt;%@ include view="MirrorPage" %&gt;</pre>
+<div class="lab"><b>Mini-lab</b><br>Duplicate the default email template as <code>NVB_Email_Base</code>: set sender "NovaBank &lt;hello@news.novabank.test&gt;", reply-to, a footer with an unsubscribe block and mirror link.</div>
+</div></details>
+
+<details class="mod" id="m10"><summary><span class="no">M10</span><span class="t">Proofs, seed addresses, test profiles and preview</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Preview</b> tab: render for a specific recipient or test profile; check both HTML and text.</li>
+<li><b>Proof</b>: a real send to test addresses; label <code>[PROOF #n]</code> added to subject. Proofs can be sent to seeds, test profiles or a substitution target.</li>
+<li><b>Seed addresses</b>: controllers who receive the real delivery (in <code>nms:seedMember</code>), not counted in stats.</li>
+<li><b>Test profiles</b> (v8 and Web UI) are seed-like profiles with personalisation data.</li>
+<li><b>Substitution addresses</b>: send a proof with real recipients' data to a tester's inbox.</li></ul>
+<div class="note">A proof passes through typology rules like a real delivery. If it's blocked, read the analysis log, not the email client.</div>
+</div></details>
+
+<details class="mod" id="m11"><summary><span class="no">M11</span><span class="t">SMS deliveries</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Routing</b>: an SMS external account (SMPP connector in v8/extended generic SMPP in v7) configured by admins.</li>
+<li><b>Encoding</b>: GSM 7-bit = 160 chars per part (153 in multi-part); UCS-2/Unicode = 70 (67 in multi-part). One emoji or Devanagari character switches the whole message to UCS-2.</li>
+<li><b>Mobile number format</b>: normalise to E.164 (<code>+91…</code>) in imports.</li>
+<li><b>Status reports (SR)</b> update broadLog statuses asynchronously.</li>
+<li>Regulatory: in India, DLT template and header (sender ID) registration is required for commercial SMS; keep the registered template ID with the delivery.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Create <code>NVB_SMS_Base</code>. Write one message under 160 GSM chars with a personalised first name and a shortened tracked URL. Prove how many parts it becomes if the name contains "é" and if it contains "अ".</div>
+</div></details>
+
+<details class="mod" id="m12"><summary><span class="no">M12</span><span class="t">Push and in-app notifications</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Mobile application service</b> (<code>nms:service</code> of type mobile app) holds iOS/Android app settings (APNs / FCM credentials).</li>
+<li>Devices register via the Adobe Experience Platform Mobile SDK (v8) or legacy Campaign SDK (v7) into <code>nms:appSubscriptionRcp</code>.</li>
+<li>Delivery types: iOS, Android, and in v8 multi-platform deliveries; <b>in-app</b> messages in v8.</li>
+<li>Technical workflow <code>mobileAppOptOutMgt</code> updates unsubscribed devices.</li></ul>
+<div class="note">Push tests need a real test device registered to a test profile. Plan that with the app team before the lab.</div>
+</div></details>
+
+<details class="mod" id="m13"><summary><span class="no">M13</span><span class="t">Direct mail and extraction files</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>A direct mail delivery produces an <b>extraction file</b> (CSV/fixed-width) for a print provider, not a sent message.</li>
+<li>Configure <b>service providers</b> and cost structures; the file format lives in the delivery's content tab.</li>
+<li>Address quality: flag incomplete postal addresses with <code>@blackListPostalMail</code> or address quality filters.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Build a direct mail extraction for 20 NovaBank recipients with Name, Address lines, PIN code, Offer code, and review the generated file.</div>
+</div></details>
+
+<details class="mod" id="m14"><summary><span class="no">M14</span><span class="t">Services, subscriptions, opt-out and the blocklist</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Information service</b> (<code>nms:service</code>): a newsletter or topic users subscribe to. Can send confirmation messages and has a validity.</li>
+<li><b>Double opt-in</b>: subscription sends a confirmation email; only the click confirms.</li>
+<li><b>Opt-out</b> link sets <code>@blackListEmail</code> (or unsubscribes a service, depending on configuration) via the OOTB unsubscription web app.</li>
+<li><b>Denylist vs quarantine</b>: denylist = the person said no; quarantine (<code>nms:address</code>) = the address is technically bad.</li>
+<li>In FFDA, opt-out and subscription syncs are <b>asynchronous</b> (staging).</li></ul>
+<div class="warn">Never "fix" a low audience by clearing blocklist flags in bulk. Consent is a legal record.</div>
+</div></details>
+
+<details class="mod" id="m15"><summary><span class="no">M15</span><span class="t">Tracking: links, opens, mirror page, web tracking</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Enable tracking in the delivery; URLs are rewritten to the redirection server. Review them in the <b>Links</b> dialog (categories, labels, untracked).</li>
+<li><b>Open</b> tracking = an invisible pixel. Apple Mail Privacy Protection inflates opens; judge engagement by clicks.</li>
+<li><b>Tracking formula</b>: appends parameters (e.g. UTM, <code>cid</code>) to every tracked URL.</li>
+<li><b>Mirror page</b>: hosted copy of the email.</li>
+<li><b>Web tracking</b> (v7; not on FFDA): tags on the site record visits after a click.</li>
+<li>The <code>tracking</code> technical workflow consolidates logs hourly.</li></ul>
+<pre>// Tracking formula example: platform option NmsTracking_ClickFormula (confirm on your instance before editing)
+&lt;%= deliveryURL %&gt;&lt;%= deliveryURL.indexOf('?') &gt;= 0 ? '&amp;' : '?' %&gt;utm_source=acc&amp;utm_campaign=&lt;%= escapeUrl(delivery.internalName) %&gt;</pre>
+</div></details>
+
+<details class="mod" id="m16"><summary><span class="no">M16</span><span class="t">Standard reports</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Delivery summary</b>, <b>Tracking indicators</b>, <b>Broken-down opens</b>, <b>URLs and click streams</b>, <b>Non-deliverables and bounces</b>, <b>User activities</b>.</li>
+<li>Indicators are recomputed by <code>deliveryIndicators</code> (mid-sourcing) and <code>tracking</code>.</li>
+<li>Key formulas: Delivered % = success / processed; Open rate = distinct opens / success; CTR = distinct clicks / success; CTOR = distinct clicks / distinct opens.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>For any past delivery, reconcile the report numbers against a query on <code>nms:broadLogRcp</code> (status counts) and <code>nms:trackingLogRcp</code> (distinct recipients by URL type). Explain any gap.</div>
+</div></details>
+
+<article class="asg" id="a1"><header><div class="k2">Assignment 1 · Level 1 · 100 pts</div><h3>NovaBank welcome email</h3></header><div class="in">
+<p><b>Scenario.</b> NovaBank wants a welcome email for customers who opened a savings account in the last 7 days.</p>
+<h4>Tasks</h4><ol>
+<li>Import <code>nvb_customers.csv</code> (create 200 rows: id, first name, last name, email, mobile, city, date of birth, account open date, preferred language EN/HI) into <code>NovaBank / Recipients</code>. Deduplicate on email.</li>
+<li>Create the email from <code>NVB_Email_Base</code> targeting recipients created in the last 7 days and not blocklisted.</li>
+<li>Personalise: greeting with fallback, city line, language-dependent intro (EN/HI) using a conditional block.</li>
+<li>Add seed addresses and send two proof rounds; fix what the first proof shows.</li>
+<li>Configure a tracking formula with <code>utm_campaign=nvb_welcome</code>.</li>
+<li>Send to the audience (test domain) and capture the delivery summary.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Import rejects are explained (count and reason).</li><li>Preview for three test profiles (EN, HI, no first name) renders correctly.</li><li>Proof #2 shows no issues from proof #1.</li><li>Every link in the Links dialog carries the UTM parameters.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Import quality and dedup</td><td class="num">20</td></tr><tr><td>Targeting correctness</td><td class="num">20</td></tr><tr><td>Personalisation with fallbacks</td><td class="num">25</td></tr><tr><td>Proof discipline (seed, rounds, fixes)</td><td class="num">20</td></tr><tr><td>Tracking and reporting evidence</td><td class="num">15</td></tr></table></div>
+</div></article>
+
+<article class="asg" id="a2"><header><div class="k2">Assignment 2 · Level 1 · 100 pts</div><h3>Multi-channel reminder with consent handling</h3></header><div class="in">
+<p><b>Scenario.</b> Customers who subscribed to "NovaBank Insights" but haven't clicked any email in 60 days get an email reminder; those with a mobile number and no email engagement also get an SMS.</p>
+<h4>Tasks</h4><ol>
+<li>Create information service <code>nvbInsights</code> with a double opt-in confirmation message.</li>
+<li>Subscribe 60 test recipients (import with service subscription option).</li>
+<li>Build the email target: subscribed to <code>nvbInsights</code> AND no click in 60 days (aggregate on tracking logs).</li>
+<li>Build the SMS: same target, has a mobile, <code>@blackListMobile = 0</code>, message ≤160 GSM chars, DLT template ID recorded in delivery description.</li>
+<li>Test opt-out: click unsubscribe from a proof and prove the flag/subscription changed.</li></ol>
+<h4>Done when</h4><ul class="done"><li>A double opt-in round trip works end to end.</li><li>Recipients who opted out before the send are not in the target (show the analysis log).</li><li>SMS character count and encoding are documented.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Service and double opt-in</td><td class="num">25</td></tr><tr><td>Engagement-based targeting</td><td class="num">25</td></tr><tr><td>SMS correctness and compliance</td><td class="num">25</td></tr><tr><td>Opt-out proof</td><td class="num">25</td></tr></table></div>
+<details class="key"><summary>Hint: the "no click in 60 days" filter</summary>
+<p>In the query, add a condition on the collection <b>Recipient tracking logs</b> with the aggregate "does not exist" (or Count = 0) and a sub-condition <code>@logDate &gt;= DaysAgo(60)</code> and <code>[url/@type] = 1</code> (email click). Check the URL type enumeration on your instance.</p></details>
+</div></article>
+
+<section class="quiz" id="q1"><h3 style="margin-top:28px">Level 1 check</h3><ol>
+<li>How many characters fit in one UCS-2 SMS part? <details><summary>Answer</summary>70 (67 per part when concatenated).</details></li>
+<li>Denylist vs quarantine? <details><summary>Answer</summary>Denylist: the person refused contact. Quarantine: the address is technically failing.</details></li>
+<li>Do seed addresses count in delivery statistics? <details><summary>Answer</summary>No.</details></li>
+<li>Why rely on clicks over opens for engagement? <details><summary>Answer</summary>Privacy features (e.g. Apple MPP) pre-fetch the pixel and inflate opens.</details></li>
+<li>Which technical workflow consolidates tracking? <details><summary>Answer</summary><code>tracking</code>, hourly by default.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 2 ============ -->
+<section class="level" id="L2" data-tab="L2" data-label="Workflows" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 2 · ~2 weeks · Core track</div>
+  <h2>Workflows: the engine of Campaign Classic</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 17–24</span><span class="chip">Assignments 3–4</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Explain how a work table travels along transitions and what each activity does to it.</li><li>Choose the right activity from the full palette, and configure the key ones from memory.</li><li>Use instance, task and event variables to pass values between activities.</li><li>Schedule, signal, approve, alert and recover workflows safely.</li></ul></div>
+
+<details class="mod" id="m17"><summary><span class="no">M17</span><span class="t">Workflow fundamentals and the work table</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Two kinds</b>: <i>campaign workflows</i> (inside an operation, with delivery activities) and <i>standalone workflows</i> (Administration › Production › Technical workflows or your own folders).</li>
+<li><b>Template vs instance</b>: build a template once, create instances from it.</li>
+<li><b>Transitions carry a population</b>: each outbound transition points to a <b>work table</b> (<code>temp:query</code>, <code>temp:enrich</code>…) plus a <i>targeting dimension</i> and a <i>record count</i>.</li>
+<li><b>Execution states</b>: being edited, started, paused, stopped, finished; plus <i>failed</i> with the "Suspend on error" option.</li>
+<li><b>Properties</b> to set every time: execution folder, <i>Keep interim results</i> (off in production), log SQL queries (debug only), <b>affinity</b>, <b>priority</b>, error management (suspend / ignore), supervisors group.</li></ul>
+<div class="note">Right-click a transition → <b>Display the target</b> to see the rows and the work table's schema. That single habit prevents most workflow bugs.</div>
+<div class="lab"><b>Mini-lab</b><br>Build Start → Query → End. Turn on "Keep interim results", run, and inspect the transition: table name, schema, count. Then turn it off and rerun: what can you no longer see?</div>
+</div></details>
+
+<details class="mod" id="m18"><summary><span class="no">M18</span><span class="t">The complete activity palette</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body" style="max-width:none">
+<p><span class="chip v8">key</span> activities get a drill in Assignment 3. <span class="chip">ref</span> activities are for reference: know what they do and when to pick them.</p>
+
+<h3 class="pal-h">Targeting</h3>
+<div class="pal">
+<div class="act"><b>Query <span class="k key">key</span></b>Selects a population from a targeting dimension with filters; can add data (additional columns) at selection time.</div>
+<div class="act"><b>Incremental query <span class="k key">key</span></b>Scheduled query that returns only records not returned in previous runs (keeps a history per workflow).</div>
+<div class="act"><b>Read list <span class="k key">key</span></b>Loads a list (<code>nms:group</code>) as the population; list can be computed from a variable.</div>
+<div class="act"><b>Union <span class="k key">key</span></b>Merges populations; <i>keep all</i> or <i>only duplicates</i> by key; set the primary set.</div>
+<div class="act"><b>Intersection <span class="k key">key</span></b>Keeps records present in all inbound sets.</div>
+<div class="act"><b>Exclusion <span class="k key">key</span></b>Removes the populations of secondary sets from the primary set.</div>
+<div class="act"><b>Split <span class="k key">key</span></b>Partitions a population into subsets by filter, percentage, count or random draw; optional complement; can overlap or not.</div>
+<div class="act"><b>Deduplication <span class="k key">key</span></b>Removes duplicates on chosen criteria; keep by rule (most recent, a value priority, random).</div>
+<div class="act"><b>Enrichment <span class="k key">key</span></b>Adds columns or linked data (joins on any key, aggregates, offers) to the work table; can reconcile to a new schema.</div>
+<div class="act"><b>Change dimension <span class="k key">key</span></b>Switches targeting dimension (e.g. accounts → their owners) with duplicate handling.</div>
+<div class="act"><b>Change data source <span class="k">v8</span> <span class="k ref">ref</span></b>FFDA: moves a work table between the local database and Snowflake (or a FDA source).</div>
+<div class="act"><b>Reconciliation <span class="k key">key</span></b>Links imported data to existing schema records (e.g. file email → recipient) and sets the targeting dimension.</div>
+<div class="act"><b>Update data <span class="k key">key</span></b>Insert / update / insert-or-update / delete rows in a table from the work table, on reconciliation keys; batch size setting.</div>
+<div class="act"><b>List update / Save audience <span class="k key">key</span></b>Writes the population to a list (create, replace or append).</div>
+<div class="act"><b>Subscription services <span class="k ref">ref</span></b>Subscribes/unsubscribes the population to a service (fixed or from a column).</div>
+<div class="act"><b>Update aggregate <span class="k ref">ref</span></b>Updates aggregate tables used by cubes after a data load.</div>
+<div class="act"><b>SQL code <span class="k ref">ref</span></b>Runs SQL against the workflow's datasource (requires SQL rights; use sparingly).</div>
+</div>
+
+<h3 class="pal-h">Flow control</h3>
+<div class="pal">
+<div class="act"><b>Start / End <span class="k key">key</span></b>Entry and exit points. A workflow ends when every active branch reaches an End.</div>
+<div class="act"><b>Stop <span class="k ref">ref</span></b>Stops the whole workflow when reached.</div>
+<div class="act"><b>Scheduler <span class="k key">key</span></b>Fires at dates or a recurrence. Only one scheduler per branch start; never chain a scheduler after one that keeps running.</div>
+<div class="act"><b>Fork <span class="k key">key</span></b>Runs several branches in parallel.</div>
+<div class="act"><b>AND-join <span class="k key">key</span></b>Waits until all inbound branches have finished.</div>
+<div class="act"><b>Wait <span class="k ref">ref</span></b>Pauses for a duration or until a date.</div>
+<div class="act"><b>Test <span class="k key">key</span></b>Branches on a JS condition (e.g. <code>vars.recCount &gt; 0</code>).</div>
+<div class="act"><b>Jump <span class="k ref">ref</span></b>Jumps to a matching jump point (priority numbers); used for loops or reruns.</div>
+<div class="act"><b>External signal <span class="k key">key</span></b>Waits to be triggered by another workflow, a SOAP call or JS (<code>PostEvent</code>), with parameters.</div>
+<div class="act"><b>Skip <span class="k ref">ref</span></b>Conditional branch that lets you bypass steps.</div>
+<div class="act"><b>Alert <span class="k key">key</span></b>Sends a notification to an operator or group, with rich content.</div>
+<div class="act"><b>Local approval <span class="k ref">ref</span></b>Distributed marketing approval of a target by local managers.</div>
+</div>
+
+<h3 class="pal-h">Actions</h3>
+<div class="pal">
+<div class="act"><b>Delivery <span class="k key">key</span></b>Email/SMS/push/direct mail delivery built from a template; can be recurring or continuous; prepare-only or send.</div>
+<div class="act"><b>Delivery control <span class="k ref">ref</span></b>Starts, pauses, stops or approves a delivery from a workflow.</div>
+<div class="act"><b>Separate deliveries / Cross-channel <span class="k ref">ref</span></b>Use Split and multiple Delivery activities for channel choice.</div>
+<div class="act"><b>JavaScript code <span class="k key">key</span></b>Runs a script once per activation; can read/write vars, tables, options.</div>
+<div class="act"><b>Advanced JavaScript code <span class="k ref">ref</span></b>Script with multiple outbound transitions and repeated calls (a "state machine").</div>
+<div class="act"><b>Sub-workflow <span class="k ref">ref</span></b>Calls another workflow via jump points, as a reusable routine.</div>
+<div class="act"><b>Offer engine / Offers by cell <span class="k ref">ref</span></b>Associates Interaction offers to the population.</div>
+<div class="act"><b>CRM connector <span class="k ref">ref</span></b>Imports/exports data with a CRM (Salesforce, Dynamics) via an external account.</div>
+<div class="act"><b>Pause / Kill a workflow <span class="k ref">ref</span></b>Achieved through <code>xtk.workflow</code> methods in JS (<code>Pause</code>, <code>Stop</code>, <code>Start</code>).</div>
+</div>
+
+<h3 class="pal-h">Data management and events</h3>
+<div class="pal">
+<div class="act"><b>File collector <span class="k key">key</span></b>Watches a server folder, picks files matching a pattern, one event per file (<code>vars.filename</code>).</div>
+<div class="act"><b>Data loading (file) <span class="k key">key</span></b>Parses a CSV/fixed file into a work table with a format, types, mapping, reject handling.</div>
+<div class="act"><b>Data extraction (file) <span class="k key">key</span></b>Writes the work table to a file with formatting, header and optional post-processing (zip, encrypt).</div>
+<div class="act"><b>Data loading (RDBMS) <span class="k ref">ref</span></b>Loads data from an external database via an FDA external account.</div>
+<div class="act"><b>File transfer <span class="k key">key</span></b>Upload/download/list/delete over (S)FTP, S3, Azure Blob, using an external account.</div>
+<div class="act"><b>Web download <span class="k ref">ref</span></b>Downloads a file over HTTP(S).</div>
+<div class="act"><b>Inbound emails <span class="k ref">ref</span></b>Reads a mailbox (POP3) and processes messages.</div>
+<div class="act"><b>Cloud storage transfer <span class="k">v8</span> <span class="k ref">ref</span></b>v8 replacement/extension for cloud file transfers (confirm the activity set on your build).</div>
+<div class="act"><b>Wait for a file / event triggers <span class="k ref">ref</span></b>Combine File collector with a Scheduler for polling patterns.</div>
+</div>
+<div class="note">Palette names differ slightly across builds and between the console and the Web UI (e.g. "Save audience", "Combine" = union/intersection/exclusion, "Reconciliation"). Map each to its console equivalent on your instance.</div>
+</div></details>
+
+<details class="mod" id="m19"><summary><span class="no">M19</span><span class="t">Workflow variables and their scope</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Object</th><th>Scope</th><th>Typical use</th></tr>
+<tr><td><code>instance.vars.x</code></td><td>Whole workflow instance, persists across activities and runs</td><td>Parameters, file names, counters, dates to reuse downstream</td></tr>
+<tr><td><code>task.vars.x</code></td><td>Current activity only</td><td>Temporary values within one script</td></tr>
+<tr><td><code>vars.x</code> (event variables)</td><td>Travel with the transition to the next activities</td><td><code>vars.recCount</code>, <code>vars.tableName</code>, <code>vars.filename</code>, <code>vars.schema</code></td></tr>
+<tr><td><code>activity</code>, <code>task</code>, <code>instance</code>, <code>event</code></td><td>Objects</td><td><code>instance.id</code>, <code>instance.internalName</code>, <code>activity.name</code></td></tr>
+<tr><td>Options (<code>getOption</code>/<code>setOption</code>)</td><td>Global, persisted in <code>xtk:option</code></td><td>Last run date, configuration shared across workflows</td></tr></table></div>
+<p>In filters and file names use <code>$(vars/@x)</code> or <code>$(instance/vars/@x)</code>; in JavaScript use the dotted form.</p>
+<pre class="raw">// JavaScript code activity
+instance.vars.runDate = formatDate(getCurrentDate(), "%4Y%2M%2D");
+logInfo("Records received: " + vars.recCount + " in " + vars.tableName);
+if (vars.recCount == 0) task.setCompleted();   // test downstream with vars.recCount
+
+// Data extraction file name
+/sftp/out/nvb_export_$(instance/vars/@runDate).csv</pre>
+<div class="lab"><b>Mini-lab</b><br>In one workflow: set <code>instance.vars.segment = "SAV"</code> in JS; use it in a query filter with <code>$(instance/vars/@segment)</code>; after the query, log <code>vars.recCount</code>; use a Test on <code>vars.recCount &gt; 0</code>.</div>
+</div></details>
+
+<details class="mod" id="m20"><summary><span class="no">M20</span><span class="t">Expression editor, work-table SQL and dynamic filters</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Additional data</b> in Query/Enrichment adds computed columns (aliases like <code>@segmentCode</code>) you can use downstream and in delivery personalisation via <code>targetData.segmentCode</code>.</li>
+<li>Reach the work table in JS through <code>vars.tableName</code> and <code>vars.targetSchema</code>.</li>
+<li><b>Dynamic filters</b>: filters with parameters (<code>$(vars/@…)</code>) or a JS-built <code>where</code> in a queryDef.</li></ul>
+<pre class="raw">// Count rows in the inbound work table (local datasource)
+var n = sqlGetInt("SELECT COUNT(*) FROM " + vars.tableName);
+// In FFDA, the work table may live in Snowflake: prefer queryDef on vars.targetSchema
+var q = xtk.queryDef.create(
+  &lt;queryDef schema={vars.targetSchema} operation="count"/&gt;);
+logInfo("rows=" + q.ExecuteQuery().@count);</pre>
+<div class="note">In delivery content, additional workflow columns are read as <code>&lt;%= targetData.columnName %&gt;</code>.</div>
+</div></details>
+
+<details class="mod" id="m21"><summary><span class="no">M21</span><span class="t">Scheduling, signals and workflow-to-workflow calls</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Scheduler</b>: once, daily, weekly, every N hours; with an optional validity period. Timezone set in workflow properties.</li>
+<li><b>External signal</b>: the receiving workflow must be <b>started</b> and waiting at the signal activity.</li>
+<li>Trigger it from JS: <code>xtk.workflow.PostEvent(workflowInternalName, activityName, transitionName, &lt;variables .../&gt;, false)</code>.</li>
+<li>Passed variables arrive as <code>vars.x</code> in the receiving workflow.</li></ul>
+<pre class="raw">// Parent workflow, JavaScript code activity
+xtk.workflow.PostEvent(
+  "NVB_Child_Load",        // child workflow internal name
+  "signal",                // name of the External signal activity
+  "",                      // transition ("" = default)
+  &lt;variables fileName={instance.vars.fileName} runId={instance.id}/&gt;,
+  false);                  // final flag: check its meaning in the JSAPI reference</pre>
+<div class="note">Confirm the last boolean parameter's meaning in the JSAPI reference for your build before relying on it.</div>
+</div></details>
+
+<details class="mod" id="m22"><summary><span class="no">M22</span><span class="t">Error handling, restarts and safe pausing</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>On most activities tick <b>Process errors</b> to get an <i>Error</i> transition; route it to an Alert and an End.</li>
+<li>Workflow property <b>In case of error: Suspend process</b> (default) vs <b>Ignore</b>. Suspend keeps the evidence.</li>
+<li><b>Restart</b> reruns from the start; <b>Resume</b> continues a paused workflow; for a failed task use "Restart the task" on the activity.</li>
+<li>Design for <b>idempotency</b>: a rerun must not double-insert (use Update data with <i>insert or update</i> on a business key).</li>
+<li>Wrap JS in <code>try/catch</code>; throw after logging if you want the activity to fail visibly.</li></ul>
+<pre class="raw">try {
+  // work
+} catch (e) {
+  logWarning("NVB load failed: " + e);
+  instance.vars.errorMsg = String(e);
+  throw e;        // keep the activity in error so the Error transition fires
+}</pre>
+</div></details>
+
+<details class="mod" id="m23"><summary><span class="no">M23</span><span class="t">Approvals and alerts</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Delivery approvals</b>: target, content (with proofs), budget, extraction file, provider. Configured on the delivery or campaign template.</li>
+<li><b>Approval reviewers</b>: operator or group; timeout and default action.</li>
+<li><b>Alert</b> activity: recipients, subject, message with variables (<code>&lt;%= vars.recCount %&gt;</code>), attachments.</li>
+<li><b>Workflow supervisors</b> group gets error notifications if configured in properties.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Add a target-approval step before a delivery with a 24-hour timeout that rejects by default; send the approval to an operator group <code>NVB Approvers</code>. Approve from the console and from the email link.</div>
+</div></details>
+
+<details class="mod" id="m24"><summary><span class="no">M24</span><span class="t">Supervision, heatmap and workflow hygiene</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Workflow heatmap</b> (Monitoring): how many workflows run at each hour and for how long. Use it to schedule away from peaks.</li>
+<li><b>Logs</b> tab and <b>Tasks</b> tab per workflow; purge logs setting (default history days).</li>
+<li><code>cleanupPausedWorkflows</code> warns about workflows paused too long.</li>
+<li><b>Hygiene rules</b>: naming convention, a description on every workflow, no "keep interim results" in production, no unused paused workflows, every scheduled workflow has an owner.</li></ul>
+<div class="tw"><table><tr><th>Naming convention (example)</th><th></th></tr>
+<tr><td><code>NVB_TW_LOAD_TXN_DAILY</code></td><td>Technical, load, transactions, daily</td></tr>
+<tr><td><code>NVB_CW_CC_XSELL_2026Q4</code></td><td>Campaign workflow, credit card cross-sell</td></tr>
+<tr><td><code>NVB_TPL_SEGMENT_MONTHLY</code></td><td>Template</td></tr></table></div>
+</div></details>
+
+<article class="asg" id="a3"><header><div class="k2">Assignment 3 · Level 2 · 100 pts</div><h3>Activity drills: ten mini-labs</h3></header><div class="in">
+<p>Each drill is a small standalone workflow. For each, submit a screenshot of the workflow, the count on every transition, and one sentence explaining the count.</p>
+<div class="tw"><table><tr><th>#</th><th>Drill</th><th>Activities</th><th>Expected outcome</th></tr>
+<tr><td>D1</td><td>Query with additional data</td><td>Query</td><td>Savings customers in Mumbai with a computed <code>@ageBand</code> column</td></tr>
+<tr><td>D2</td><td>Only new since last run</td><td>Scheduler → Incremental query</td><td>Second run returns only recipients created since the first run</td></tr>
+<tr><td>D3</td><td>Combine sets</td><td>2× Query → Union / Intersection / Exclusion</td><td>Counts reconcile: |A∪B| = |A|+|B|−|A∩B|</td></tr>
+<tr><td>D4</td><td>Segment split</td><td>Query → Split (3 filter subsets + complement, 10% random control)</td><td>No overlap; subset sums = input</td></tr>
+<tr><td>D5</td><td>Dedup by rule</td><td>Data loading → Dedup on email, keep most recent</td><td>Duplicate file rows reduced; rule documented</td></tr>
+<tr><td>D6</td><td>Enrichment with aggregate</td><td>Query → Enrichment (count of broadLogs 30 days, last click date)</td><td>Two new columns visible in "Display the target"</td></tr>
+<tr><td>D7</td><td>Change dimension</td><td>Query on <code>nms:subscription</code> → Change dimension to recipients</td><td>One row per recipient with duplicate handling explained</td></tr>
+<tr><td>D8</td><td>File to table</td><td>File collector → Data loading → Reconciliation → Update data</td><td>Inserts vs updates counted; rejects written to a file</td></tr>
+<tr><td>D9</td><td>Signal and test</td><td>Parent JS PostEvent → Child External signal → Test on <code>vars.recCount</code></td><td>Child logs the passed variable; both branches tested</td></tr>
+<tr><td>D10</td><td>Export and transfer</td><td>Query → Data extraction → File transfer (SFTP upload)</td><td>Dated file lands on the test SFTP; alert sent with the row count</td></tr></table></div>
+<h4>Done when</h4><ul class="done"><li>All ten workflows run clean twice in a row.</li><li>Every transition count is explained.</li><li>No workflow keeps interim results after testing.</li></ul>
+<h4>Rubric</h4><p>10 points per drill: 4 for correct configuration, 3 for correct counts, 3 for the explanation.</p>
+</div></article>
+
+<article class="asg" id="a4"><header><div class="k2">Assignment 4 · Level 2 · 100 pts</div><h3>Monthly segmentation workflow</h3></header><div class="in">
+<p><b>Scenario.</b> On the 1st of each month NovaBank refreshes four value segments and saves them as lists used by later campaigns.</p>
+<h4>Tasks</h4><ol>
+<li>Scheduler (1st of month, 06:00 IST) → Query active customers (not blocklisted, has email or mobile).</li>
+<li>Enrichment: add balance band and product count (from the Level 4 schema if built, otherwise from recipient fields you add in M-37 prep).</li>
+<li>Deduplication on email + mobile.</li>
+<li>Exclusion: staff list (Read list "NVB Staff") and recipients quarantined in the last 30 days.</li>
+<li>Split into Premier / Growth / Core / Dormant with explicit filters and a 5% random control group per segment (use a second Split).</li>
+<li>Save audience for each segment (replace mode) with names containing <code>$(instance/vars/@month)</code>.</li>
+<li>Alert the marketing group with a table of counts; Error transitions route to a separate alert.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Segment counts + control counts + exclusions reconcile to the query count.</li><li>A rerun on the same day replaces, not appends.</li><li>Workflow description documents owners, schedule and inputs.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Activity choice and config</td><td class="num">30</td></tr><tr><td>Count reconciliation</td><td class="num">25</td></tr><tr><td>Variables and naming</td><td class="num">15</td></tr><tr><td>Error handling and alerts</td><td class="num">15</td></tr><tr><td>Documentation</td><td class="num">15</td></tr></table></div>
+</div></article>
+
+<section class="quiz" id="q2"><h3 style="margin-top:28px">Level 2 check</h3><ol>
+<li>Which variable holds the number of records on the inbound transition? <details><summary>Answer</summary><code>vars.recCount</code>.</details></li>
+<li>An External signal activity never fires. Most common cause? <details><summary>Answer</summary>The receiving workflow isn't started, or the activity name in PostEvent doesn't match.</details></li>
+<li>Difference between Intersection and Exclusion? <details><summary>Answer</summary>Intersection keeps records in all sets; Exclusion removes secondary sets from the primary.</details></li>
+<li>Where do you read workflow additional columns in delivery content? <details><summary>Answer</summary><code>targetData.&lt;column&gt;</code>.</details></li>
+<li>Why switch off "Keep interim results" in production? <details><summary>Answer</summary>Work tables are kept and fill the database; performance drops.</details></li>
+<li>Which scope survives across activities: <code>task.vars</code> or <code>instance.vars</code>? <details><summary>Answer</summary><code>instance.vars</code>.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 3 ============ -->
+<section class="level" id="L3" data-tab="L3" data-label="Campaign ops" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 3 · ~1.5 weeks · Campaign operations</div>
+  <h2>Campaign operations: programs, rules and quality</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 25–33</span><span class="chip">Assignment 5</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Run a campaign from template to report, with approvals.</li><li>Design typology rules that protect customers from over-contact.</li><li>Use A/B tests, control groups and hypotheses to prove impact.</li><li>Run a QC process that catches errors before they reach customers.</li></ul></div>
+
+<details class="mod" id="m25"><summary><span class="no">M25</span><span class="t">Campaigns, programs and the marketing plan</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Hierarchy: <b>Plan → Program → Campaign (operation)</b>. Campaigns hold the workflow, deliveries, documents, budget and tasks.</li>
+<li><b>Campaign templates</b> define default workflow, deliveries, approvals, typology and folder.</li>
+<li>The <b>campaign dashboard</b> tracks deliveries and approvals; the <code>operationMgt</code> and <code>deliveryMgt</code> technical workflows move them forward.</li>
+<li><b>Calendar</b> and <b>provisional calendar</b> (<code>forecasting</code> workflow) give capacity and pressure forecasts.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Create campaign template <code>NVB_TPL_Campaign</code> with an embedded workflow skeleton (Query → Split → 2 Deliveries), target approval on, and folder set to <code>NovaBank / Campaigns</code>.</div>
+</div></details>
+
+<details class="mod" id="m26"><summary><span class="no">M26</span><span class="t">Typology rules: control, filter, pressure and capacity</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Rule type</th><th>Phase</th><th>What it does</th><th>NovaBank example</th></tr>
+<tr><td>Control</td><td>Before/after targeting, before/after personalisation</td><td>Blocks or warns on content/config errors</td><td>Stop if subject is empty or contains "TEST"</td></tr>
+<tr><td>Filtering</td><td>Targeting</td><td>Excludes recipients by a query</td><td>Exclude staff, exclude minors</td></tr>
+<tr><td>Pressure</td><td>Targeting</td><td>Caps messages per period, with weighting and priority arbitration</td><td>Max 3 marketing emails per rolling 7 days</td></tr>
+<tr><td>Capacity</td><td>Targeting</td><td>Caps volume per day for a resource (e.g. call center)</td><td>Max 500 "call-me" leads per day</td></tr></table></div>
+<ul><li>Rules are grouped in a <b>typology</b>; the typology is set in the delivery template properties.</li>
+<li>Pressure uses <b>weight</b> (message value) and <b>priority</b>; excluded recipients appear in the exclusion reasons of the analysis.</li>
+<li>Pressure rules need the <b>provisional calendar</b> to consider scheduled but unsent deliveries.</li></ul>
+<pre class="raw">// Control rule script (phase: at the start of personalisation) - example
+if (delivery.mailParameters.subject.toString().match(/test/i))
+  logError("Subject contains TEST: fix before sending");</pre>
+</div></details>
+
+<details class="mod" id="m27"><summary><span class="no">M27</span><span class="t">Recurring, continuous and A/B deliveries</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Recurring delivery</b>: a new child delivery per period (daily/weekly) under one parent; reporting aggregated per period.</li>
+<li><b>Continuous delivery</b>: appends recipients to the same delivery on each run.</li>
+<li><b>Delivery waves</b>: send in batches (fixed size or schedule) to protect reputation and call-centre capacity.</li>
+<li><b>A/B testing</b>: Split (e.g. 10% A, 10% B, 80% rest) → two deliveries → wait → JS picks the winner by click rate → send winner to the rest.</li>
+<li><b>Validity period</b>: how long the MTA retries soft bounces; mirror page validity.</li></ul>
+<pre class="raw">// Pick A/B winner by distinct clicks / success (JS activity after a Wait)
+function rate(id){
+  var d = NLWS.nmsDelivery.load(id);
+  return d.indicators.success &gt; 0 ? d.indicators.recipientClicks / d.indicators.success : 0;
+}
+instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ? "A" : "B";</pre>
+<div class="note">Indicator field names vary; open <code>nms:delivery</code> › <code>indicators</code> on your instance and adjust.</div>
+</div></details>
+
+<details class="mod" id="m28"><summary><span class="no">M28</span><span class="t">Seed lists, control groups, test profiles and delivery mappings</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Seed lists</b>: reusable seed sets inserted into every delivery from a template; can use data from a real recipient.</li>
+<li><b>Control group</b>: a hold-out that receives nothing; defined in the delivery Target tab or via Split.</li>
+<li><b>Delivery mapping</b> (target mapping): which schema, which address fields, which logs, and which exclusion fields. Default is <code>mapRecipient</code>.</li></ul>
+</div></details>
+
+<details class="mod" id="m29"><summary><span class="no">M29</span><span class="t">Delivery analysis, bounces and quarantines</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Delivery lifecycle</b>: analysis → preparation → (approval) → start → in progress → finished. The analysis log shows exclusions by reason.</li>
+<li><b>Bounce types</b>: hard (user unknown), soft (mailbox full), ignored. Qualified with rules in <code>nms:broadLogMsg</code> updated by <code>deliverabilityUpdate</code>.</li>
+<li><b>Quarantine</b>: after repeated errors an address moves to <code>nms:address</code> with a status (quarantined, on denylist, valid).</li>
+<li><b>Retries</b>: configured in delivery properties; limited by validity period.</li>
+<li>Error types: User unknown, Invalid domain, Inactive user, Mailbox full, Refused, Unreachable, Account disabled, Not connected (SMS/push).</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Send to 10 deliberately bad addresses on a test domain. Watch their broadLog statuses, then find them in Quarantine management. Write a one-page "bounce playbook" for NovaBank.</div>
+</div></details>
+
+<details class="mod" id="m30"><summary><span class="no">M30</span><span class="t">Response manager and hypotheses</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Hypothesis</b>: a query that says "a response is X happening after the message", e.g. a card application within 14 days.</li>
+<li>Compares the <b>target</b> vs the <b>control group</b> to compute uplift and ROI.</li>
+<li>Requires a response schema and a reaction log configured by developers.</li></ul>
+<p>Uplift = (target response rate − control response rate) ÷ control response rate.</p>
+</div></details>
+
+<details class="mod" id="m31"><summary><span class="no">M31</span><span class="t">Distributed marketing, budgets and stock</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Distributed marketing</b> (central/local): central teams publish campaign packages; local entities (branches) order and personalise them. <code>centralLocalMgt</code> workflow; Local approval activity.</li>
+<li><b>Budgets and cost structures</b>: expense lines on deliveries and providers, computed by <code>budgetMgt</code>.</li>
+<li><b>Stock</b>: order lines for physical items, alerts by <code>stockMgt</code>.</li></ul>
+<div class="note">Confirm your package list (Tools › Advanced › Import package) before planning these labs; several are optional modules.</div>
+</div></details>
+
+<details class="mod" id="m32"><summary><span class="no">M32</span><span class="t">Marketing Resource Management (v7) and its v8 alternatives</span><span class="tags"><span class="chip v7">v7</span></span></summary><div class="body">
+<ul><li><b>MRM</b>: marketing resources (assets), tasks, reviews, collaborative planning, discussion forums (<code>assetMgt</code>, <code>taskMgt</code>, <code>newsgroupMgt</code>).</li>
+<li>Not available on v8 FFDA. Typical replacements: Adobe Workfront for work management, AEM Assets for DAM.</li></ul>
+</div></details>
+
+<details class="mod" id="m33"><summary><span class="no">M33</span><span class="t">The QC framework</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>Stage</th><th>Checks</th><th>Owner</th></tr>
+<tr><td>Brief</td><td>Audience definition, exclusions, channel, schedule, offer codes, legal copy, DLT template (SMS)</td><td>Requester</td></tr>
+<tr><td>Build</td><td>Template used, naming, typology set, tracking formula, seed list, control group</td><td>Builder</td></tr>
+<tr><td>Target</td><td>Counts vs brief (±%), exclusions applied, duplicates, blocklist, sample of 20 rows</td><td>Peer reviewer</td></tr>
+<tr><td>Content</td><td>Personalisation with fallbacks, links (all tracked and live), subject/preheader, unsubscribe, mirror page, rendering</td><td>Peer reviewer</td></tr>
+<tr><td>Approval</td><td>Proof sign-off recorded; target approval in Campaign</td><td>Business owner</td></tr>
+<tr><td>Send</td><td>Schedule, waves, validity, first-hour monitoring (bounce rate &lt; threshold)</td><td>Builder</td></tr>
+<tr><td>Post-send</td><td>Counts reconciled (target vs processed vs delivered), report shared, issues logged</td><td>Builder</td></tr></table></div>
+<div class="lab"><b>Mini-lab</b><br>Turn the table into a reusable checklist (spreadsheet or Campaign "task" list) and run it against Assignment 1.</div>
+</div></details>
+
+<article class="asg" id="a5"><header><div class="k2">Assignment 5 · Level 3 · 100 pts</div><h3>Credit card cross-sell program</h3></header><div class="in">
+<p><b>Scenario.</b> NovaBank wants to sell the "Nova Platinum" card to savings customers with steady balances, over email, SMS and push, without exceeding contact limits.</p>
+<h4>Tasks</h4><ol>
+<li>Create program "NVB 2026 Cards" and a campaign from <code>NVB_TPL_Campaign</code>.</li>
+<li>Typology <code>NVB_Marketing</code>: pressure (3 per 7 days, weight 5 for this campaign), filtering (staff, age &lt; 21), control rule (no "TEST" in subject, sender must be the approved domain).</li>
+<li>Workflow: Query → Dedup → Split by channel preference (push if app installed, else email, else SMS) → 10% control group.</li>
+<li>Email A/B test on subject (10% / 10% / 80%), winner by CTR after 4 hours.</li>
+<li>Target and content approvals by the <code>NVB Approvers</code> group.</li>
+<li>Hypothesis: card application within 14 days, measured against the control group.</li>
+<li>Run the QC checklist from M33 and attach it.</li></ol>
+<h4>Done when</h4><ul class="done"><li>The analysis log shows pressure-rule exclusions with reasons.</li><li>The winner is picked by the script and logged.</li><li>Control group receives nothing and is in the hypothesis.</li><li>QC checklist complete with sign-offs.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Program/campaign structure</td><td class="num">10</td></tr><tr><td>Typology design</td><td class="num">25</td></tr><tr><td>Channel routing workflow</td><td class="num">20</td></tr><tr><td>A/B logic</td><td class="num">20</td></tr><tr><td>Approvals + hypothesis</td><td class="num">10</td></tr><tr><td>QC evidence</td><td class="num">15</td></tr></table></div>
+</div></article>
+
+<section class="quiz" id="q3"><h3 style="margin-top:28px">Level 3 check</h3><ol>
+<li>Which rule type caps messages per recipient per period? <details><summary>Answer</summary>Pressure.</details></li>
+<li>Recurring vs continuous delivery? <details><summary>Answer</summary>Recurring creates a child delivery per period; continuous adds recipients to the same delivery.</details></li>
+<li>Which workflow updates bounce qualification rules? <details><summary>Answer</summary><code>deliverabilityUpdate</code> (Refresh for deliverability).</details></li>
+<li>Why do pressure rules need the provisional calendar? <details><summary>Answer</summary>To count deliveries that are scheduled but not yet sent.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 4 ============ -->
+<section class="level" id="L4" data-tab="L4" data-label="Schemas" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 4 · ~2 weeks · Developer: data model</div>
+  <h2>Schemas and configuration: designing the data model</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 34–43</span><span class="chip">Assignments 6–8</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Write a source schema from scratch: keys, indexes, links, enumerations and computed fields.</li><li>Extend <code>nms:recipient</code> safely and update the database structure.</li><li>Design 1-1, 1-N and N-N relations with the right integrity.</li><li>Build a custom target mapping so deliveries can target a non-recipient table.</li><li>Build input forms and know what changes for FFDA schemas in v8.</li></ul></div>
+
+<details class="mod" id="m34"><summary><span class="no">M34</span><span class="t">Schema anatomy</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Source schema</b> (<code>xtk:srcSchema</code>): what you write. <b>Schema</b> (<code>xtk:schema</code>): what Campaign generates from it (includes extensions, computed defaults). Edit only source schemas.</li>
+<li>Root <code>&lt;srcSchema name namespace label labelSingular&gt;</code>; the <b>main element</b> has the same <code>name</code> as the schema and maps to a table.</li>
+<li><code>&lt;attribute&gt;</code> = column; <code>&lt;element&gt;</code> = sub-structure, link, or XML/memo container.</li>
+<li><code>&lt;key&gt;</code> = logical unique key (used for reconciliation and SOAP writes); <code>&lt;dbindex&gt;</code> = physical index.</li>
+<li><code>&lt;enumeration&gt;</code> declared at the schema root, used via <code>enum="…"</code>.</li>
+<li><code>&lt;sysFilter&gt;</code> = row-level filter applied to every read (security).</li>
+<li><code>&lt;compute-string expr="…"/&gt;</code> = how a record is shown in lists and links.</li></ul>
+<pre class="raw">&lt;srcSchema name="product" namespace="nvb" label="Products" labelSingular="Product"&gt;
+  &lt;enumeration name="family" basetype="string"&gt;
+    &lt;value name="card"    value="CARD" label="Card"/&gt;
+    &lt;value name="loan"    value="LOAN" label="Loan"/&gt;
+    &lt;value name="deposit" value="DEP"  label="Deposit"/&gt;
+  &lt;/enumeration&gt;
+  &lt;element name="product" autopk="true" label="Product"&gt;
+    &lt;compute-string expr="@code + ' - ' + @label"/&gt;
+    &lt;key name="code" internal="true"&gt;&lt;keyfield xpath="@code"/&gt;&lt;/key&gt;
+    &lt;attribute name="code"   type="string" length="20"  label="Product code"/&gt;
+    &lt;attribute name="label"  type="string" length="100" label="Label"/&gt;
+    &lt;attribute name="family" type="string" length="4"   enum="family" label="Family"/&gt;
+    &lt;attribute name="active" type="boolean" default="true" label="Active"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+</div></details>
+
+<details class="mod" id="m35"><summary><span class="no">M35</span><span class="t">Data types, keys and computed fields</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>XTK type</th><th>Use for</th></tr>
+<tr><td><code>string</code> (+ <code>length</code>)</td><td>Text up to the length (default 255)</td></tr>
+<tr><td><code>boolean</code>, <code>byte</code>, <code>short</code>, <code>long</code>, <code>int64</code></td><td>Flags and integers (<code>byte</code>/<code>short</code> for enumerations)</td></tr>
+<tr><td><code>double</code>, <code>float</code>, <code>money</code>, <code>percent</code></td><td>Decimals (use <code>double</code> or <code>money</code> for balances)</td></tr>
+<tr><td><code>date</code>, <code>datetime</code>, <code>datetimenotz</code>, <code>time</code>, <code>timespan</code></td><td>Dates; <code>datetime</code> stores UTC</td></tr>
+<tr><td><code>memo</code>, <code>html</code>, <code>blob</code></td><td>Long text / HTML / binary (not indexable)</td></tr>
+<tr><td><code>uuid</code></td><td>Unique identifiers</td></tr></table></div>
+<ul><li><code>autopk="true"</code>: Campaign generates an integer <code>@id</code> primary key (sequence <code>XtkNewId</code> by default; use <code>pkSequence</code> for a dedicated sequence on high-volume tables).</li>
+<li><b>FFDA (v8 Enterprise)</b>: <code>autouuid="true"</code> + <code>autopk="true"</code> generates UUID keys. Snowflake does <b>not</b> enforce unicity; the <i>Unicity alerting</i> workflow reports duplicates into the Audit Unicity table.</li>
+<li><code>sqlname</code> overrides generated names (defaults: table <code>NamespaceName</code>, column <code>sName</code>/<code>iName</code>/<code>tsName</code> by type prefix).</li>
+<li><b>Calculated field</b>: <code>expr="…"</code> on an attribute makes it computed at query time (no column).</li>
+<li><code>notNull</code>, <code>default</code>, <code>defOnDuplicate</code>, <code>xml="true"</code> (stored inside a memo), <code>dataPolicy</code> (e.g. <code>email</code>, <code>smartCase</code>), <code>userEnum</code> for user-editable enumerations.</li></ul>
+<pre class="raw">&lt;attribute name="balanceBand" type="string" label="Balance band"
+  expr="Iif(@balance &gt;= 500000, 'HIGH', Iif(@balance &gt;= 50000, 'MID', 'LOW'))"/&gt;</pre>
+</div></details>
+
+<details class="mod" id="m36"><summary><span class="no">M36</span><span class="t">Links: cardinality and integrity</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<pre class="raw">&lt;element name="recipient" type="link" target="nms:recipient"
+         label="Owner" revLink="accounts" integrity="own"/&gt;</pre>
+<ul><li>A link element creates a foreign key column (e.g. <code>iRecipientId</code>) and, by default, a <b>reverse collection link</b> on the target (<code>revLink</code> names it).</li>
+<li><b>1-N</b>: link on the "N" side (account → recipient). <b>1-1</b>: add <code>revCardinality="single"</code>. <b>N-N</b>: a relation table with two links.</li>
+<li><code>revExternalJoin</code>, <code>externalJoin</code>: outer joins for optional links. <code>&lt;join xpath-src="@x" xpath-dst="@y"/&gt;</code> for joins on non-key fields.</li>
+<li><code>noDbIndex="true"</code> skips the automatic index on the foreign key (rarely wise).</li></ul>
+<div class="tw"><table><tr><th><code>integrity</code></th><th>Adobe's definition</th></tr>
+<tr><td><code>define</code></td><td>The source can be deleted if it is no longer referenced by a target occurrence</td></tr>
+<tr><td><code>normal</code> (default)</td><td>Deleting the source initialises the link keys of the target</td></tr>
+<tr><td><code>own</code></td><td>Deleting the source deletes the target</td></tr>
+<tr><td><code>owncopy</code></td><td>As <code>own</code>, and duplicating the source duplicates the target</td></tr>
+</table></div>
+<div class="warn">"Source" and "target" in integrity definitions are easy to misread. Always prove the behaviour on a test record: delete a test recipient and check what happened to its accounts. OOTB <code>nms:subscription</code> uses <code>integrity="own"</code> on its recipient link, and deleting a recipient removes its subscriptions: use it as your reference pattern.</div>
+</div></details>
+
+<details class="mod" id="m37"><summary><span class="no">M37</span><span class="t">Extending standard schemas vs custom schemas</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<pre class="raw">&lt;srcSchema name="recipient" namespace="nvb" extendedSchema="nms:recipient"
+           label="Recipients (NovaBank extension)"&gt;
+  &lt;enumeration name="loyaltyTier" basetype="string"&gt;
+    &lt;value name="silver"   value="SLV" label="Silver"/&gt;
+    &lt;value name="gold"     value="GLD" label="Gold"/&gt;
+    &lt;value name="platinum" value="PLT" label="Platinum"/&gt;
+  &lt;/enumeration&gt;
+  &lt;element name="recipient"&gt;
+    &lt;attribute name="customerId"  type="string" length="20" label="Customer ID"/&gt;
+    &lt;attribute name="loyaltyTier" type="string" length="3"  enum="loyaltyTier" label="Loyalty tier"/&gt;
+    &lt;attribute name="kycStatus"   type="byte" enum="kycStatus" default="0" label="KYC status"/&gt;
+    &lt;dbindex name="customerId" unique="true"&gt;&lt;keyfield xpath="@customerId"/&gt;&lt;/dbindex&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+<ul><li>Extension schemas carry <b>your namespace</b> and <code>extendedSchema</code>; the generated <code>nms:recipient</code> merges them.</li>
+<li>Create a <b>custom</b> schema when the data has its own lifecycle and grain (accounts, transactions, policies). Don't bloat recipient with 1-N data.</li>
+<li>Naming: lowerCamelCase attributes, singular element names, labels for business users.</li>
+<li><b>Never store</b> government IDs, card numbers or credentials in Campaign. Store a status or a hashed reference.</li></ul>
+</div></details>
+
+<details class="mod" id="m38"><summary><span class="no">M38</span><span class="t">Enumerations: open, closed, system</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Schema enumeration</b> (closed): values fixed in the schema; changing them needs a schema edit.</li>
+<li><b>User/database enumeration</b> (<code>userEnum="…"</code>): values in Administration › Platform › Enumerations; users can add values (open) unless closed.</li>
+<li><b>System enumerations</b>: Adobe-owned (e.g. <code>nms:recipient:gender</code>); don't change values, only labels if permitted.</li>
+<li><b>Alias cleansing</b> (<code>aliasCleansing</code>) standardises values against enumeration aliases daily.</li></ul>
+<pre class="raw">&lt;attribute name="branchCity" type="string" length="40" userEnum="nvbBranchCity" label="Branch city"/&gt;</pre>
+</div></details>
+
+<details class="mod" id="m39"><summary><span class="no">M39</span><span class="t">Updating the database structure safely</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ol><li>Save the source schema (the console regenerates the schema; errors appear in the log pane).</li>
+<li>Run <b>Tools › Advanced › Update database structure</b>. Review the generated SQL script before executing.</li>
+<li>Disconnect/reconnect the console so the client cache sees the new schema.</li>
+<li>Package the schema (and forms, enumerations) for promotion.</li></ol>
+<div class="tw"><table><tr><th>Safe changes</th><th>Breaking or risky changes</th></tr>
+<tr><td>Add attribute, add index, add link, add enumeration value, widen a string</td><td>Rename or delete a column, change a type, narrow a length, change a key, change <code>sqlname</code>, add a unique index on dirty data</td></tr></table></div>
+<div class="note">On managed cloud (v8), database structure updates in production follow Adobe's change process and your package pipeline; you do them yourself on development instances.</div>
+</div></details>
+
+<details class="mod" id="m40"><summary><span class="no">M40</span><span class="t">External tables, FDA and views</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Federated Data Access</b>: an external account (type External database) lets schemas point to tables in another database with <code>dataSource="nms:extAccount:&lt;name&gt;"</code> and <code>view="true"</code>.</li>
+<li>Create mapping schemas with the wizard (<i>Access external data</i>) or by hand.</li>
+<li><code>view="true"</code> tells Campaign not to create the table.</li>
+<li>Workflows can query FDA tables directly; use <b>Change data source</b> / <b>Data loading (RDBMS)</b> to move data.</li></ul>
+<pre class="raw">&lt;srcSchema name="crmLead" namespace="nvb" label="CRM leads (FDA)"&gt;
+  &lt;element name="crmLead" sqltable="CRM_LEADS" dataSource="nms:extAccount:nvbCrm" view="true"&gt;
+    &lt;key name="leadId"&gt;&lt;keyfield xpath="@leadId"/&gt;&lt;/key&gt;
+    &lt;attribute name="leadId" type="string" sqlname="LEAD_ID"/&gt;
+    &lt;attribute name="email"  type="string" sqlname="EMAIL"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+</div></details>
+
+<details class="mod" id="m41"><summary><span class="no">M41</span><span class="t">Custom target mappings</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>A target mapping (<code>nms:deliveryMapping</code>) tells deliveries: <b>which schema</b> to target, <b>which fields</b> are email/mobile/address, <b>which log tables</b> to write, and <b>which exclusion fields</b> (blocklist) to respect.</li>
+<li>Create via <b>Administration › Campaign Management › Target mappings › New</b>. The wizard can generate <b>extension schemas</b> for broadLog, trackingLog and exclusion logs (e.g. <code>nvb:broadLogAcc</code>).</li>
+<li>After the wizard: update the database structure, then choose the mapping in the delivery Target tab ("To" → target mapping).</li>
+<li>Unsubscription and opt-out links must write to your schema's exclusion field; the OOTB web app targets <code>nms:recipient</code> unless adapted.</li></ul>
+<div class="note">Custom mappings have effects on OOTB features (reports, quarantines, typology rules written against recipients). List the features you rely on and retest each one.</div>
+</div></details>
+
+<details class="mod" id="m42"><summary><span class="no">M42</span><span class="t">Input forms and navigation hierarchy</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Forms (<code>xtk:form</code>) share the schema's name and namespace. Types: <code>default</code>, <code>notebook</code> (tabs), <code>iconbox</code> (left icons).</li>
+<li>Controls: <code>input</code>, <code>container</code>, <code>static</code>, <code>list</code> (collections), <code>linkEdit</code>; <code>&lt;enter&gt;</code>/<code>&lt;leave&gt;</code> scripts for init/validation; <code>&lt;check&gt;</code> for rules.</li>
+<li><b>Navigation hierarchy</b> (<code>xtk:navtree</code>): add your folder type and nodes so users can create folders for your schema.</li></ul>
+<pre class="raw">&lt;form name="account" namespace="nvb" type="notebook" label="Account"&gt;
+  &lt;container label="General"&gt;
+    &lt;input xpath="@accountNumber"/&gt;
+    &lt;input xpath="@type"/&gt;
+    &lt;input xpath="@balance"/&gt;
+    &lt;input xpath="recipient"/&gt;
+  &lt;/container&gt;
+  &lt;container label="Products"&gt;
+    &lt;input xpath="products" type="list"&gt;
+      &lt;input xpath="product"/&gt;
+      &lt;input xpath="@since"/&gt;
+    &lt;/input&gt;
+  &lt;/container&gt;
+&lt;/form&gt;</pre>
+</div></details>
+
+<details class="mod" id="m43"><summary><span class="no">M43</span><span class="t">Options, encrypted fields and FFDA schema rules</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Options</b> (<code>xtk:option</code>): named configuration values (text, number, date, XML). Read with <code>getOption("name")</code>, write with <code>setOption</code>. Good for thresholds, API keys (where allowed), last-run dates.</li>
+<li><b>Encrypted strings</b>: <code>type="string" encrypted="true"</code> stores the value encrypted (e.g. external account passwords).</li>
+<li><b>FFDA custom tables</b> (v8 Enterprise): declared on the cloud database (<code>dataSource="nms:extAccount:ffda"</code>), with <code>autouuid</code> keys, optionally <code>autoStg="true"</code> for the staging mechanism so APIs write to a local staging table synchronised hourly.</li>
+<li>Do not enable staging on replicated, local or already-staged schemas. Built-in staged schemas include recipients and subscriptions.</li></ul>
+<pre class="raw">&lt;srcSchema name="event" namespace="nvb" label="Customer events" dataSource="nms:extAccount:ffda"&gt;
+  &lt;element name="event" autopk="true" autouuid="true" autoStg="true" label="Event"&gt;
+    &lt;key name="extId"&gt;&lt;keyfield xpath="@extId"/&gt;&lt;/key&gt;
+    &lt;attribute name="extId"    type="string" length="36"/&gt;
+    &lt;attribute name="type"     type="string" length="20"/&gt;
+    &lt;attribute name="occurred" type="datetime"/&gt;
+    &lt;element name="recipient" type="link" target="nms:recipient" revLink="events" integrity="own"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+<div class="note">Confirm where <code>dataSource</code> belongs (root vs element) and the exact external account name on your v8 build before saving.</div>
+</div></details>
+
+<article class="asg" id="a6"><header><div class="k2">Assignment 6 · Level 4 · 100 pts</div><h3>Schema build (basic): extend the recipient</h3></header><div class="in">
+<p><b>Scenario.</b> NovaBank needs customer attributes on the profile for segmentation.</p>
+<h4>Tasks</h4><ol>
+<li>Create <code>nvb:recipient</code> extending <code>nms:recipient</code> with: <code>customerId</code> (string 20, unique index), <code>loyaltyTier</code> (closed enum SLV/GLD/PLT), <code>kycStatus</code> (byte enum: 0 Pending, 1 Verified, 2 Expired), <code>preferredLanguage</code> (user enum), <code>lastLoginDate</code> (datetime), <code>isStaff</code> (boolean, default false), and a computed <code>isDigitalActive</code> = last login within 30 days.</li>
+<li>Update the database structure; save the generated SQL script as evidence.</li>
+<li>Add a <b>NovaBank</b> tab to the recipient form showing the new fields (extend the form).</li>
+<li>Import 200 recipients with these fields, reconciling on <code>customerId</code>.</li>
+<li>Write a query using <code>isDigitalActive</code>.</li></ol>
+<h4>Done when</h4><ul class="done"><li>The schema saves without warnings and the SQL script only adds columns/indexes.</li><li>The form shows enumerations as dropdowns.</li><li>Re-importing the same file updates rather than duplicates.</li><li>No government ID or card number field exists.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Schema correctness (types, lengths, enums)</td><td class="num">30</td></tr><tr><td>Index and key design</td><td class="num">20</td></tr><tr><td>Computed field</td><td class="num">10</td></tr><tr><td>Form extension</td><td class="num">20</td></tr><tr><td>Import and reconciliation</td><td class="num">20</td></tr></table></div>
+<details class="key"><summary>Reference: computed field</summary>
+<pre class="raw">&lt;attribute name="isDigitalActive" type="boolean" label="Digitally active (30d)"
+  expr="Iif(@lastLoginDate &gt;= DaysAgo(30), 1, 0)"/&gt;</pre></details>
+</div></article>
+
+<article class="asg" id="a7"><header><div class="k2">Assignment 7 · Level 4 · 100 pts</div><h3>Schema build (advanced): the NovaBank data model</h3></header><div class="in">
+<p><b>Scenario.</b> Campaigns must target <b>accounts</b>, not just people, and use transaction and product data.</p>
+<pre class="raw">nms:recipient 1 ──── N nvb:account 1 ──── N nvb:transaction
+                         │
+                         N
+                    nvb:accountProduct (relation)
+                         N
+                         │
+                    nvb:product 1</pre>
+<h4>Tasks</h4><ol>
+<li><code>nvb:product</code> (from M34).</li>
+<li><code>nvb:account</code>: <code>accountNumber</code> (key + unique index), <code>type</code> (enum SAV/CUR/FD), <code>balance</code> (double), <code>openedOn</code> (date), <code>status</code> (enum), <code>email</code> (for targeting), <code>blackList</code> (boolean), link to recipient (1-N, deleting a recipient deletes its accounts), computed <code>balanceBand</code>.</li>
+<li><code>nvb:transaction</code>: <code>txnId</code> key, amount, currency, channel enum, <code>txnDate</code> (datetime, indexed), link to account with <code>integrity="own"</code>; dedicated <code>pkSequence</code> (high volume).</li>
+<li><code>nvb:accountProduct</code>: N-N relation between account and product with <code>since</code> date and both links owning the relation row.</li>
+<li>Update DB structure, build forms for account and product, and add a navigation hierarchy folder "NovaBank accounts".</li>
+<li>Create target mapping <code>nvbAccountMapping</code> on <code>nvb:account</code> with generated log schemas; exclusion on <code>@blackList</code>.</li>
+<li>Send an email targeting accounts with <code>balanceBand = 'HIGH'</code> and at least one card product, personalised with account number (masked to last 4) and owner first name.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Deleting a test recipient removes its accounts and their transactions.</li><li>The delivery's broadLog rows land in the generated account broadLog table.</li><li>Masking is done in content, the full number never appears in the email.</li><li>A query "accounts with more than 5 transactions in 30 days" runs using an aggregate over the collection.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Model design (grain, keys, indexes)</td><td class="num">25</td></tr><tr><td>Links and integrity, proven by test</td><td class="num">20</td></tr><tr><td>N-N relation</td><td class="num">10</td></tr><tr><td>Forms and navigation</td><td class="num">10</td></tr><tr><td>Target mapping + delivery</td><td class="num">25</td></tr><tr><td>Privacy (masking, no sensitive storage)</td><td class="num">10</td></tr></table></div>
+<details class="key"><summary>Reference solution: nvb:account, nvb:transaction, nvb:accountProduct</summary>
+<pre class="raw">&lt;srcSchema name="account" namespace="nvb" label="Accounts" labelSingular="Account"&gt;
+  &lt;enumeration name="accType" basetype="string"&gt;
+    &lt;value name="savings" value="SAV" label="Savings"/&gt;
+    &lt;value name="current" value="CUR" label="Current"/&gt;
+    &lt;value name="fd"      value="FD"  label="Fixed deposit"/&gt;
+  &lt;/enumeration&gt;
+  &lt;enumeration name="accStatus" basetype="byte" default="active"&gt;
+    &lt;value name="active"  value="1" label="Active"/&gt;
+    &lt;value name="dormant" value="2" label="Dormant"/&gt;
+    &lt;value name="closed"  value="3" label="Closed"/&gt;
+  &lt;/enumeration&gt;
+  &lt;element name="account" autopk="true" label="Account"&gt;
+    &lt;compute-string expr="@accountNumber"/&gt;
+    &lt;key name="accountNumber"&gt;&lt;keyfield xpath="@accountNumber"/&gt;&lt;/key&gt;
+    &lt;dbindex name="accountNumber" unique="true"&gt;&lt;keyfield xpath="@accountNumber"/&gt;&lt;/dbindex&gt;
+    &lt;dbindex name="email"&gt;&lt;keyfield xpath="@email"/&gt;&lt;/dbindex&gt;
+
+    &lt;attribute name="accountNumber" type="string" length="20" label="Account number"/&gt;
+    &lt;attribute name="type"     type="string" length="3" enum="accType" label="Type"/&gt;
+    &lt;attribute name="status"   type="byte" enum="accStatus" default="1" label="Status"/&gt;
+    &lt;attribute name="balance"  type="double" label="Balance (INR)"/&gt;
+    &lt;attribute name="openedOn" type="date" label="Opened on"/&gt;
+    &lt;attribute name="email"    type="string" length="80" dataPolicy="email" label="Email"/&gt;
+    &lt;attribute name="blackList" type="boolean" default="false" label="No longer contact"/&gt;
+    &lt;attribute name="balanceBand" type="string" label="Balance band"
+      expr="Iif(@balance &gt;= 500000, 'HIGH', Iif(@balance &gt;= 50000, 'MID', 'LOW'))"/&gt;
+
+    &lt;element name="recipient" type="link" target="nms:recipient"
+             label="Owner" revLink="accounts" integrity="own"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;
+
+&lt;srcSchema name="transaction" namespace="nvb" label="Transactions" labelSingular="Transaction"&gt;
+  &lt;enumeration name="channel" basetype="string"&gt;
+    &lt;value name="upi"    value="UPI" label="UPI"/&gt;
+    &lt;value name="card"   value="CRD" label="Card"/&gt;
+    &lt;value name="netbank" value="NB" label="Net banking"/&gt;
+    &lt;value name="branch" value="BR"  label="Branch"/&gt;
+  &lt;/enumeration&gt;
+  &lt;element name="transaction" autopk="true" pkSequence="NvbTransactionSeq" label="Transaction"&gt;
+    &lt;key name="txnId"&gt;&lt;keyfield xpath="@txnId"/&gt;&lt;/key&gt;
+    &lt;dbindex name="txnId" unique="true"&gt;&lt;keyfield xpath="@txnId"/&gt;&lt;/dbindex&gt;
+    &lt;dbindex name="txnDate"&gt;&lt;keyfield xpath="@txnDate"/&gt;&lt;/dbindex&gt;
+    &lt;attribute name="txnId"    type="string" length="32" label="Transaction ID"/&gt;
+    &lt;attribute name="amount"   type="double" label="Amount"/&gt;
+    &lt;attribute name="currency" type="string" length="3" default="'INR'" label="Currency"/&gt;
+    &lt;attribute name="channel"  type="string" length="3" enum="channel" label="Channel"/&gt;
+    &lt;attribute name="txnDate"  type="datetime" label="Date"/&gt;
+    &lt;element name="account" type="link" target="nvb:account"
+             label="Account" revLink="transactions" integrity="own"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;
+
+&lt;srcSchema name="accountProduct" namespace="nvb" label="Account products"&gt;
+  &lt;element name="accountProduct" autopk="true" label="Account product"&gt;
+    &lt;key name="pair"&gt;&lt;keyfield xpath="account"/&gt;&lt;keyfield xpath="product"/&gt;&lt;/key&gt;
+    &lt;attribute name="since" type="date" label="Holding since"/&gt;
+    &lt;element name="account" type="link" target="nvb:account" revLink="products" integrity="own"/&gt;
+    &lt;element name="product" type="link" target="nvb:product" revLink="holders" integrity="own"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+<p><b>Masking in content:</b> <code>&lt;%= "XXXX" + String(targetData.accountNumber || "").slice(-4) %&gt;</code> (or via <code>account.accountNumber</code> when the delivery targets <code>nvb:account</code>).</p>
+<p class="note">A dedicated <code>pkSequence</code> must exist: create the sequence (e.g. via an SQL script in a package on dev), or rely on the default sequence and document why. Also confirm the keyfield syntax for a key built on links (<code>xpath="account"</code> vs the foreign-key column) against an OOTB relation schema such as <code>nms:rcpGrpRel</code>.</p>
+</details>
+</div></article>
+
+<article class="asg" id="a8"><header><div class="k2">Assignment 8 · Level 4 · 50 pts</div><h3>Schema review: find ten defects</h3></header><div class="in">
+<p>Review this schema as if it were a pull request. List every defect, its impact, and your fix.</p>
+<pre class="raw">&lt;srcSchema name="Loans" namespace="nms" label="loans"&gt;
+  &lt;element name="loan"&gt;
+    &lt;attribute name="Loan ID" type="string"/&gt;
+    &lt;attribute name="amount" type="string" length="10"/&gt;
+    &lt;attribute name="panNumber" type="string" length="10" label="PAN"/&gt;
+    &lt;attribute name="status" type="string" length="1"/&gt;
+    &lt;attribute name="disbursedOn" type="string" length="10"/&gt;
+    &lt;attribute name="notes" type="memo"/&gt;
+    &lt;dbindex name="notes"&gt;&lt;keyfield xpath="@notes"/&gt;&lt;/dbindex&gt;
+    &lt;element name="customer" type="link" target="nms:recipient" noDbIndex="true"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+<p>Each correct defect with a correct fix: 5 points.</p>
+<details class="key"><summary>Answer key</summary><ol>
+<li><code>nms</code> namespace: Adobe-owned, use <code>nvb</code>.</li>
+<li>Schema name "Loans" ≠ main element "loan"; names must match and be lowerCamelCase.</li>
+<li>No <code>autopk</code> and no <code>&lt;key&gt;</code>: no primary key, no reconciliation key.</li>
+<li>Attribute name "Loan ID" has a space: invalid; use <code>loanId</code> with a unique index.</li>
+<li><code>amount</code> stored as string: use <code>double</code>/<code>money</code>.</li>
+<li><code>panNumber</code>: government ID stored in Campaign; remove (store a KYC status instead).</li>
+<li><code>status</code> free text: use an enumeration.</li>
+<li><code>disbursedOn</code> as string: use <code>date</code>.</li>
+<li>Index on a <code>memo</code>: memos aren't indexable; remove.</li>
+<li>Link with <code>noDbIndex="true"</code>, no <code>revLink</code>, no <code>integrity</code>, no label: joins will be slow and deletion behaviour undefined.</li>
+<li>Bonus: no labels on attributes, lowercase schema label, no <code>labelSingular</code>.</li></ol></details>
+</div></article>
+
+<section class="quiz" id="q4"><h3 style="margin-top:28px">Level 4 check</h3><ol>
+<li>Which file do you edit: <code>xtk:srcSchema</code> or <code>xtk:schema</code>? <details><summary>Answer</summary>The source schema.</details></li>
+<li>What does <code>expr</code> on an attribute do? <details><summary>Answer</summary>Makes it a calculated field evaluated at query time; no column is created.</details></li>
+<li>How do you model N-N? <details><summary>Answer</summary>A relation schema with two links (and a key on both).</details></li>
+<li>Does Snowflake enforce primary key unicity in FFDA? <details><summary>Answer</summary>No. Campaign's Unicity service and alerting workflow detect duplicates.</details></li>
+<li>What must follow a schema change that adds columns? <details><summary>Answer</summary>Update database structure (and reconnect the console).</details></li>
+<li>What does <code>autoStg="true"</code> do? <details><summary>Answer</summary>Enables the staging mechanism: API writes go to a local staging table synchronised to the cloud DB.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 5 ============ -->
+<section class="level" id="L5" data-tab="L5" data-label="Dev + technical WF" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 5 · ~2 weeks · Developer: code and technical workflows</div>
+  <h2>Development and technical workflow design</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 44–50</span><span class="chip">Assignments 9–11</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Read and write data from JavaScript with queryDef, Write and WriteCollection.</li><li>Build web apps, JSSPs and content management templates.</li><li>Explain what every out-of-the-box technical workflow does.</li><li>Design your own technical workflows: idempotent, locked, audited, alerting and fast.</li></ul></div>
+
+<details class="mod" id="m44"><summary><span class="no">M44</span><span class="t">JavaScript in Campaign: the JSAPI essentials</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<p>Campaign runs server-side JavaScript (SpiderMonkey with E4X in the classic API; <code>NLWS</code> JSON-style calls available too). The same API powers workflow scripts, typology rules, web apps and JSSPs.</p>
+<pre class="raw">// SELECT with E4X
+var q = xtk.queryDef.create(
+  &lt;queryDef schema="nms:recipient" operation="select" lineCount="500"&gt;
+    &lt;select&gt;&lt;node expr="@id"/&gt;&lt;node expr="@email"/&gt;&lt;node expr="[nvb:recipient/@loyaltyTier]"/&gt;&lt;/select&gt;
+    &lt;where&gt;&lt;condition expr={"@created &gt;= " + "DaysAgo(7)"}/&gt;&lt;/where&gt;
+    &lt;orderBy&gt;&lt;node expr="@created" sortDesc="true"/&gt;&lt;/orderBy&gt;
+  &lt;/queryDef&gt;);
+var res = q.ExecuteQuery();
+for each (var r in res.recipient) logInfo(r.@id + " " + r.@email);
+
+// Same with NLWS + JSON
+var q2 = NLWS.xtkQueryDef.create({queryDef: {schema: "nms:recipient", operation: "count",
+  where: {condition: [{expr: "@email LIKE '%@novabank.test'"}]}}});
+logInfo("count=" + q2.ExecuteQuery().$count);
+
+// Insert-or-update one record by key
+xtk.session.Write(&lt;recipient xtkschema="nms:recipient" _key="@email" _operation="insertOrUpdate"
+                             email="asha@novabank.test" firstName="Asha"/&gt;);
+
+// Batch writes (prefer this in loops)
+var coll = &lt;recipient-collection xtkschema="nms:recipient"/&gt;;
+for (var i = 0; i &lt; 3; i++)
+  coll.appendChild(&lt;recipient _key="@email" _operation="insertOrUpdate" email={"t" + i + "@novabank.test"}/&gt;);
+xtk.session.WriteCollection(coll);</pre>
+<ul><li>Operations: <code>select</code>, <code>get</code>, <code>getIfExists</code>, <code>count</code>; use <code>lineCount</code> + <code>startLine</code> to page.</li>
+<li><code>_operation</code>: <code>insert</code>, <code>update</code>, <code>insertOrUpdate</code>, <code>delete</code>, <code>none</code> (for reconciliation only).</li>
+<li>Load/save entities: <code>NLWS.nmsDelivery.load(id)</code>, <code>.save()</code>; static SOAP methods on <code>NLWS.&lt;ns&gt;&lt;Schema&gt;</code>.</li>
+<li>Logging: <code>logInfo</code>, <code>logWarning</code>, <code>logError</code> (which throws).</li></ul>
+<div class="note">The project's <i>Campaign API / JSAPI reference</i> doc holds the full method list; use it alongside this module.</div>
+</div></details>
+
+<details class="mod" id="m45"><summary><span class="no">M45</span><span class="t">SQL functions, libraries and reusable code</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><code>sqlGetInt</code>, <code>sqlGetString</code>, <code>sqlGetDate</code>, <code>sqlSelect</code>, <code>sqlExec</code>: direct SQL on the default datasource. Needs the <b>SQL</b> named right; escape values (<code>NL.SQL.escape</code> or bind placeholders).</li>
+<li>JavaScript codes live in <b>Administration › Configuration › JavaScript codes</b> (<code>xtk:javascript</code>), e.g. <code>nvb:utils.js</code>. Load them with <code>loadLibrary("nvb:utils.js")</code>.</li>
+<li>Keep one library per concern (dates, logging, file handling, API client) and version it in packages.</li></ul>
+<pre class="raw">// nvb:utils.js
+var NVB = NVB || {};
+NVB.today = function () { return formatDate(getCurrentDate(), "%4Y%2M%2D"); };
+NVB.audit = function (workflow, step, status, count, msg) {
+  xtk.session.Write(&lt;runLog xtkschema="nvb:runLog" _operation="insert"
+     workflow={workflow} step={step} status={status} count={count}
+     message={String(msg || "").substring(0, 255)} logDate={getCurrentDate()}/&gt;);
+};
+
+// in any workflow JS activity
+loadLibrary("nvb:utils.js");
+NVB.audit(instance.internalName, activity.name, "OK", vars.recCount, "");</pre>
+<div class="note">In FFDA, avoid per-row <code>Write</code> calls in loops on cloud tables: batch with <code>WriteCollection</code> or use workflow activities, and use <code>Ingest</code>/<code>IngestExt</code> for staged schemas.</div>
+</div></details>
+
+<details class="mod" id="m46"><summary><span class="no">M46</span><span class="t">Personalisation in depth</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><code>&lt;%= expr %&gt;</code> outputs (escaped in HTML context); <code>&lt;% code %&gt;</code> runs logic; <code>&lt;%@ include view="block" %&gt;</code> inserts a personalisation block; <code>&lt;%@ value object="…" xpath="…" %&gt;</code> inserts values.</li>
+<li>Available objects: <code>recipient</code> (or the mapping's target), <code>delivery</code>, <code>message</code>, <code>provider</code>, <code>targetData</code> (workflow columns).</li>
+<li><b>Personalisation data</b> used in content must be loaded in the delivery (add fields in the delivery's "Personalisation data" if they aren't referenced directly).</li>
+<li><b>Language variants</b>: conditional content by language field, or separate deliveries per language via Split.</li>
+<li>Performance: heavy JS in content runs per message. Precompute in the workflow and read <code>targetData</code>.</li></ul>
+<pre class="raw">&lt;%
+var lang = recipient.nvb_preferredLanguage || "EN";   // extension field name as exposed in content: check yours
+var greet = { EN: "Hello", HI: "नमस्ते" }[lang] || "Hello";
+%&gt;
+&lt;%= greet %&gt; &lt;%= recipient.firstName || "" %&gt;,
+Your offer code: &lt;%= targetData.offerCode %&gt;</pre>
+</div></details>
+
+<details class="mod" id="m47"><summary><span class="no">M47</span><span class="t">Web applications</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Web apps (<code>nms:webApp</code>): landing pages, preference centers, forms. Surveys are a separate v7 module (not on FFDA).</li>
+<li>Activities: <b>Page</b>, <b>Script</b>, <b>Test</b>, <b>Storage</b> (write to DB), <b>Choice</b>, <b>End</b>, <b>Jump</b>.</li>
+<li><b>Preloading</b>: identify the visitor with an encrypted ID in the URL (e.g. <code>id=&lt;%= escapeUrl(recipient.cryptedId) %&gt;</code>).</li>
+<li><b>Properties</b>: parameters (from URL), access control (anonymous or operator), languages, rendering (CSS, template).</li>
+<li>Customise the OOTB <b>unsubscription</b> web app by duplicating it; never edit Adobe's original.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Build a preference center: preloaded by encrypted ID; shows first name, services checkboxes (<code>nvbInsights</code>, <code>nvbOffers</code>), preferred channel; Storage writes back; a confirmation page. Link it from the <code>NVB_Email_Base</code> footer.</div>
+</div></details>
+
+<details class="mod" id="m48"><summary><span class="no">M48</span><span class="t">JSSP: JavaScript server pages (condensed)</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Pages in <b>Administration › Configuration › Dynamic JavaScript pages</b>, served at <code>https://&lt;server&gt;/&lt;namespace&gt;/&lt;name&gt;.jssp</code>.</li>
+<li>Syntax: <code>&lt;% %&gt;</code> script, <code>&lt;%= %&gt;</code> escaped expression, <code>&lt;%@ page import="…" %&gt;</code> directives.</li>
+<li><code>request</code> (params, headers, body, cookies, IP), <code>response</code> (content type, headers, redirect, sendError).</li>
+<li>Security: escape by destination (<code>NL.XML.escape</code>, <code>NL.XTK.toXTKString</code>, <code>NL.JS.escape</code>, <code>escapeUrl</code>), allow-list methods, validate input, least-privileged <code>logon</code>, no secrets in URLs.</li></ul>
+<div class="note">Complete the project's <b>JSSP course and "Pulse" assignment</b> for the full treatment; Assignment 12 builds on it. On managed v8, check with Adobe what custom server pages your environment allows.</div>
+</div></details>
+
+<details class="mod" id="m49"><summary><span class="no">M49</span><span class="t">Content management</span><span class="tags"><span class="chip v7">v7 · v8 (check package)</span></span></summary><div class="body">
+<ul><li><b>Content schema</b> describes the structured content (e.g. a newsletter with articles).</li>
+<li><b>Input form</b> for editors; <b>publication template</b> links schema, form and one or more <b>XSLT stylesheets</b> (HTML, text).</li>
+<li>Content can be loaded from RSS/XML feeds and aggregated into deliveries.</li>
+<li>Use when many similar newsletters share structure; otherwise use content blocks / DCE templates.</li></ul>
+<pre class="raw">&lt;!-- XSLT fragment: loop over articles --&gt;
+&lt;xsl:for-each select="article"&gt;
+  &lt;h2&gt;&lt;xsl:value-of select="@title"/&gt;&lt;/h2&gt;
+  &lt;p&gt;&lt;xsl:value-of select="summary"/&gt;&lt;/p&gt;
+&lt;/xsl:for-each&gt;</pre>
+</div></details>
+
+<details class="mod" id="m50"><summary><span class="no">M50</span><span class="t">Technical workflow design</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<h4>Out-of-the-box technical workflows</h4>
+<div class="tw"><table><tr><th>Workflow</th><th>Internal name</th><th>What it does</th></tr>
+<tr><td>Database cleanup</td><td><code>cleanup</code></td><td>Purges obsolete data (logs, work tables, old deliveries) per the retention settings</td></tr>
+<tr><td>Tracking</td><td><code>tracking</code></td><td>Recovers and consolidates tracking data, hourly</td></tr>
+<tr><td>Refresh for deliverability</td><td><code>deliverabilityUpdate</code></td><td>Updates bounce qualification rules, domains and MX lists</td></tr>
+<tr><td>Delivery indicators</td><td><code>deliveryIndicators</code></td><td>Updates delivery tracking indicators, hourly (mid-sourcing)</td></tr>
+<tr><td>Mid-sourcing (delivery counters / logs)</td><td><code>defaultMidSourcingDlv</code> / <code>defaultMidSourcingLog</code></td><td>Collects counts (every 10 min) and logs (hourly) from mid-sourcing</td></tr>
+<tr><td>Jobs on deliveries in campaigns</td><td><code>deliveryMgt</code></td><td>Starts approved deliveries, post-processing</td></tr>
+<tr><td>Campaign jobs</td><td><code>operationMgt</code></td><td>Manages campaign jobs and their workflows</td></tr>
+<tr><td>Forecasting</td><td><code>forecasting</code></td><td>Analyses deliveries in the provisional calendar, daily 1am</td></tr>
+<tr><td>Reporting aggregates</td><td><code>reportingAggregates</code></td><td>Updates report aggregates, daily 2am</td></tr>
+<tr><td>Alias cleansing</td><td><code>aliasCleansing</code></td><td>Standardises enumeration values, daily 3am</td></tr>
+<tr><td>Billing</td><td><code>billing</code></td><td>Sends the system activity report on the 25th</td></tr>
+<tr><td>Paused workflows cleanup</td><td><code>cleanupPausedWorkflows</code></td><td>Warns about workflows paused too long</td></tr>
+<tr><td>Offer notification</td><td><code>offerMgt</code></td><td>Deploys approved offers to the online environment</td></tr>
+<tr><td>Proposition synchronization</td><td><code>propositionSynch</code></td><td>Syncs offer propositions between marketing and execution instances</td></tr>
+<tr><td>Message Center</td><td><code>mcSynch_&lt;account&gt;</code></td><td>Recovers events, syncs delivery and tracking logs from execution instances</td></tr>
+<tr><td>Processing batch / real-time events</td><td><code>batchEventsProcessing</code> / <code>rtEventsProcessing</code></td><td>Queue transactional events before matching templates</td></tr>
+<tr><td>Update event status</td><td><code>updateEventsStatus</code></td><td>Sets event statuses in Message Center</td></tr>
+<tr><td>NMAC opt-out management</td><td><code>mobileAppOptOutMgt</code></td><td>Updates push unsubscriptions, every 6 hours</td></tr>
+<tr><td>Import / export shared audiences</td><td><code>importSharedAudience</code> / <code>exportSharedAudience</code></td><td>Experience Cloud audience sharing</td></tr>
+<tr><td>Collect / delete privacy requests</td><td><code>collectPrivacyRequests</code> / <code>deletePrivacyRequestsData</code> / <code>cleanupPrivacyRequests</code></td><td>GDPR/CCPA access and delete requests</td></tr>
+<tr><td>Collect data for HeatMap</td><td><code>collectDataHeatMapService</code></td><td>Feeds the workflow heatmap</td></tr>
+<tr><td>Cost calculation / Stock</td><td><code>budgetMgt</code> / <code>stockMgt</code></td><td>Budgets and stock alerts</td></tr>
+<tr><td>Distributed marketing</td><td><code>centralLocalMgt</code></td><td>Central/local processes</td></tr>
+<tr><td>Unicity alerting (v8 FFDA)</td><td>see your build</td><td>Detects duplicate keys and writes to the Audit Unicity table</td></tr></table></div>
+<div class="warn">Never modify or duplicate-and-replace an OOTB technical workflow without Adobe guidance. If one stops, restart it and find out why.</div>
+
+<h4>Design patterns for your own technical workflows</h4>
+<ol>
+<li><b>Staged ingestion</b>: <i>land</i> (file to work table) → <i>validate</i> (split good/bad) → <i>promote</i> (Update data into a <b>fixed staging table</b>, then into the business table) → <i>archive</i> (move file) → <i>audit</i> (run log row). Never write straight from a raw file into a business table.</li>
+<li><b>Fixed staging tables</b>: one stable schema per feed. Date-suffixed or per-run tables break every downstream consumer (CDP, Target, reports).</li>
+<li><b>Idempotency</b>: reruns produce the same result (<i>insert or update</i> on business keys; file names recorded in the run log and skipped if already processed).</li>
+<li><b>Locking</b>: a lock option prevents overlapping runs.</li>
+<li><b>Error routes</b>: every data activity has "Process errors" → Alert (with <code>instance.vars.errorMsg</code>) → End. Workflow property <i>Suspend on error</i>.</li>
+<li><b>Parameterisation</b>: file patterns, table names, thresholds in options or <code>instance.vars</code> set in the first JS activity, so one template serves many feeds ("build once, deploy many").</li>
+<li><b>Guardrails</b>: stop if input count is zero or deviates more than X% from the 7-day average.</li>
+<li><b>Performance</b>: set-based activities over per-row JS; batch sizes on Update data; indexes on reconciliation keys; no interim results; schedule away from heatmap peaks and away from the cleanup window.</li>
+<li><b>Runbook</b>: purpose, schedule, inputs/outputs, owners, alert recipients, rerun steps, known failure modes.</li></ol>
+<pre class="raw">// Lock pattern (first JS activity)
+var LOCK = "NVB_LOCK_" + instance.internalName;
+if (getOption(LOCK) == "1") { logWarning("Previous run still active: exit"); instance.vars.skip = 1; }
+else { setOption(LOCK, "1"); instance.vars.skip = 0; }
+
+// Release (last JS activity, and on the error route)
+setOption("NVB_LOCK_" + instance.internalName, "0");</pre>
+<pre class="raw">&lt;!-- Run log schema used by all technical workflows --&gt;
+&lt;srcSchema name="runLog" namespace="nvb" label="Workflow run log"&gt;
+  &lt;element name="runLog" autopk="true" label="Run"&gt;
+    &lt;dbindex name="wfDate"&gt;&lt;keyfield xpath="@workflow"/&gt;&lt;keyfield xpath="@logDate"/&gt;&lt;/dbindex&gt;
+    &lt;attribute name="workflow" type="string" length="64"/&gt;
+    &lt;attribute name="step"     type="string" length="64"/&gt;
+    &lt;attribute name="status"   type="string" length="8"/&gt;
+    &lt;attribute name="count"    type="long"/&gt;
+    &lt;attribute name="fileName" type="string" length="255"/&gt;
+    &lt;attribute name="message"  type="string" length="255"/&gt;
+    &lt;attribute name="logDate"  type="datetime"/&gt;
+  &lt;/element&gt;
+&lt;/srcSchema&gt;</pre>
+<div class="note">Option locks survive crashes. Add a stale-lock rule (e.g. store the timestamp, and ignore a lock older than 6 hours) and document the manual unlock step in the runbook.</div>
+<h4>Design review checklist</h4>
+<ul class="done"><li>Naming and description follow the convention</li><li>Owner and supervisor group set</li><li>Fixed staging table, no dynamic table names</li><li>Rerun is safe (idempotent)</li><li>Lock + stale-lock handling</li><li>Zero-count and volume-deviation guards</li><li>Every data activity has an error route</li><li>Run log rows written for start, end and failure</li><li>Keep interim results off, SQL logging off</li><li>Schedule checked against heatmap and cleanup window</li><li>Runbook written</li></ul>
+</div></details>
+
+<article class="asg" id="a9"><header><div class="k2">Assignment 9 · Level 5 · 100 pts</div><h3>Technical workflow: daily transaction ingestion</h3></header><div class="in">
+<p><b>Scenario.</b> Core banking drops <code>nvb_txn_YYYYMMDD.csv</code> on SFTP every day by 02:00 IST. Load it into <code>nvb:transaction</code> by 04:00.</p>
+<pre class="raw">Scheduler 02:15
+  └─ JS: init vars + lock ─ Test(skip?) ─┐
+File transfer (SFTP download, pattern nvb_txn_*.csv)
+  └─ File collector ─ Data loading (typed format, rejects kept)
+      └─ Split: valid (txnId not empty, amount numeric, date parseable) / invalid
+          ├─ valid ─ Dedup(txnId) ─ Reconciliation(account by accountNumber)
+          │            ├─ reconciled ─ Update data → nvb:txnStaging (fixed) ─ Update data → nvb:transaction (insert or update on txnId)
+          │            └─ unreconciled ─ Data extraction → rejects/unmatched_$(date).csv
+          └─ invalid ─ Data extraction → rejects/invalid_$(date).csv
+  └─ AND-join ─ JS: audit + unlock ─ Alert (counts) ─ End
+Error transitions ─ JS: audit FAIL + unlock ─ Alert (error) ─ End</pre>
+<h4>Tasks</h4><ol>
+<li>Create <code>nvb:txnStaging</code> (fixed schema, same columns as the file plus <code>fileName</code>, <code>loadDate</code>) and <code>nvb:runLog</code>.</li>
+<li>Build the workflow above with the lock pattern and the run log.</li>
+<li>Skip files already listed in the run log as <code>OK</code>.</li>
+<li>Stop with an alert if the valid count is 0 or &lt; 50% of the 7-day average from the run log.</li>
+<li>Archive processed files to <code>/archive</code> on SFTP.</li>
+<li>Write the runbook.</li></ol>
+<h4>Test plan (must pass)</h4>
+<div class="tw"><table><tr><th>Case</th><th>Expected</th></tr>
+<tr><td>Clean file, 1,000 rows</td><td>1,000 inserted, run log OK</td></tr>
+<tr><td>Same file again</td><td>Skipped; 0 changes</td></tr>
+<tr><td>File with 20 bad rows and 10 unknown accounts</td><td>970 loaded; two reject files with 20 and 10 rows</td></tr>
+<tr><td>Corrected file with updated amounts</td><td>Updates, not duplicates</td></tr>
+<tr><td>Empty file</td><td>Guard alert, no writes</td></tr>
+<tr><td>Run started twice</td><td>Second run exits on lock</td></tr>
+<tr><td>SFTP down</td><td>Error alert, lock released</td></tr></table></div>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Architecture (staged, fixed staging table)</td><td class="num">20</td></tr><tr><td>Validation and rejects</td><td class="num">15</td></tr><tr><td>Idempotency + lock</td><td class="num">20</td></tr><tr><td>Guards + error routes</td><td class="num">15</td></tr><tr><td>Audit and alerts</td><td class="num">15</td></tr><tr><td>Test evidence + runbook</td><td class="num">15</td></tr></table></div>
+<details class="key"><summary>Reference: init and guard scripts</summary>
+<pre class="raw">// JS: init vars + lock
+loadLibrary("nvb:utils.js");
+instance.vars.runDate = NVB.today();
+instance.vars.fileName = "nvb_txn_" + instance.vars.runDate + ".csv";
+var already = sqlGetInt("SELECT COUNT(*) FROM NvbRunLog WHERE sWorkflow = $(sz) AND sFileName = $(sz) AND sStatus = 'OK'",
+                        instance.internalName, instance.vars.fileName);
+var LOCK = "NVB_LOCK_" + instance.internalName;
+instance.vars.skip = (already &gt; 0 || getOption(LOCK) == "1") ? 1 : 0;
+if (!instance.vars.skip) setOption(LOCK, "1");
+NVB.audit(instance.internalName, "start", instance.vars.skip ? "SKIP" : "START", 0, instance.vars.fileName);
+
+// JS: volume guard (after the valid branch)
+var avg = sqlGetInt("SELECT COALESCE(AVG(iCount),0) FROM NvbRunLog WHERE sWorkflow = $(sz) AND sStep = 'promote' " +
+                    "AND sStatus = 'OK' AND tsLogDate &gt;= $(dt)", instance.internalName, addDays(getCurrentDate(), -7));
+if (vars.recCount == 0 || (avg &gt; 0 &amp;&amp; vars.recCount &lt; avg * 0.5)) {
+  instance.vars.errorMsg = "Volume guard: " + vars.recCount + " vs avg " + avg;
+  throw instance.vars.errorMsg;
+}</pre>
+<p class="note">SQL column names follow Campaign's generated prefixes (<code>s</code> string, <code>i</code> integer, <code>ts</code> datetime); check the generated SQL for your schema, confirm <code>addDays</code> is available in your build (or compute the date another way), and use a queryDef instead of SQL on FFDA cloud tables.</p>
+</details>
+</div></article>
+
+<article class="asg" id="a10"><header><div class="k2">Assignment 10 · Level 5 · 60 pts</div><h3>Technical workflow: nightly housekeeping</h3></header><div class="in">
+<h4>Tasks</h4><ol>
+<li>Purge <code>nvb:txnStaging</code> rows older than 14 days and <code>nvb:runLog</code> rows older than 180 days, in batches (Update data, delete mode, batch size set).</li>
+<li>List workflows in your folder that are paused &gt; 3 days or in error, and workflows with "Keep interim results" on (queryDef on <code>xtk:workflow</code>).</li>
+<li>Count addresses quarantined in the last 24h by error reason.</li>
+<li>Email a formatted HTML health report to <code>NVB Ops</code>.</li>
+<li>Schedule outside the <code>cleanup</code> window; document why.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Purges delete only what they should (row counts before/after).</li><li>The report lists at least one deliberately paused test workflow.</li><li>The workflow itself writes to the run log.</li></ul>
+<details class="key"><summary>Reference: finding risky workflows</summary>
+<pre class="raw">var q = xtk.queryDef.create(
+  &lt;queryDef schema="xtk:workflow" operation="select"&gt;
+    &lt;select&gt;&lt;node expr="@internalName"/&gt;&lt;node expr="@state"/&gt;&lt;node expr="@failed"/&gt;&lt;node expr="@keepResult"/&gt;&lt;node expr="@lastModified"/&gt;&lt;/select&gt;
+    &lt;where&gt;
+      &lt;condition expr="[folder/@name] = 'nvbWorkflows'"/&gt;
+      &lt;condition boolOperator="AND" expr="@failed = 1 OR @keepResult = 1 OR (@state = 13 AND DaysAgo(3) &gt; @lastModified)"/&gt;
+    &lt;/where&gt;
+  &lt;/queryDef&gt;);
+var rows = q.ExecuteQuery();
+// Verify the state enumeration values (paused / started / finished) in xtk:workflow on your build.</pre></details>
+</div></article>
+
+<article class="asg" id="a11"><header><div class="k2">Assignment 11 · Level 5 · 80 pts</div><h3>Technical workflow: orchestration</h3></header><div class="in">
+<p><b>Scenario.</b> A master workflow runs the nightly chain: ingest transactions → refresh segments → export audience file for the CDP. Children must run in order and only if the previous one succeeded.</p>
+<h4>Tasks</h4><ol>
+<li>Refactor Assignments 9 and 4 into child workflows that start with an External signal and finish with a JS activity that signals the master back (PostEvent) with <code>status</code> and <code>count</code>.</li>
+<li>Master: Scheduler → PostEvent child 1 → External signal "done1" → Test status → PostEvent child 2 → … → export child → summary alert.</li>
+<li>Add a timeout: if a child doesn't signal back within 60 min, alert and stop the chain (Fork + Wait + JS check).</li>
+<li>Pass <code>runDate</code> from master to every child; children must not compute their own date.</li>
+<li>Produce the design review checklist from M50 for all four workflows.</li></ol>
+<h4>Done when</h4><ul class="done"><li>A forced failure in child 1 stops children 2 and 3 and sends one clear alert.</li><li>A rerun of the master for a past date reprocesses that date only.</li><li>All four workflows pass the design review checklist.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Signal contract (names, variables)</td><td class="num">20</td></tr><tr><td>Sequencing and failure stop</td><td class="num">20</td></tr><tr><td>Timeout handling</td><td class="num">15</td></tr><tr><td>Parameter passing</td><td class="num">10</td></tr><tr><td>Design review</td><td class="num">15</td></tr></table></div>
+</div></article>
+
+<section class="quiz" id="q5"><h3 style="margin-top:28px">Level 5 check</h3><ol>
+<li>Which method writes many records in one call? <details><summary>Answer</summary><code>xtk.session.WriteCollection</code>.</details></li>
+<li>Which technical workflow collects delivery counters from mid-sourcing? <details><summary>Answer</summary><code>defaultMidSourcingDlv</code>, every 10 minutes.</details></li>
+<li>Name three properties of a well-designed ingestion workflow. <details><summary>Answer</summary>Fixed staging table, idempotent reruns, locks, guards, error routes, audit logging (any three).</details></li>
+<li>Where do you store reusable JS? <details><summary>Answer</summary>JavaScript codes (<code>xtk:javascript</code>), loaded with <code>loadLibrary</code>.</details></li>
+<li>Why duplicate the OOTB unsubscription web app instead of editing it? <details><summary>Answer</summary>Upgrades can overwrite Adobe-owned objects.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ LEVEL 6 ============ -->
+<section class="level" id="L6" data-tab="L6" data-label="Integrate + admin" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Level 6 · ~2 weeks · Integration, administration, v8 architecture</div>
+  <h2>Integration, administration and the v8 architecture</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">Modules 51–60</span><span class="chip">Assignments 12–14</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>By the end of this level you can</h3>
+<ul><li>Integrate external systems with Campaign over SOAP, including v8 staging APIs.</li><li>Configure Message Center, Interaction, FDA and Experience Cloud integrations.</li><li>Design a security model and promote changes with packages.</li><li>Run deliverability, monitoring and privacy operations, and plan a v7→v8 move.</li></ul></div>
+
+<details class="mod" id="m51"><summary><span class="no">M51</span><span class="t">SOAP APIs</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li>Endpoint: <code>https://&lt;instance&gt;/nl/jsp/soaprouter.jsp</code>. The WSDL for a schema: <code>/nl/jsp/schemawsdl.jsp?schema=nms:recipient</code>.</li>
+<li><b>Authentication</b>: v7 <code>xtk:session#Logon</code> returns a session token + security token; v8 uses Adobe IMS technical accounts (Adobe Developer Console) and <code>xtk:session#BearerTokenLogon</code> to obtain Campaign tokens.</li>
+<li>Headers: <code>SOAPAction: xtk:queryDef#ExecuteQuery</code>, <code>X-Security-Token</code>, cookie <code>__sessiontoken</code>.</li>
+<li>Common methods: <code>xtk:queryDef#ExecuteQuery</code>, <code>xtk:session#Write</code> / <code>WriteCollection</code>, <code>nms:subscription#Subscribe</code>, <code>nms:rtEvent#PushEvent</code>, <code>xtk:workflow#PostEvent</code>.</li>
+<li>In the project, the Node.js pattern uses native <code>fetch</code> + <code>fast-xml-parser</code>.</li></ul>
+<pre class="raw">// Node.js: execute a queryDef (session/security tokens already obtained)
+const body = `&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xtk:queryDef"&gt;
+ &lt;soapenv:Body&gt;&lt;urn:ExecuteQuery&gt;&lt;urn:sessiontoken/&gt;
+  &lt;urn:entity&gt;&lt;queryDef schema="nms:recipient" operation="select" lineCount="10"&gt;
+    &lt;select&gt;&lt;node expr="@email"/&gt;&lt;/select&gt;&lt;/queryDef&gt;&lt;/urn:entity&gt;
+ &lt;/urn:ExecuteQuery&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;`;
+const res = await fetch(`${BASE}/nl/jsp/soaprouter.jsp`, {
+  method: "POST",
+  headers: { "Content-Type": "text/xml; charset=utf-8", "SOAPAction": "xtk:queryDef#ExecuteQuery",
+             "X-Security-Token": securityToken, "Cookie": `__sessiontoken=${sessionToken}` },
+  body });
+const xml = await res.text();   // parse with fast-xml-parser</pre>
+<div class="warn">Never embed operator passwords in scripts or URLs. Use technical accounts, least-privileged operators, and a secret store.</div>
+</div></details>
+
+<details class="mod" id="m52"><summary><span class="no">M52</span><span class="t">v8 FFDA: staging APIs, replication and keys</span><span class="tags"><span class="chip v8">v8</span></span></summary><div class="body">
+<ul><li><b>Hybrid database</b>: local PostgreSQL (operational objects, staging) + Snowflake (bulk marketing data). Built-in <b>replication</b> copies reference tables (e.g. folders, operators, services) to the cloud database.</li>
+<li><b>Staging</b>: schemas with <code>autoStg="true"</code> get a local staging table; a scheduled workflow syncs it to Snowflake <b>hourly</b>. Opt-outs, subscriptions and mobile registrations are asynchronous as a result.</li>
+<li><b>APIs</b>: <code>xtk.session.Ingest(xml)</code> for inserts (with or without reconciliation), <code>xtk.session.IngestExt(xml)</code> for updates/deletes. Both callable from JS and SOAP.</li>
+<li><b>Keys</b>: UUIDs; unicity not enforced; <i>Unicity alerting</i> workflow + <i>Audit Unicity</i> table; delivery preparation removes duplicate UUIDs (v8.3+).</li>
+<li><b>Don't</b> blast unitary calls; batch. <b>Don't</b> rely on DB indexes on Snowflake tables.</li>
+<li><b>Change data source</b> activity moves work tables between local and cloud to use local-only features.</li></ul>
+<pre class="raw">// JS: insert into a staged custom schema
+var xml = &lt;nvb_event xtkschema="nvb:event" extId="E-1001" type="LOGIN" occurred="2026-09-15 10:00:00"/&gt;;
+xtk.session.Ingest(xml);</pre>
+<div class="note">The element name and attribute format in <code>Ingest</code> payloads follow the staging schema; copy the exact example from Adobe's "New Campaign v8 APIs" page for your build.</div>
+</div></details>
+
+<details class="mod" id="m53"><summary><span class="no">M53</span><span class="t">External accounts and Federated Data Access</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<div class="tw"><table><tr><th>External account type</th><th>Used for</th></tr>
+<tr><td>Routing (email, SMS, push)</td><td>Delivery channels and mid-sourcing</td></tr>
+<tr><td>(S)FTP, Amazon S3, Azure Blob</td><td>File Transfer activity</td></tr>
+<tr><td>External database (FDA)</td><td>Query or load external tables (Snowflake, Oracle, BigQuery… depending on version/licence)</td></tr>
+<tr><td>Bounce mails (POP3)</td><td>inMail bounce processing</td></tr>
+<tr><td>Execution instance</td><td>Message Center</td></tr>
+<tr><td>CRM connectors</td><td>Salesforce, Microsoft Dynamics</td></tr>
+<tr><td>Adobe Experience Cloud / Adobe Experience Platform</td><td>Audience sharing, destinations</td></tr></table></div>
+<p>On managed v8, SFTP accounts and IP allow-lists are set up through the Control Panel and Adobe; key-based auth is preferred.</p>
+</div></details>
+
+<details class="mod" id="m54"><summary><span class="no">M54</span><span class="t">Message Center: transactional messaging</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Control instance</b>: where you design <b>event types</b> and <b>transactional templates</b> and see reports.</li>
+<li><b>Execution instance(s)</b>: receive events (<code>nms:rtEvent#PushEvent</code> real-time or <code>nms:batchEvent#PushEvents</code> batch), match them to published templates and send.</li>
+<li>Event payload: <code>type</code> (event type), <code>email</code>/<code>mobilePhone</code>, <code>ctx</code> (XML data for personalisation).</li>
+<li>Templates are <b>published</b> from control to execution; personalisation reads <code>rtEvent.ctx</code>.</li>
+<li>Technical workflows: <code>mcSynch_*</code>, <code>rtEventsProcessing</code>, <code>batchEventsProcessing</code>, <code>updateEventsStatus</code>; archiving of events.</li></ul>
+<pre class="raw">&lt;!-- PushEvent body (entity) --&gt;
+&lt;rtEvent type="NVB_OTP" email="asha@novabank.test" origin="nvb-auth" wishedChannel="0" externalId="REQ-8841"&gt;
+  &lt;ctx&gt;&lt;otp&gt;482913&lt;/otp&gt;&lt;validMinutes&gt;5&lt;/validMinutes&gt;&lt;/ctx&gt;
+&lt;/rtEvent&gt;
+
+In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtEvent.ctx.validMinutes %&gt; minutes.</pre>
+<div class="note">Verify <code>wishedChannel</code> enumeration values (email/SMS) on your build.</div>
+</div></details>
+
+<details class="mod" id="m55"><summary><span class="no">M55</span><span class="t">Interaction: offer management</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Offer catalogue</b>: categories and offers with content per space (email, web, call centre).</li>
+<li><b>Environments</b>: design vs live; approved offers deployed by <code>offerMgt</code>.</li>
+<li><b>Eligibility</b>: category and offer rules (target, dates, weights, typology constraints).</li>
+<li><b>Outbound</b>: Offer engine / Offers by cell in workflows, or offers in delivery content. <b>Inbound</b>: offer calls from web pages (execution instances, <code>propositionSynch</code>).</li>
+<li>Propositions (<code>nms:propositionRcp</code>) record presented/accepted offers for learning and reporting.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Create a "Cards" category with three offers and eligibility by <code>loyaltyTier</code>. Use Offer engine in a workflow to assign the best offer and personalise an email with it.</div>
+</div></details>
+
+<details class="mod" id="m56"><summary><span class="no">M56</span><span class="t">Experience Cloud integrations</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Shared audiences</b> (Experience Cloud People core service): import/export via <code>importSharedAudience</code>/<code>exportSharedAudience</code> and the Import/Export audience activities.</li>
+<li><b>AEP / Real-Time CDP</b>: destinations send AEP audiences into Campaign (v8 connector / SFTP-based flows); Campaign data can be ingested to AEP via sources or file exports.</li>
+<li><b>Target</b>: dynamic images/offers in email; Campaign segments used as Target audiences through the shared stack.</li>
+<li><b>Analytics</b>: campaign attributes and tracking codes (the v7 web analytics connector workflows).</li>
+<li><b>AEM</b>: author email content in AEM and sync to Campaign; <b>Assets</b> integration for the DAM.</li></ul>
+<div class="note">The project's <i>Adobe stack architecture reference</i> covers how Campaign, CDP and Target connect in practice; the fixed staging table rule applies to every downstream feed.</div>
+</div></details>
+
+<details class="mod" id="m57"><summary><span class="no">M57</span><span class="t">Security: operators, rights and zones</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Operators</b> (<code>xtk:operator</code>) belong to <b>operator groups</b>; rights are best granted via groups.</li>
+<li><b>Named rights</b>: e.g. <code>admin</code>, <code>sql</code>, <code>workflow</code>, <code>delivery</code>, <code>prepareDelivery</code>, <code>startDelivery</code>, <code>import</code>, <code>export</code>, <code>createProject</code>, <code>editProject</code>. Check the list on your build.</li>
+<li><b>Folder permissions</b>: read / write / delete per group; "System" vs custom folders; the <i>restricted</i> option on folder views.</li>
+<li><b>Organisational units</b> (distributed marketing) filter data by entity.</li>
+<li><b>Security zones</b> (v7 on-prem): IP-based allow-lists in <code>serverConf.xml</code> tied to operators. On v8 managed, IP allow-listing is done in the Control Panel; sign-in is Adobe IMS.</li>
+<li><b>Principle</b>: least privilege; no shared admin accounts; technical operators for APIs; quarterly access review.</li></ul>
+</div></details>
+
+<details class="mod" id="m58"><summary><span class="no">M58</span><span class="t">Packages and environment promotion</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Export packages</b> (Tools › Advanced › Export packages): user-defined, platform, or admin packages; choose entities (schemas, forms, JS codes, workflows templates, options, enumerations, web apps…).</li>
+<li><b>Package definitions</b> (Administration › Configuration › Package management) make exports repeatable and reviewable.</li>
+<li><b>Import</b> with Tools › Advanced › Import package; follow with Update database structure when schemas change.</li>
+<li><b>Promotion path</b>: DEV → QA/UAT → PROD, with a change record, peer review of the package XML, and a rollback package.</li>
+<li>Don't package environment-specific values (external account credentials, URLs) without a plan to override them.</li></ul>
+</div></details>
+
+<details class="mod" id="m59"><summary><span class="no">M59</span><span class="t">Monitoring and deliverability</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Control Panel</b> (managed): SFTP users, IP allow-lists, subdomain delegation, certificates, instance monitoring (disk, database).</li>
+<li><b>Monitoring</b> in the console: process status, workflow heatmap, delivery throughput, audit trail (who changed what).</li>
+<li><b>Authentication</b>: SPF, DKIM (signing keys), DMARC policy aligned to the sending subdomain; BIMI for logo display.</li>
+<li><b>Reputation</b>: IP/domain warm-up plans, list hygiene, engagement-based targeting, spam complaints via feedback loops, one-click unsubscribe headers (<code>List-Unsubscribe</code>, <code>List-Unsubscribe-Post</code>) required by major mailbox providers for bulk senders.</li>
+<li><b>Alert thresholds</b>: bounce rate &gt; 3%, complaint rate &gt; 0.1%, sudden open drop at one provider.</li></ul>
+<div class="lab"><b>Mini-lab</b><br>Inspect the headers of a proof: find SPF/DKIM/DMARC results and the List-Unsubscribe headers. Write a 30-day warm-up plan for a new NovaBank subdomain.</div>
+</div></details>
+
+<details class="mod" id="m60"><summary><span class="no">M60</span><span class="t">Privacy, compliance and the v7→v8 move</span><span class="tags"><span class="chip both">v7 · v8</span></span></summary><div class="body">
+<ul><li><b>Privacy requests</b> (GDPR/CCPA): Administration › Platform › Privacy; access and delete requests via the <code>collectPrivacyRequests</code>/<code>deletePrivacyRequestsData</code> workflows; namespaces define how people are identified.</li>
+<li><b>India DPDP Act 2023</b>: purpose-specific consent, easy withdrawal, notice in clear language, retention limits. Model consent per purpose (services/opt-in fields with dates and source), and audit it.</li>
+<li><b>Retention</b>: set cleanup purge periods; purge custom tables; mask data in lower environments.</li></ul>
+<h4>v7 → v8 migration checklist</h4>
+<ul class="done"><li>Inventory custom schemas, JS, web apps, JSSPs, workflows, external accounts</li><li>Flag features not in v8 / FFDA (MRM, surveys, web tracking, coupons, social, LDAP)</li><li>Rework unitary writes into batch / Ingest</li><li>Re-key custom FFDA schemas (UUIDs) and plan duplicate checks</li><li>Move authentication to Adobe IMS; recreate operators and technical accounts</li><li>Replace date-suffixed/per-run tables with fixed staging tables</li><li>Re-test typology, reports, tracking and custom target mappings</li><li>Plan IP/domain warm-up on the new sending infrastructure</li><li>Dry-run with a subset; reconcile counts; sign-off</li></ul>
+<div class="note">The project's <i>Campaign v7 to v8 replatform</i> doc has the detailed plan; use this checklist as the summary.</div>
+</div></details>
+
+<article class="asg" id="a12"><header><div class="k2">Assignment 12 · Level 6 · 100 pts</div><h3>Transactional OTP and statement alerts</h3></header><div class="in">
+<h4>Tasks</h4><ol>
+<li>On the control instance, create event types <code>NVB_OTP</code> (email + SMS) and <code>NVB_STMT</code> (email with statement month and a link).</li>
+<li>Build and publish transactional templates using <code>rtEvent.ctx</code>; include a fallback when a value is missing.</li>
+<li>Write a Node.js client that obtains tokens and calls <code>PushEvent</code>; send 20 test events with valid and invalid payloads.</li>
+<li>Track event statuses (<code>updateEventsStatus</code>) and show the delivery log for each.</li>
+<li>Stretch: a JSSP endpoint from the project's JSSP course that receives a JSON request from a partner system and converts it to a <code>PushEvent</code> call, with key-based auth.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Valid events are delivered within your SLA and invalid ones are rejected with a readable status.</li><li>The OTP value is never written to logs.</li><li>Client code keeps secrets out of source.</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Event types and templates</td><td class="num">30</td></tr><tr><td>API client</td><td class="num">30</td></tr><tr><td>Status tracking and evidence</td><td class="num">20</td></tr><tr><td>Security of secrets and data</td><td class="num">20</td></tr></table></div>
+</div></article>
+
+<article class="asg" id="a13"><header><div class="k2">Assignment 13 · Level 6 · 80 pts</div><h3>Security model and package promotion</h3></header><div class="in">
+<h4>Tasks</h4><ol>
+<li>Translate this matrix into operator groups, named rights and folder permissions:
+<div class="tw"><table><tr><th>Role</th><th>Needs</th></tr>
+<tr><td>Campaign builder</td><td>Create/edit campaigns and deliveries in NovaBank folders; prepare but not start deliveries</td></tr>
+<tr><td>Campaign approver</td><td>Approve targets and content; start deliveries</td></tr>
+<tr><td>Data engineer</td><td>Workflows, imports/exports, SQL in dev only</td></tr>
+<tr><td>Analyst</td><td>Read-only on deliveries and reports; no recipient export</td></tr>
+<tr><td>API technical account</td><td>Only subscription and event push methods</td></tr></table></div></li>
+<li>Create a package definition containing all Level 4–5 objects (schemas, forms, navtree, JS codes, options, workflow templates, web app).</li>
+<li>Export from DEV, import into QA, run Update database structure, and smoke test.</li>
+<li>Write the rollback plan.</li></ol>
+<h4>Done when</h4><ul class="done"><li>Logging in as each role proves the allowed and denied actions (screenshots).</li><li>The QA import produces no errors and the smoke test passes.</li></ul>
+</div></article>
+
+<article class="asg" id="a14"><header><div class="k2">Assignment 14 · Level 6 · 70 pts</div><h3>FFDA-ready redesign of a v7 workflow</h3></header><div class="in">
+<p><b>Given</b>: a v7 workflow that loops over 200,000 recipients in JavaScript, calling <code>xtk.session.Write</code> per row, writes to a table named <code>NVB_SCORES_&lt;date&gt;</code> each run, and joins it to recipients with SQL code.</p>
+<h4>Tasks</h4><ol>
+<li>List every v8/FFDA problem with the design.</li>
+<li>Redesign: fixed staged schema <code>nvb:score</code> with UUID keys and <code>autoStg</code>; set-based loading (Data loading + Update data or <code>Ingest</code> in batches); no per-run tables; no SQL code on cloud tables; Change data source where local processing is needed.</li>
+<li>Explain the asynchronous effect of staging on same-day campaigns and how you schedule around the hourly sync.</li>
+<li>Add duplicate-key monitoring to the runbook.</li></ol>
+<details class="key"><summary>Answer key: problems to find</summary><ul>
+<li>Unitary writes in a loop (FFDA: blast calls not recommended, very slow).</li>
+<li>Date-suffixed table per run (breaks downstream consumers, no stable schema, clutters DB).</li>
+<li>SQL code relying on local DB syntax/indexes against Snowflake data.</li>
+<li>Integer keys/sequences assumed; FFDA uses UUIDs and doesn't enforce unicity.</li>
+<li>No awareness of staging latency (hourly sync) before campaigns use the data.</li></ul></details>
+</div></article>
+
+<section class="quiz" id="q6"><h3 style="margin-top:28px">Level 6 check</h3><ol>
+<li>Which method pushes a real-time transactional event? <details><summary>Answer</summary><code>nms:rtEvent#PushEvent</code>.</details></li>
+<li>Which v8 API updates or deletes records in a staged schema? <details><summary>Answer</summary><code>xtk.session.IngestExt</code>.</details></li>
+<li>How often does staging sync to the cloud database? <details><summary>Answer</summary>Hourly, via a scheduled workflow.</details></li>
+<li>How do operators sign in to v8? <details><summary>Answer</summary>Adobe ID (IMS) only.</details></li>
+<li>What runs after importing a package that contains schema changes? <details><summary>Answer</summary>Update database structure.</details></li>
+</ol></section>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ CAPSTONE ============ -->
+<section class="level" id="CAP" data-tab="CAP" data-label="Capstone" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Capstone · ~2 weeks · All levels</div>
+  <h2>NovaBank Lifecycle Program</h2>
+  <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">100 pts</span><span class="chip">Presented to a review panel</span></div>
+</div>
+<div class="grid2"><div>
+<article class="asg" id="cap1"><header><div class="k2">Capstone brief</div><h3>Build the customer lifecycle program end to end</h3></header><div class="in">
+<p><b>Scenario.</b> NovaBank is launching a digital savings account. Build the Campaign side of the lifecycle: onboarding, engagement, cross-sell, service alerts and win-back, with the data, operations and governance a real bank would demand.</p>
+<h4>Scope</h4><ol>
+<li><b>Data model</b>: recipient extension, accounts, transactions, products, consent-per-purpose, run log (Level 4).</li>
+<li><b>Ingestion</b>: daily customers + transactions via staged technical workflows (Level 5), orchestrated by a master (Assignment 11).</li>
+<li><b>Onboarding journey</b> (days 0/3/7/14/30) across email, SMS and push, with channel routing, exits on conversion (first transaction) and typology rules.</li>
+<li><b>Cross-sell</b> with Interaction offers and an A/B test; <b>win-back</b> for dormant accounts with a control group and hypothesis.</li>
+<li><b>Preference center</b> web app with per-purpose consent (DPDP-ready) and custom unsubscribe.</li>
+<li><b>Transactional alerts</b> via Message Center (OTP + low balance).</li>
+<li><b>Security model</b> and <b>package</b> for promotion.</li>
+<li><b>QC</b>: checklists run for every delivery; post-send reconciliation.</li>
+<li><b>Monitoring</b>: housekeeping workflow and a weekly health report.</li></ol>
+<h4>Deliverables</h4><ul>
+<li>Architecture diagram (sources → staging → Campaign → channels → tracking → CDP/Target).</li>
+<li>Data model diagram + all source schemas.</li>
+<li>Workflow screenshots with transition counts; design review checklists.</li>
+<li>Delivery evidence (proofs, analysis logs, reports).</li>
+<li>Runbooks for every technical workflow.</li>
+<li>Package definition + rollback plan.</li>
+<li>15-minute presentation to a panel (builder, approver, data owner).</li></ul>
+<h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr>
+<tr><td>Data model quality</td><td class="num">15</td></tr>
+<tr><td>Technical workflows (staging, idempotency, guards, audit)</td><td class="num">20</td></tr>
+<tr><td>Campaign logic (journey, routing, typology, testing)</td><td class="num">20</td></tr>
+<tr><td>Consent, privacy and security</td><td class="num">15</td></tr>
+<tr><td>Transactional messaging</td><td class="num">10</td></tr>
+<tr><td>QC and operational readiness (runbooks, monitoring, package)</td><td class="num">10</td></tr>
+<tr><td>Presentation and documentation</td><td class="num">10</td></tr></table></div>
+<h4>Grading bands</h4><p><b>90–100</b> Expert · <b>75–89</b> Professional · <b>60–74</b> Practitioner · <b>&lt;60</b> Resubmit</p>
+</div></article>
+</div><aside class="toc"></aside></div>
+</section>
+
+<!-- ============ MOCK EXAM + RESOURCES ============ -->
+<section class="level" id="EXAM" data-tab="EXAM" data-label="Mock exam" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Final check · 75 questions · ~90 minutes</div>
+  <h2>Mock exam</h2>
+  <div class="meta"><span class="chip">Mapped to AD0-E331 developer domains + business practitioner topics</span><span class="chip">Pass mark 68%</span></div>
+</div>
+<p class="lede" style="font-size:15px">Pick an answer for each question, then press <b>Score my answers</b>. Your choices stay in this browser only. Each question shows its domain: System configuration, Customization, Security, Technical workflows, Maintenance, Campaign configuration, Practitioner.</p>
+<div class="toolbar" style="margin:14px 0"><button class="btn" id="scoreBtn" type="button">Score my answers</button><button class="btn" id="clearExam" type="button">Clear answers</button><span id="scoreOut" style="font-family:var(--f-mono);font-size:14px;align-self:center"></span></div>
+<div id="domainOut" class="tw"></div>
+<ol id="exam" class="exam"></ol>
+</section>
+
+<section class="level" id="REF" data-tab="REF" data-label="Glossary + sources" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Reference</div>
+  <h2>Glossary, study plan and sources</h2>
+</div>
+<div class="grid2"><div>
+<h3 id="plan" style="margin:8px 0">Suggested schedule (part-time, ~8 h/week)</h3>
+<div class="tw"><table><tr><th>Week</th><th>Work</th></tr>
+<tr><td>1</td><td>Level 0 + Level 1 modules, Assignment 1</td></tr>
+<tr><td>2</td><td>Assignment 2, Level 2 modules 17–20</td></tr>
+<tr><td>3</td><td>Modules 21–24, Assignments 3–4</td></tr>
+<tr><td>4</td><td>Level 3 + Assignment 5</td></tr>
+<tr><td>5</td><td>Level 4 modules + Assignment 6</td></tr>
+<tr><td>6</td><td>Assignments 7–8, Level 5 modules 44–49</td></tr>
+<tr><td>7</td><td>Module 50 + Assignments 9–11</td></tr>
+<tr><td>8</td><td>Level 6 + Assignments 12–14</td></tr>
+<tr><td>9–10</td><td>Capstone + mock exam</td></tr></table></div>
+
+<h3 id="lab-setup" style="margin:24px 0 8px">Lab setup checklist</h3>
+<ul class="done"><li>A non-production instance with an operator in a sandbox folder</li><li>Namespace <code>nvb</code> reserved for your work</li><li>Test email domain and inboxes; a test SFTP; a test mobile device for push</li><li>Synthetic data only (generate names, emails on <code>novabank.test</code>)</li><li>A package definition from day one so your work is portable</li></ul>
+
+<h3 id="gloss" style="margin:24px 0 8px">Glossary</h3>
+<div class="tw"><table><tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>ACC</td><td>Adobe Campaign Classic</td></tr>
+<tr><td>FFDA</td><td>Full Federated Data Access: the v8 Enterprise deployment with a Snowflake cloud database</td></tr>
+<tr><td>Mid-sourcing</td><td>A separate sending instance that executes deliveries and returns logs</td></tr>
+<tr><td>broadLog</td><td>Per-message delivery log</td></tr>
+<tr><td>Typology</td><td>Rules (control, filtering, pressure, capacity) applied to deliveries</td></tr>
+<tr><td>Target mapping</td><td>Definition of how a delivery targets a schema and where it logs</td></tr>
+<tr><td>Work table</td><td>Temporary table carrying a population between workflow activities</td></tr>
+<tr><td>Staging (v8)</td><td>Local table buffering API writes before hourly sync to the cloud DB</td></tr>
+<tr><td>Fixed staging table</td><td>A stable, reusable intermediate table for a feed (the opposite of per-run tables)</td></tr>
+<tr><td>Seed address</td><td>Controller receiving a real delivery without counting in stats</td></tr>
+<tr><td>Quarantine</td><td>Address suspended for technical failures</td></tr>
+<tr><td>Event type</td><td>Message Center category that maps events to transactional templates</td></tr>
+<tr><td>Proposition</td><td>An offer presented to a contact (Interaction)</td></tr>
+<tr><td>Package</td><td>XML export of configuration objects for promotion</td></tr>
+<tr><td>JSSP</td><td>JavaScript Server Page served by the Campaign web server</td></tr></table></div>
+
+<h3 id="sources" style="margin:24px 0 8px">Sources</h3>
+<ul>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign-classic/using/getting-started/about-adobe-campaign-classic">About Adobe Campaign Classic</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/new/v7-to-v8">Transition from Campaign Classic v7 to Campaign v8</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/architecture/architecture">Campaign v8 architecture</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/architecture/ffda/staging">Campaign API staging mechanism</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/architecture/ffda/new-apis">New Campaign v8 APIs (Ingest / IngestExt)</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/architecture/ffda/keys">Key management and unicity (FFDA)</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/config/architecture/ffda/enterprise-deployment">Campaign Enterprise (FFDA) deployment</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/developer/schemas-forms/schemas">Work with Campaign schemas</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/campaign-v8/config/implement/datamodel-best-practices">Data model best practices</a></li>
+<li><a href="https://github.com/AdobeDocs/campaign-classic.en/blob/main/help/workflow/using/about-technical-workflows.md">About technical workflows (Adobe docs repo)</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign-classic/using/monitoring-campaign-classic/data-processing/database-cleanup-workflow">Database cleanup workflow</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign/automation/workflows/introduction/workflow-best-practices">Workflow best practices</a></li>
+<li><a href="https://experienceleague.adobe.com/en/docs/campaign-classic/using/getting-started/faq/faq-campaign-classic-v7">Campaign Classic v7 FAQ (end of life)</a></li>
+<li><a href="https://www.edusum.com/adobe/adobe-campaign-classic-developer-professional-exam-syllabus">AD0-E331 syllabus (third-party summary)</a></li>
+<li><a href="https://certification.adobe.com/certification/campaign-classic-business-practitioner-professional/179">Campaign Classic Business Practitioner Professional</a></li>
+<li>Project docs: JSSP course and assignment · Campaign API / JSAPI reference · Campaign v7→v8 replatform · Adobe stack architecture reference · Requirement-to-automation framework</li></ul>
+<div class="note">Code samples are teaching material. Field names, enumeration values and method flags that are marked "verify" differ across builds: check them on your instance before production use.</div>
+</div><aside class="toc"></aside></div>
+</section>
+</main>
+
+<footer class="foot">Campaign Classic Bootcamp · NovaBank is a fictional bank used for all labs · Build on non-production instances only.</footer>
+</div>
+
+<script>
+(function(){
+var store = {
+  get:function(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}},
+  set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+var D={SC:"System configuration",CU:"Customization",SE:"Security",TW:"Technical workflows",MA:"Maintenance",CC:"Campaign configuration",PR:"Practitioner"};
+var Q=[
+["SC","Which deployment models are available for Campaign v8?",["On-premise and hybrid","Managed Cloud Services only","Hybrid only","Any, depending on licence"],1],
+["SC","In an FFDA deployment, where is most marketing data stored?",["Local PostgreSQL only","Snowflake cloud database","Oracle","In XML files"],1],
+["SC","Which attribute makes Campaign generate UUID primary keys in FFDA?",["autopk only","autouuid (with autopk)","pkSequence","uuid=\"true\""],1],
+["SC","What does autoStg=\"true\" enable on a schema?",["Automatic statistics","The staging mechanism for API writes","Auto-generated forms","Stored procedures"],1],
+["SC","How often does the staging workflow sync to the cloud database by default?",["Every minute","Hourly","Daily","Weekly"],1],
+["SC","Which v8 API is intended for updates and deletes on staged schemas?",["xtk.session.Ingest","xtk.session.IngestExt","xtk.session.Write","nms.subscription.Update"],1],
+["SC","Which enumeration can business users extend from the Enumerations node?",["A closed schema enumeration","A user (database) enumeration declared with userEnum","A system enumeration","None: all are fixed"],1],
+["SC","Where do you configure an SFTP connection used by the File transfer activity?",["Delivery template","External account","Operator profile","Navigation hierarchy"],1],
+["SC","Which object tells a delivery which schema, address fields and log tables to use?",["Typology","Target mapping","Seed list","Web app"],1],
+["SC","What is the use case for Message Center?",["Batch newsletters","Event-triggered transactional messages","Budget management","Surveys"],1],
+["SC","What is the use case for Interaction?",["Offer management and eligibility","Bounce processing","Schema generation","User rights"],0],
+["SC","How are audiences built in other Experience Cloud solutions used in Campaign?",["Only via manual CSV","Shared audiences imported through the Experience Cloud integration","They can't be used","Through typology rules"],1],
+["SC","Which statement about key unicity in FFDA is true?",["Snowflake enforces unique keys","Snowflake does not enforce unicity; Campaign detects duplicates","Duplicates are impossible with UUIDs","Unicity is enforced by the mid-sourcing server"],1],
+["CU","You need new fields on recipients. What do you create?",["A new schema in nms namespace","An extension schema in your namespace with extendedSchema=\"nms:recipient\"","Edit nms:recipient directly","A form only"],1],
+["CU","After adding attributes to a schema, what must you run?",["Regenerate forms","Update database structure","Database cleanup","Deliverability update"],1],
+["CU","Which element defines a physical database index?",["key","dbindex","sysFilter","compute-string"],1],
+["CU","What does expr on an attribute do?",["Creates a column with a default","Defines a calculated field evaluated at query time","Encrypts the value","Creates an index"],1],
+["CU","How do you model an N-N relation?",["A link with cardinality=\"many\"","A relation schema with two links","An enumeration","An XML memo"],1],
+["CU","Which integrity on a link to recipients makes deleting a recipient remove the linked rows (as in nms:subscription)?",["normal","own","define","neutral"],1],
+["CU","Where should reusable server-side JavaScript live?",["Inside every workflow","JavaScript codes (xtk:javascript), loaded with loadLibrary","In options","In delivery templates"],1],
+["CU","What is the use case for a custom option?",["Storing global configuration values read with getOption","Storing recipients","Defining typology","Creating folders"],0],
+["CU","What are seed lists for?",["Excluding recipients","Reusable sets of controller addresses added to deliveries","Importing files","Storing offers"],1],
+["CU","How should you change the out-of-the-box unsubscription web app?",["Edit the original","Duplicate it and modify the copy","Delete and rebuild","Use SQL"],1],
+["CU","Content management uses which technology to render content?",["XSLT stylesheets","CSS only","Snowflake SQL","Typology rules"],0],
+["CU","Which form type shows tabs?",["iconbox","notebook","default","list"],1],
+["CU","Which attribute points a schema at an external database table without creating it?",["view=\"true\" with a dataSource","xml=\"true\"","autopk=\"false\"","noDbIndex"],0],
+["CU","Which XTK type is not indexable?",["string","long","memo","datetime"],2],
+["SE","What is the preferred way to grant rights to operators?",["Individually per operator","Through operator groups","Through options","Through folders only"],1],
+["SE","Which named right is needed to run sqlExec?",["workflow","sql","admin only","import"],1],
+["SE","How do operators sign in to Campaign v8?",["Login and password","LDAP","Adobe ID (IMS)","Security zone only"],2],
+["SE","What do security zones control (v7)?",["Which IPs operators can connect from","Which recipients are visible","Delivery throughput","Typology"],0],
+["SE","A builder should prepare but not start deliveries. What do you configure?",["Give admin right","Grant preparation rights but not start rights, and add an approval step","Remove workflow right","Use a different namespace"],1],
+["SE","What limits which records operators can read in a schema?",["sysFilter / folder permissions","compute-string","enumerations","dbindex"],0],
+["TW","Which activity returns only records not selected in previous runs?",["Query","Incremental query","Read list","Split"],1],
+["TW","Which variable gives the inbound record count?",["instance.count","vars.recCount","task.total","activity.rows"],1],
+["TW","Which variable scope persists across the whole workflow instance?",["task.vars","vars","instance.vars","event.vars only"],2],
+["TW","How do you reference an instance variable in a file name field?",["{{instance.x}}","$(instance/vars/@x)","%instance.x%","@instance.x"],1],
+["TW","Which activity links imported file data to existing recipients?",["Reconciliation","Union","Fork","Alert"],0],
+["TW","Which activity writes insert/update/delete operations from a work table?",["Update data","Enrichment","Test","Wait"],0],
+["TW","Which activity waits for another workflow or an API to trigger it?",["Scheduler","External signal","Jump","End"],1],
+["TW","Which call triggers an External signal from JavaScript?",["xtk.workflow.PostEvent","nms.delivery.Start","xtk.session.Write","sqlExec"],0],
+["TW","You need parallel branches that meet before continuing. Which pair?",["Fork and AND-join","Split and Union","Test and Jump","Scheduler and Wait"],0],
+["TW","Which activity picks up files as they arrive in a server folder?",["File collector","Web download","Data extraction","Inbound emails"],0],
+["TW","Which activity switches from accounts to their owners?",["Change dimension","Change data source","Dedup","Split"],0],
+["TW","Which activity moves a work table between the local and cloud database in v8?",["Change data source","Change dimension","Data loading (RDBMS)","File transfer"],0],
+["TW","Which out-of-the-box workflow purges obsolete data?",["tracking","cleanup","billing","forecasting"],1],
+["TW","Which workflow consolidates tracking data hourly?",["tracking","deliveryMgt","aliasCleansing","offerMgt"],0],
+["TW","Which workflow updates bounce qualification rules?",["deliverabilityUpdate","reportingAggregates","stockMgt","budgetMgt"],0],
+["TW","What should happen on an error transition in a production workflow?",["Nothing","Route to an alert, log the error and release locks","Restart automatically forever","Delete the work table"],1],
+["TW","Why switch off Keep interim results in production?",["It disables logs","Work tables are kept and fill the database","It stops deliveries","It is required for FFDA"],1],
+["TW","Which design keeps downstream consumers (CDP, Target) working?",["A new date-suffixed table each run","A fixed staging table with a stable schema","Writing directly to recipients only","Temporary tables only"],1],
+["TW","A rerun of an import doubles the data. What was missing?",["An index","Idempotent upsert on a business key and a processed-file check","A scheduler","A seed list"],1],
+["TW","Which types of database can a Campaign instance work with?",["Only the Campaign database","The Campaign database plus external sources via FDA (and cloud DB in FFDA)","Only files","Only Snowflake"],1],
+["TW","What is the difference between OOTB and user workflows?",["OOTB technical workflows run platform processes and shouldn't be altered","There is no difference","User workflows cannot be scheduled","OOTB workflows are templates only"],0],
+["TW","How do you pass variables to a signalled workflow?",["In the PostEvent variables parameter; they arrive as vars.x","Through options only","Through the file name","You can't"],0],
+["TW","What does the Alert activity do?",["Sends a notification to operators or groups","Stops the workflow","Creates an approval","Writes a log only"],0],
+["MA","Where do you see how many workflows run at each hour?",["Workflow heatmap","Audit trail","Delivery report","Package manager"],0],
+["MA","A workflow failed overnight. Where do you start?",["Its Logs tab and the failed activity","The billing report","Recipient form","Typology"],0],
+["MA","What does the audit trail show?",["Who changed which object and when","Delivery throughput","Bounce reasons","Offer weights"],0],
+["MA","Which workflow warns about workflows paused too long?",["cleanupPausedWorkflows","forecasting","billing","mcSynch"],0],
+["CC","Which rule type caps messages per recipient per period?",["Control","Filtering","Pressure","Capacity"],2],
+["CC","Which rule type limits volume for a resource like a call centre?",["Capacity","Pressure","Control","Filtering"],0],
+["CC","Pressure rules need which feature to consider scheduled deliveries?",["The provisional calendar","Seed lists","Web tracking","Content management"],0],
+["CC","Recurring vs continuous delivery?",["Recurring creates a child per period; continuous adds to the same delivery","They are the same","Continuous creates a child per period","Recurring is SMS only"],0],
+["CC","Which approval types exist on deliveries?",["Target, content, budget, extraction file, provider","Only content","Only target","Only budget"],0],
+["CC","A campaign template gives you…",["Default workflow, deliveries, approvals and properties","Recipient data","User rights","Schema definitions"],0],
+["CC","Where do you see why recipients were excluded from a delivery?",["The analysis log / exclusion reasons","The recipient form","The package","The heatmap"],0],
+["CC","How do you run an A/B test with a winner?",["Split small cells, two deliveries, wait, script picks winner, send to remainder","Send two deliveries to everyone","Use a pressure rule","Use Message Center"],0],
+["PR","How many characters fit in one GSM 7-bit SMS?",["70","140","160","255"],2],
+["PR","Denylist vs quarantine?",["Denylist is consent; quarantine is technical failure","They are the same","Quarantine is consent","Denylist is for SMS only"],0],
+["PR","Do seed addresses count in delivery statistics?",["Yes","No","Only opens","Only clicks"],1],
+["PR","Why prefer clicks over opens to measure engagement?",["Opens are inflated by privacy features","Clicks are cheaper","Opens are not tracked","Clicks include bounces"],0],
+["PR","How do you read a workflow column in delivery content?",["targetData.column","recipient.column","vars.column","instance.column"],0],
+["PR","What does double opt-in require?",["A confirmation click after subscribing","Two emails at once","An SMS and an email","Admin approval"],0],
+["PR","Which personalisation block adds the hosted copy link?",["Mirror page","Unsubscribe","Greetings","Offer"],0]
+];
+// ---- tabs
+var levels=[].slice.call(document.querySelectorAll('.level'));
+var tl=document.getElementById('tablist');
+levels.forEach(function(s){
+  var b=document.createElement('button');b.className='tab';b.type='button';b.setAttribute('role','tab');b.id='tab-'+s.id;
+  b.innerHTML='<small>'+s.dataset.tab+'</small>'+s.dataset.label;
+  b.addEventListener('click',function(){show(s.id,true);});
+  tl.appendChild(b);
+});
+function show(id,scroll){
+  levels.forEach(function(s){s.hidden=(s.id!==id);var b=document.getElementById('tab-'+s.id);b.setAttribute('aria-selected',s.id===id?'true':'false');});
+  store.set('acc.tab',id);
+  if(scroll){var t=document.querySelector('.tabs');window.scrollTo({top:t.offsetTop,behavior:'smooth'});}
+}
+// ---- raw code already escaped at build; toc + progress
+var done=store.get('acc.done',{});
+levels.forEach(function(s){
+  var toc=s.querySelector('.toc');if(!toc)return;
+  var h='<h4>In this section</h4>';
+  s.querySelectorAll('.mod,.asg,.quiz,h3[id]').forEach(function(el){
+    var label;
+    if(el.classList.contains('mod')) label=el.querySelector('.no').textContent+' '+el.querySelector('.t').textContent;
+    else if(el.classList.contains('asg')) label=el.querySelector('.k2').textContent.split('·')[0].trim()+': '+el.querySelector('h3').textContent;
+    else if(el.classList.contains('quiz')) label='Self-check quiz';
+    else label=el.textContent;
+    h+='<a href="#'+el.id+'" data-go="'+el.id+'"'+(el.classList.contains('asg')?' class="asg-l"':'')+'>'+label+'</a>';
+  });
+  if(s.querySelector('.mod')) h+='<div class="prog"><span data-p="'+s.id+'"></span><div class="bar"><i data-b="'+s.id+'"></i></div></div>';
+  toc.innerHTML=h;
+});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[data-go]');if(!a)return;
+  var el=document.getElementById(a.dataset.go);if(!el)return;
+  e.preventDefault(); if(el.tagName==='DETAILS') el.open=true;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.querySelectorAll('.mod').forEach(function(m){
+  var body=m.querySelector('.body');
+  var lab=document.createElement('label');lab.style.cssText='display:flex;gap:8px;align-items:center;margin-top:16px;font-size:13.5px;color:var(--ink-2);cursor:pointer';
+  lab.innerHTML='<input type="checkbox" class="done-box" id="done-'+m.id+'"> Mark this module complete';
+  body.appendChild(lab);
+  var cb=lab.querySelector('input');cb.checked=!!done[m.id];
+  var chip=document.createElement('span');chip.className='chip';chip.textContent='done';chip.style.cssText='border-color:var(--accent);background:var(--accent);color:var(--accent-ink)';chip.hidden=!cb.checked;
+  m.querySelector('.tags').appendChild(chip);
+  cb.addEventListener('change',function(){done[m.id]=cb.checked;chip.hidden=!cb.checked;store.set('acc.done',done);prog();});
+});
+function prog(){
+  levels.forEach(function(s){
+    var mods=s.querySelectorAll('.mod');if(!mods.length)return;
+    var n=0;mods.forEach(function(m){if(done[m.id])n++;});
+    var p=s.querySelector('[data-p]'),b=s.querySelector('[data-b]');
+    if(p)p.textContent=n+' of '+mods.length+' modules done';
+    if(b)b.style.width=(100*n/mods.length)+'%';
+  });
+}
+prog();
+document.getElementById('expandAll').onclick=function(){document.querySelectorAll('.level:not([hidden]) .mod').forEach(function(d){d.open=true;});};
+document.getElementById('collapseAll').onclick=function(){document.querySelectorAll('.mod').forEach(function(d){d.open=false;});};
+document.getElementById('resetProg').onclick=function(){done={};store.set('acc.done',done);document.querySelectorAll('.done-box').forEach(function(c){c.checked=false;c.dispatchEvent(new Event('change'));});};
+// ---- exam
+var ans=store.get('acc.exam',{});
+var ol=document.getElementById('exam');
+Q.forEach(function(q,i){
+  var li=document.createElement('li');li.style.margin='14px 0';li.id='x'+i;
+  var h='<div><span class="chip" style="margin-right:6px">'+D[q[0]]+'</span>'+q[1]+'</div>';
+  q[2].forEach(function(o,j){
+    h+='<label class="opt" style="display:flex;gap:8px;align-items:flex-start;padding:3px 0;cursor:pointer"><input type="radio" name="x'+i+'" id="x'+i+'o'+j+'" value="'+j+'"'+(ans[i]===j?' checked':'')+'><span>'+o.replace(/</g,'&lt;')+'</span></label>';
+  });
+  h+='<div class="fb" style="font-size:13px;font-family:var(--f-mono)"></div>';
+  li.innerHTML=h;ol.appendChild(li);
+  li.addEventListener('change',function(e){ans[i]=+e.target.value;store.set('acc.exam',ans);});
+});
+document.getElementById('scoreBtn').onclick=function(){
+  var ok=0,by={};
+  Q.forEach(function(q,i){
+    by[q[0]]=by[q[0]]||[0,0];by[q[0]][1]++;
+    var fb=document.querySelector('#x'+i+' .fb');
+    if(ans[i]===q[3]){ok++;by[q[0]][0]++;fb.textContent='✓ correct';fb.style.color='var(--accent)';}
+    else{fb.textContent=(ans[i]===undefined?'— not answered. ':'✗ ')+'Answer: '+q[2][q[3]];fb.style.color='var(--red)';}
+  });
+  var pct=Math.round(100*ok/Q.length);
+  document.getElementById('scoreOut').textContent=ok+' / '+Q.length+' ('+pct+'%) · '+(pct>=68?'PASS':'Keep going');
+  var t='<table><tr><th>Domain</th><th class="num">Score</th></tr>';
+  Object.keys(D).forEach(function(k){if(by[k])t+='<tr><td>'+D[k]+'</td><td class="num">'+by[k][0]+' / '+by[k][1]+'</td></tr>';});
+  document.getElementById('domainOut').innerHTML=t+'</table>';
+};
+document.getElementById('clearExam').onclick=function(){ans={};store.set('acc.exam',ans);document.querySelectorAll('#exam input').forEach(function(r){r.checked=false;});document.querySelectorAll('#exam .fb').forEach(function(f){f.textContent='';});document.getElementById('scoreOut').textContent='';document.getElementById('domainOut').innerHTML='';};
+var start=store.get('acc.tab','L0');
+if(!document.getElementById(start)||!document.getElementById(start).classList.contains('level'))start='L0';
+show(start,false);
+if(location.hash){var el=document.getElementById(location.hash.slice(1));if(el){var lv=el.closest('.level');if(lv)show(lv.id,false);if(el.tagName==='DETAILS')el.open=true;}}
+})();
+</script>
+
+
+</body>
+</html>
