@@ -1,0 +1,218 @@
+[
+  {
+    "type": "NVB_OTP",
+    "email": "customer1@novabank.test",
+    "externalId": "REQ-0001",
+    "ctx": {
+      "otp": "597623",
+      "validMinutes": 5
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "mobilePhone": "+919846103891",
+    "wishedChannel": "1",
+    "externalId": "REQ-0002",
+    "ctx": {
+      "otp": "789409",
+      "validMinutes": 5
+    },
+    "_expect": "delivered by SMS (VERIFY wishedChannel value)"
+  },
+  {
+    "type": "NVB_STMT",
+    "email": "customer3@novabank.test",
+    "externalId": "REQ-0003",
+    "ctx": {
+      "month": "September 2026",
+      "last4": "9669",
+      "opening": "42,180.00",
+      "closing": "51,902.35",
+      "statementUrl": "https://www.novabank.test/statements/2026-09"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_LOWBAL",
+    "email": "customer4@novabank.test",
+    "externalId": "REQ-0004",
+    "ctx": {
+      "last4": "6730",
+      "balance": "228.20",
+      "threshold": "1000"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_UNKNOWN",
+    "email": "asha@novabank.test",
+    "externalId": "REQ-0005",
+    "ctx": {
+      "otp": "000000"
+    },
+    "_expect": "rejected: event type not published"
+  },
+  {
+    "type": "NVB_OTP",
+    "mobilePhone": "+919811457663",
+    "wishedChannel": "1",
+    "externalId": "REQ-0006",
+    "ctx": {
+      "otp": "492958",
+      "validMinutes": 5
+    },
+    "_expect": "delivered by SMS (VERIFY wishedChannel value)"
+  },
+  {
+    "type": "NVB_STMT",
+    "email": "customer7@novabank.test",
+    "externalId": "REQ-0007",
+    "ctx": {
+      "month": "September 2026",
+      "last4": "8905",
+      "opening": "42,180.00",
+      "closing": "51,902.35",
+      "statementUrl": "https://www.novabank.test/statements/2026-09"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_LOWBAL",
+    "email": "customer8@novabank.test",
+    "externalId": "REQ-0008",
+    "ctx": {
+      "last4": "5490",
+      "balance": "678.42",
+      "threshold": "1000"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "email": "customer9@novabank.test",
+    "externalId": "REQ-0009",
+    "ctx": {
+      "otp": "582573",
+      "validMinutes": 5
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "email": "not-an-email",
+    "externalId": "REQ-0010",
+    "ctx": {
+      "otp": "111111",
+      "validMinutes": 5
+    },
+    "_expect": "rejected/failed: invalid address"
+  },
+  {
+    "type": "NVB_STMT",
+    "email": "customer11@novabank.test",
+    "externalId": "REQ-0011",
+    "ctx": {
+      "month": "September 2026",
+      "last4": "4729",
+      "opening": "42,180.00",
+      "closing": "51,902.35",
+      "statementUrl": "https://www.novabank.test/statements/2026-09"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_LOWBAL",
+    "email": "customer12@novabank.test",
+    "externalId": "REQ-0012",
+    "ctx": {
+      "last4": "1027",
+      "balance": "694.53",
+      "threshold": "1000"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "email": "customer13@novabank.test",
+    "externalId": "REQ-0013",
+    "ctx": {
+      "otp": "252361",
+      "validMinutes": 5
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "mobilePhone": "+919869063154",
+    "wishedChannel": "1",
+    "externalId": "REQ-0014",
+    "ctx": {
+      "otp": "485514",
+      "validMinutes": 5
+    },
+    "_expect": "delivered by SMS (VERIFY wishedChannel value)"
+  },
+  {
+    "type": "NVB_STMT",
+    "email": "meera.iyer@novabank.test",
+    "externalId": "REQ-0015",
+    "ctx": {},
+    "_expect": "delivered with fallbacks (missing ctx values)"
+  },
+  {
+    "type": "NVB_LOWBAL",
+    "email": "customer16@novabank.test",
+    "externalId": "REQ-0016",
+    "ctx": {
+      "last4": "3658",
+      "balance": "405.37",
+      "threshold": "1000"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "email": "customer17@novabank.test",
+    "externalId": "REQ-0017",
+    "ctx": {
+      "otp": "320464",
+      "validMinutes": 5
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "mobilePhone": "+919817895267",
+    "wishedChannel": "1",
+    "externalId": "REQ-0018",
+    "ctx": {
+      "otp": "704204",
+      "validMinutes": 5
+    },
+    "_expect": "delivered by SMS (VERIFY wishedChannel value)"
+  },
+  {
+    "type": "NVB_STMT",
+    "email": "customer19@novabank.test",
+    "externalId": "REQ-0019",
+    "ctx": {
+      "month": "September 2026",
+      "last4": "4270",
+      "opening": "42,180.00",
+      "closing": "51,902.35",
+      "statementUrl": "https://www.novabank.test/statements/2026-09"
+    },
+    "_expect": "delivered"
+  },
+  {
+    "type": "NVB_OTP",
+    "email": "",
+    "mobilePhone": "",
+    "externalId": "REQ-0020",
+    "ctx": {
+      "otp": "222222"
+    },
+    "_expect": "rejected: no address"
+  }
+]

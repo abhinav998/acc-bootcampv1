@@ -1,0 +1,13 @@
+<!-- A8: review this schema and find ten defects. Do NOT import it. Answer key is in the bootcamp page. -->
+<srcSchema name="Loans" namespace="nms" label="loans">
+  <element name="loan">
+    <attribute name="Loan ID" type="string"/>
+    <attribute name="amount" type="string" length="10"/>
+    <attribute name="panNumber" type="string" length="10" label="PAN"/>
+    <attribute name="status" type="string" length="1"/>
+    <attribute name="disbursedOn" type="string" length="10"/>
+    <attribute name="notes" type="memo"/>
+    <dbindex name="notes"><keyfield xpath="@notes"/></dbindex>
+    <element name="customer" type="link" target="nms:recipient" noDbIndex="true"/>
+  </element>
+</srcSchema>

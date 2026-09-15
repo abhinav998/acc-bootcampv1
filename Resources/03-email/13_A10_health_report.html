@@ -1,0 +1,13 @@
+<!-- NovaBank ACC Bootcamp | A10 nightly health report (Alert activity content). instance.vars.* set by the JS activity. -->
+<div style="font:14px Arial,Helvetica,sans-serif;color:#1d2a27;max-width:640px">
+<h2 style="font-size:18px;color:#0B3B5B;margin:0 0 8px">NovaBank Campaign health, <%= formatDate(getCurrentDate(), "%2D/%2M/%4Y") %></h2>
+<table cellpadding="6" style="border-collapse:collapse;font-size:13px;width:100%">
+<tr style="background:#eef2f1"><th align="left">Check</th><th align="right">Result</th></tr>
+<tr><td>Staging rows purged (&gt;14 days)</td><td align="right"><%= instance.vars.purgedStaging %></td></tr>
+<tr><td>Run-log rows purged (&gt;180 days)</td><td align="right"><%= instance.vars.purgedRunLog %></td></tr>
+<tr><td>Workflows in error</td><td align="right" style="color:#A53A2B"><%= instance.vars.wfFailed %></td></tr>
+<tr><td>Workflows paused &gt; 3 days</td><td align="right"><%= instance.vars.wfPaused %></td></tr>
+<tr><td>Workflows keeping interim results</td><td align="right"><%= instance.vars.wfKeepResult %></td></tr>
+<tr><td>New quarantines (24h)</td><td align="right"><%= instance.vars.quarantine24h %></td></tr>
+</table>
+<p style="font-size:13px"><b>Details</b><br><%= instance.vars.detailHtml %></p></div>

@@ -1,0 +1,31 @@
+<%@ page import="xtk:shared/nl.js" %><%
+// NovaBank ACC Bootcamp | A12 stretch: partner JSON -> Message Center event (nvb:mcBridge.jssp)
+// POST body: {"type":"NVB_OTP","email":"asha@novabank.test","externalId":"REQ-1","ctx":{"otp":"482913","validMinutes":5}}
+// Header: X-NVB-Key (compared with option nvb_mcBridgeKey). Runs on the EXECUTION instance.
+// VERIFY: whether custom JSSPs are allowed on your (managed) execution instance, rtEvent attributes (wishedChannel),
+// and the PushEvent call form on your build. Never log OTP values.
+NL.require('/nl/core/shared/xtk.js')
+var ALLOWED = { NVB_OTP: ["otp", "validMinutes"], NVB_STMT: ["month", "last4", "opening", "closing", "statementUrl"], NVB_LOWBAL: ["last4", "balance", "threshold"] }
+function fail(code, why) { logWarning("mcBridge " + code + " " + why + " ip=" + request.getRemoteAddr()); response.sendError(code) }
+
+if (request.method != "POST") fail(405, "method")
+else if (!getOption("nvb_mcBridgeKey") || hmacStr(request.getHeader("X-NVB-Key") || "") != hmacStr(getOption("nvb_mcBridgeKey"))) fail(403, "key")
+else {
+  var b = null
+  try { b = JSON.parse(request.getBodyAsString()) } catch (e) {}
+  if (!b || !ALLOWED[b.type] || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email || "") || !b.ctx) fail(400, "payload")
+  else {
+    var ctx = <ctx/>
+    ALLOWED[b.type].forEach(function (k) { if (b.ctx[k] !== undefined) ctx.appendChild(new XML("<" + k + "/>")); if (b.ctx[k] !== undefined) ctx[k] = String(b.ctx[k]) })
+    var ev = <rtEvent type={b.type} email={b.email} origin="nvb-mcBridge" externalId={String(b.externalId || "")} wishedChannel="0"/>
+    ev.appendChild(ctx)
+    try {
+      var id = nms.rtEvent.PushEvent(ev)
+      logInfo("mcBridge queued type=" + b.type + " id=" + id)
+      response.setContentType("application/json;charset=utf-8")
+      response.addHeader("Cache-Control", "no-store")
+      document.write(JSON.stringify({ ok: true, eventId: String(id) }))
+    } catch (e) { fail(500, "push " + e) }
+  }
+}
+%>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- NovaBank ACC Bootcamp | M47 / Capstone: preference center (web app nvbPreferences)
+     How to use: in Campaign, create web app "nvbPreferences" with activities
+       Start -> Preloading (Script: nvb_webapp_scripts.js#preload) -> Page "Preferences" -> Storage (Script#store) -> Page "Thanks" -> End
+     Paste the <style> block into the web app's rendering (or a custom CSS), and build the form controls
+     in the Page activity with the same names as below (the input names map to ctx paths).
+     This file also works as a standalone mock-up in a browser (personalisation tags show as text).
+     VERIFY: ctx paths for the recipient extension fields and service names on your build. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaBank | Your communication preferences</title>
+<style>
+:root{--navy:#0B3B5B;--teal:#0F7B5F;--ink:#1d2a27;--muted:#5b6b67;--line:#dfe6e3;--bg:#F4F6F5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
+header{background:var(--navy);color:#fff;padding:16px 20px;font-weight:bold;font-size:20px}header span{color:#7FD3B8}
+main{max-width:640px;margin:24px auto;padding:0 16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+h1{font-size:24px;margin:0 0 6px;color:var(--navy)}p.lead{color:var(--muted);margin:0 0 18px}
+fieldset{border:0;border-top:1px solid var(--line);margin:0;padding:16px 0}
+legend{font-weight:bold;padding:0 0 8px}
+label.opt{display:flex;gap:12px;align-items:flex-start;padding:8px 0;cursor:pointer}
+label.opt input{margin-top:4px;width:18px;height:18px;accent-color:var(--teal)}
+label.opt small{display:block;color:var(--muted)}
+select{font:inherit;padding:8px;border:1px solid var(--line);border-radius:6px;min-width:200px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+button{font:bold 15px Arial,Helvetica,sans-serif;border-radius:6px;padding:12px 22px;cursor:pointer;border:1px solid var(--teal)}
+.primary{background:var(--teal);color:#fff}.link{background:#fff;color:var(--teal)}
+.fine{font-size:12px;color:var(--muted);margin-top:14px}
+</style></head>
+<body>
+<header>Nova<span>Bank</span></header>
+<main><div class="card">
+  <h1>Hi <%= ctx.recipient.@firstName || "there" %>, choose what you hear from us</h1>
+  <p class="lead">Signed in as <b><%= ctx.recipient.@email %></b>. Service messages about your accounts (statements, OTPs, alerts) are always sent.</p>
+  <form method="post">
+    <fieldset><legend>Topics</legend>
+      <label class="opt"><input type="checkbox" name="svc_nvbInsights" <%= ctx.vars.subInsights == "1" ? "checked" : "" %>>
+        <span>NovaBank Insights<small>Monthly money tips and guides</small></span></label>
+      <label class="opt"><input type="checkbox" name="svc_nvbOffers" <%= ctx.vars.subOffers == "1" ? "checked" : "" %>>
+        <span>Offers<small>Card, loan and deposit offers picked for you</small></span></label>
+    </fieldset>
+    <fieldset><legend>Purposes (DPDP consent)</legend>
+      <label class="opt"><input type="checkbox" name="consent_MKT" <%= ctx.vars.cMKT == "1" ? "checked" : "" %>><span>Marketing messages</span></label>
+      <label class="opt"><input type="checkbox" name="consent_PRF" <%= ctx.vars.cPRF == "1" ? "checked" : "" %>><span>Personalisation based on how I use NovaBank</span></label>
+    </fieldset>
+    <fieldset><legend>How should we reach you?</legend>
+      <select name="preferredChannel">
+        <option value="EML" <%= ctx.recipient.@preferredChannel == "EML" ? "selected" : "" %>>Email</option>
+        <option value="SMS" <%= ctx.recipient.@preferredChannel == "SMS" ? "selected" : "" %>>SMS</option>
+        <option value="PSH" <%= ctx.recipient.@preferredChannel == "PSH" ? "selected" : "" %>>App notification</option>
+      </select>
+      <p class="fine">Language: 
+        <select name="preferredLanguage"><option value="EN">English</option><option value="HI">हिन्दी</option><option value="MR">मराठी</option><option value="TA">தமிழ்</option></select></p>
+    </fieldset>
+    <div class="actions">
+      <button class="primary" type="submit" name="action" value="save">Save preferences</button>
+      <button class="link" type="submit" name="action" value="unsubAll">Unsubscribe from all marketing</button>
+    </div>
+    <p class="fine">Notice version PN-2026.1. You can change these choices at any time. NovaBank is a fictional bank used for training.</p>
+  </form>
+</div></main>
+</body></html>

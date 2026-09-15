@@ -1,0 +1,23 @@
+<!-- NovaBank ACC Bootcamp | nvb:product | Custom
+     Used in: A7, A5, M55
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="product" namespace="nvb" label="Products" labelSingular="Product">
+  <enumeration name="family" basetype="string">
+    <value name="card" value="CARD" label="Card"/>
+    <value name="loan" value="LOAN" label="Loan"/>
+    <value name="deposit" value="DEP" label="Deposit"/>
+    <value name="insurance" value="INS" label="Insurance"/>
+  </enumeration>
+  <element name="product" autopk="true" label="Product">
+    <compute-string expr="@code"/>
+    <key name="code"><keyfield xpath="@code"/></key>
+    <dbindex name="code" unique="true"><keyfield xpath="@code"/></dbindex>
+    <attribute name="code" type="string" length="20" label="Product code"/>
+    <attribute name="label" type="string" length="100" label="Label"/>
+    <attribute name="family" type="string" length="4" label="Family" enum="family"/>
+    <attribute name="annualFee" type="money" label="Annual fee (INR)"/>
+    <attribute name="active" type="boolean" label="Active" default="true"/>
+  </element>
+</srcSchema>

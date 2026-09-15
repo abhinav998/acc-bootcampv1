@@ -1,0 +1,23 @@
+<!-- NovaBank ACC Bootcamp | nvb:runLog | Audit
+     Used in: A9, A10, A11
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="runLog" namespace="nvb" label="Workflow run log" labelSingular="Run">
+  <enumeration name="status" basetype="string">
+    <value name="start" value="START" label="Started"/>
+    <value name="ok" value="OK" label="Succeeded"/>
+    <value name="skip" value="SKIP" label="Skipped"/>
+    <value name="fail" value="FAIL" label="Failed"/>
+  </enumeration>
+  <element name="runLog" autopk="true" label="Run">
+    <dbindex name="wfDate"><keyfield xpath="@workflow"/><keyfield xpath="@logDate"/></dbindex>
+    <attribute name="workflow" type="string" length="64" label="Workflow"/>
+    <attribute name="step" type="string" length="64" label="Step"/>
+    <attribute name="status" type="string" length="8" label="Status" enum="status"/>
+    <attribute name="count" type="long" label="Record count"/>
+    <attribute name="fileName" type="string" length="255" label="File"/>
+    <attribute name="message" type="string" length="255" label="Message"/>
+    <attribute name="logDate" type="datetime" label="Logged at"/>
+  </element>
+</srcSchema>

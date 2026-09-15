@@ -1,0 +1,7 @@
+position,column,source_xpath,format,example
+1,CUSTOMER_ID,[nvb]@customerId,text(20),NVB000012
+2,FULL_NAME,@firstName + ' ' + @lastName,text(80),Priya Sharma
+3,ADDRESS_1,location/@address3,text(80),"12, MG Road"
+4,CITY,location/@city,text(40),Mumbai
+5,PIN,location/@zipCode,text(6),400001
+6,OFFER_CODE,targetData.offerCode,text(12),NVBDM2026A

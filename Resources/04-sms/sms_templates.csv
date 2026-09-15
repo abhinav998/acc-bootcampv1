@@ -1,0 +1,10 @@
+template_id,used_in,category,sample_rendered_text,campaign_template_or_note,encoding,char_units,parts,dlt_template_id (fill in),dlt_header (fill in)
+NVB_SMS_WELCOME_EN,A1/M11,Service,"Hi Asha, welcome to NovaBank! Your savings a/c is ready. Get the app: nvb.test/app -NovaBank","Hi <%= recipient.firstName %>, welcome to NovaBank! Your savings a/c is ready. Get the app: <%= shortUrl %> -NovaBank",GSM-7,92,1,,
+NVB_SMS_WELCOME_ACCENT,M11 lab,Service,"Hi Zoé, welcome to NovaBank! Your savings a/c is ready. Get the app: nvb.test/app -NovaBank","(same template, name with é: stays GSM-7 because é is in the GSM set)",GSM-7,91,1,,
+NVB_SMS_WELCOME_HI,M11 lab,Service,"नमस्ते अनन्या, NovaBank में आपका स्वागत है! आपका बचत खाता तैयार है। ऐप: nvb.test/app -NovaBank","Devanagari forces UCS-2: 70 chars per single part, 67 per concatenated part",UCS-2,94,2,,
+NVB_SMS_INSIGHTS,A2,Promotional,NovaBank Insights: 3 new reads on saving smarter. Read: nvb.test/ins Reply STOP to 5676xxx -NovaBank,<%= recipient.firstName %>... keep STOP instruction; DLT template ID in delivery description,GSM-7,100,1,,
+NVB_SMS_PLAT_OFFER,A5,Promotional,"Priya, you're pre-selected for Nova Platinum, lifetime free. Apply: nvb.test/plat T&C. STOP to 5676xxx -NovaBank",Uses targetData.offerCode in URL,GSM-7,112,1,,
+NVB_SMS_OTP,A12,Transactional,482913 is your NovaBank OTP. Valid 5 mins. Never share it. -NovaBank,<%= rtEvent.ctx.otp %> is your NovaBank OTP. Valid <%= rtEvent.ctx.validMinutes %> mins. Never share it. -NovaBank,GSM-7,68,1,,
+NVB_SMS_LOWBAL,Capstone,Service,"Alert: a/c XX4521 balance Rs.812.40 is below Rs.1,000. Add money: nvb.test/add -NovaBank","<%= rtEvent.ctx.last4 %>, <%= rtEvent.ctx.balance %>",GSM-7,88,1,,
+NVB_SMS_WINBACK,Capstone,Promotional,We miss you! Reactivate your NovaBank a/c with any txn & get Rs.250 cashback. nvb.test/re STOP to 5676xxx,Control group excluded,GSM-7,105,1,,
+NVB_SMS_EURO_TEST,M11 lab,Test,Price: €10 {promo} [today] only,Extension chars € { } [ ] count as 2 each in GSM-7,GSM-7,36,1,,

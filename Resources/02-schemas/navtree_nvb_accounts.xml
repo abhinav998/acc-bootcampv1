@@ -1,0 +1,8 @@
+<!-- NovaBank ACC Bootcamp | A7: navigation hierarchy so users can create "NovaBank accounts" folders.
+     VERIFY attribute names against an OOTB navtree (Administration > Configuration > Navigation hierarchies). -->
+<navtree name="accounts" namespace="nvb" label="NovaBank accounts">
+  <model name="nvbAccounts" label="NovaBank" img="xtk:folder.png">
+    <nodeModel name="nvbAccount" label="Accounts" img="nms:recipient.png"
+               folderLink="folder" schema="nvb:account" form="nvb:account"/>
+  </model>
+</navtree>

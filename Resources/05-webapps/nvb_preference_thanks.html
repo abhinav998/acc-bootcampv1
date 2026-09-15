@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- NovaBank ACC Bootcamp | "Thanks" page of web app nvbPreferences (also used as unsubscribe confirmation) -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaBank | Preferences saved</title>
+<style>body{margin:0;background:#F4F6F5;font:16px/1.5 Arial,Helvetica,sans-serif;color:#1d2a27}header{background:#0B3B5B;color:#fff;padding:16px 20px;font-weight:bold;font-size:20px}header span{color:#7FD3B8}main{max-width:560px;margin:40px auto;padding:0 16px}.card{background:#fff;border:1px solid #dfe6e3;border-radius:10px;padding:26px}h1{color:#0B3B5B;font-size:24px;margin:0 0 8px}a{color:#0F7B5F}</style></head>
+<body><header>Nova<span>Bank</span></header>
+<main><div class="card">
+<% if (ctx.vars.action == "unsubAll") { %>
+  <h1>You're unsubscribed</h1>
+  <p>We won't send you marketing messages any more. It can take up to an hour for this to reach every channel.</p>
+<% } else { %>
+  <h1>Preferences saved</h1>
+  <p>Thanks, <%= ctx.recipient.@firstName || "there" %>. Your choices are saved.</p>
+<% } %>
+  <p>Changed your mind? <a href="?id=<%= escapeUrl(ctx.vars.id) %>">Update your preferences</a>.</p>
+</div></main></body></html>

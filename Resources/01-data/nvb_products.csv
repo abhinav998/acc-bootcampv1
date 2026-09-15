@@ -1,0 +1,9 @@
+product_code,product_name,family,annual_fee,active
+CC-PLAT,Nova Platinum Credit Card,CARD,2500,Y
+CC-CLASSIC,Nova Classic Credit Card,CARD,500,Y
+CC-TRAVEL,Nova Voyager Travel Card,CARD,3500,Y
+PL-QUICK,Nova Quick Personal Loan,LOAN,0,Y
+HL-HOME,Nova Home Loan,LOAN,0,Y
+FD-SENIOR,Senior Citizen FD,DEP,0,Y
+RD-GROW,Grow Recurring Deposit,DEP,0,Y
+INS-TERM,Nova Term Shield,INS,0,N

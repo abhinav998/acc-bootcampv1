@@ -1,0 +1,96 @@
+<%@ page import="xtk:shared/nl.js" %><%
+// NovaBank ACC Bootcamp | JSSP course Levels 2-3 reference solution (cus:pulseApi.jssp)
+// GET  ?action=status&email=...            -> JSON status
+// POST ?action=subscribe|unsubscribe       -> body {"email":"..."} + header X-Pulse-Key
+// VERIFY on your instance: operator pulse_api credentials, @blackList field name, link name recipient-id,
+// and whether status 409 passes through your web server.
+NL.require('/nl/core/shared/xtk.js')
+
+var SERVICE = "pulseNews"
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Design choice: 200 + JSON for business outcomes; sendError(code) (no body) for protocol errors
+function sendJson(obj) {
+  response.setContentType("application/json;charset=utf-8")
+  response.addHeader("Cache-Control", "no-store")
+  document.write(JSON.stringify(obj))
+}
+
+function validEmail(e) { return e && e.length <= 255 && EMAIL_RE.test(e) }
+
+function findRecipient(email) {
+  var q = NLWS.xtkQueryDef.create({queryDef: {
+    schema: "nms:recipient", operation: "getIfExists",
+    select: { node: [{expr: "@id"}, {expr: "@blackList"}] },
+    where:  { condition: {expr: "@email=" + NL.XTK.toXTKString(email)} }
+  }})
+  var r = q.ExecuteQuery()
+  return r.$id ? { id: r.$id, blocklisted: r.$blackList == "1" } : null
+}
+
+function isSubscribed(rcpId) {
+  var q = NLWS.xtkQueryDef.create({queryDef: {
+    schema: "nms:subscription", operation: "count",
+    where: { condition: [
+      {expr: "[service/@name]=" + NL.XTK.toXTKString(SERVICE)},
+      {expr: "@recipient-id=" + parseInt(rcpId, 10)}
+    ]}
+  }})
+  return parseInt(q.ExecuteQuery().$count, 10) > 0
+}
+
+function status(email) {
+  var r = findRecipient(email)
+  return { email: email, exists: !!r, blocklisted: r ? r.blocklisted : false,
+           subscribed: r ? isSubscribed(r.id) : false,
+           checkedAt: formatDate(getCurrentDate(), "%4Y-%2M-%2D %02H:%02N") }
+}
+
+function doStatus() {
+  var email = request.getUTF8Parameter("email")
+  if (!validEmail(email)) return response.sendError(400)
+  sendJson(status(email))
+}
+
+function doWrite(subscribe) {
+  if (request.method != "POST") return response.sendError(405)
+  var key = getOption("cus_pulseApiKey")
+  if (!key || hmacStr(request.getHeader("X-Pulse-Key") || "") != hmacStr(key))
+    return response.sendError(403)
+
+  var body
+  try { body = JSON.parse(request.getBodyAsString()) } catch (e) { body = null }
+  if (!body || !validEmail(body.email)) return response.sendError(400)
+
+  var old = logon("pulse_api", "")
+  try {
+    var r = findRecipient(body.email)
+    if (!r) return sendJson({ ok: false, error: "UNKNOWN_RECIPIENT" })
+    if (subscribe && r.blocklisted) return response.sendError(409)
+    var rcp = {recipient: {_key: "email", email: body.email}}
+    if (subscribe) NLWS.nmsSubscription.Subscribe(SERVICE, rcp, false)
+    else           NLWS.nmsSubscription.Unsubscribe(SERVICE, rcp)
+    logInfo("pulseApi " + (subscribe ? "sub" : "unsub") + " OK ip=" + request.getRemoteAddr())
+    sendJson({ ok: true, status: status(body.email) })
+  } catch (e) {
+    logWarning("pulseApi error " + e + " ip=" + request.getRemoteAddr())
+    response.sendError(500)
+  } finally {
+    logon(old)
+  }
+}
+
+var routes = {
+  status:      function () { if (request.method != "GET") return response.sendError(405); doStatus() },
+  subscribe:   function () { doWrite(true) },
+  unsubscribe: function () { doWrite(false) }
+}
+
+var m = request.method
+if (m != "GET" && m != "POST") response.sendError(405)
+else {
+  var action = request.getParameter("action")
+  if (!routes.hasOwnProperty(action)) response.sendError(404)
+  else routes[action]()
+}
+%>

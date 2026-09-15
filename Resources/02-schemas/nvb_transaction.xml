@@ -1,0 +1,32 @@
+<!-- NovaBank ACC Bootcamp | nvb:transaction | Custom (high volume, pkSequence)
+     Used in: A7, A9, A11
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="transaction" namespace="nvb" label="Transactions" labelSingular="Transaction">
+  <enumeration name="channel" basetype="string">
+    <value name="upi" value="UPI" label="UPI"/>
+    <value name="card" value="CRD" label="Card"/>
+    <value name="netbank" value="NB" label="Net banking"/>
+    <value name="branch" value="BR" label="Branch"/>
+    <value name="atm" value="ATM" label="ATM"/>
+  </enumeration>
+  <enumeration name="direction" basetype="string">
+    <value name="credit" value="CR" label="Credit"/>
+    <value name="debit" value="DR" label="Debit"/>
+  </enumeration>
+  <element name="transaction" autopk="true" pkSequence="NvbTransactionSeq" label="Transaction">
+    <compute-string expr="@txnId"/>
+    <key name="txnId"><keyfield xpath="@txnId"/></key>
+    <dbindex name="txnId" unique="true"><keyfield xpath="@txnId"/></dbindex>
+    <dbindex name="txnDate"><keyfield xpath="@txnDate"/></dbindex>
+    <attribute name="txnId" type="string" length="32" label="Transaction ID"/>
+    <attribute name="amount" type="double" label="Amount"/>
+    <attribute name="currency" type="string" length="3" label="Currency" default="'INR'"/>
+    <attribute name="direction" type="string" length="2" label="Direction" enum="direction"/>
+    <attribute name="channel" type="string" length="3" label="Channel" enum="channel"/>
+    <attribute name="merchantCategory" type="string" length="30" label="Merchant category"/>
+    <attribute name="txnDate" type="datetime" label="Transaction date"/>
+    <element name="account" type="link" target="nvb:account" label="Account" revLink="transactions" integrity="own"/>
+  </element>
+</srcSchema>

@@ -1,0 +1,13 @@
+<!-- NovaBank ACC Bootcamp | A4 Alert activity content (HTML). Uses workflow variables. VERIFY variable names. -->
+<div style="font:14px Arial,Helvetica,sans-serif;color:#1d2a27">
+<p><b>NVB monthly segmentation</b>, run <%= instance.vars.month %> finished.</p>
+<table cellpadding="6" style="border-collapse:collapse;font-size:13px">
+<tr style="background:#eef2f1"><th align="left">Segment</th><th align="right">Target</th><th align="right">Control</th></tr>
+<tr><td>Premier</td><td align="right"><%= instance.vars.cntPremier %></td><td align="right"><%= instance.vars.ctlPremier %></td></tr>
+<tr><td>Growth</td><td align="right"><%= instance.vars.cntGrowth %></td><td align="right"><%= instance.vars.ctlGrowth %></td></tr>
+<tr><td>Core</td><td align="right"><%= instance.vars.cntCore %></td><td align="right"><%= instance.vars.ctlCore %></td></tr>
+<tr><td>Dormant</td><td align="right"><%= instance.vars.cntDormant %></td><td align="right"><%= instance.vars.ctlDormant %></td></tr>
+<tr><td>Excluded (staff + quarantine)</td><td align="right" colspan="2"><%= instance.vars.cntExcluded %></td></tr>
+<tr style="border-top:2px solid #0B3B5B"><td><b>Query total</b></td><td align="right" colspan="2"><b><%= instance.vars.cntQuery %></b></td></tr>
+</table>
+<p>Workflow: <%= instance.internalName %> (id <%= instance.id %>)</p></div>

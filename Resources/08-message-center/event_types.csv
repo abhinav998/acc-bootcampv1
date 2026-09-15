@@ -1,0 +1,4 @@
+event_type,label,channels,template_file,ctx_fields,tracking,archiving,used_in
+NVB_OTP,One-time password,Email + SMS,03-email/08_MC_otp.html ; 04-sms NVB_SMS_OTP,otp; validMinutes,OFF,Short retention (no OTP in archives),A12
+NVB_STMT,Monthly statement ready,Email,03-email/09_MC_statement.html,month; last4; opening; closing; statementUrl,ON,Default,A12
+NVB_LOWBAL,Low balance alert,Email + SMS,03-email/10_MC_low_balance.html ; 04-sms NVB_SMS_LOWBAL,last4; balance; threshold,ON,Default,Capstone

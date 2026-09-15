@@ -1,0 +1,6 @@
+operator_group,role,needs,named_rights (VERIFY names on your build),folder_permissions
+NVB Builders,Campaign builder,"Create/edit campaigns & deliveries in NovaBank folders; prepare, not start","delivery, prepareDelivery, createProject, editProject",NovaBank/* read+write; no delete on Recipients
+NVB Approvers,Campaign approver,Approve target/content; start deliveries,"delivery, startDelivery",NovaBank/Campaigns read+write
+NVB Data Engineers,Data engineer,"Workflows, imports/exports; SQL on DEV only","workflow, import, export, sql (DEV only)",NovaBank/Workflows read+write+delete
+NVB Analysts,Analyst,Read deliveries and reports; no recipient export,(none beyond read),NovaBank/* read only; Recipients hidden
+NVB API,API technical account,Subscription and event push only,"(method-level: nms:subscription, nms:rtEvent)",No folder access

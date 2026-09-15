@@ -1,0 +1,17 @@
+<!-- NovaBank ACC Bootcamp | nvb:event | v8 FFDA custom, staged
+     Used in: M52, A14 reference
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="event" namespace="nvb" label="Customer events (FFDA)" labelSingular="Customer event" dataSource="nms:extAccount:ffda">
+  <!-- VERIFY: placement of dataSource (root vs element) on your v8 build -->
+  <element name="event" autopk="true" autouuid="true" autoStg="true" label="Customer event">
+    <compute-string expr="@extId"/>
+    <key name="extId"><keyfield xpath="@extId"/></key>
+    <!-- FFDA: no dbindex on the cloud DB; Snowflake does not enforce key unicity (Unicity alerting workflow) -->
+    <attribute name="extId" type="string" length="36" label="External ID"/>
+    <attribute name="type" type="string" length="20" label="Event type"/>
+    <attribute name="occurred" type="datetime" label="Occurred at"/>
+    <element name="recipient" type="link" target="nms:recipient" label="Recipient" revLink="events" integrity="own"/>
+  </element>
+</srcSchema>

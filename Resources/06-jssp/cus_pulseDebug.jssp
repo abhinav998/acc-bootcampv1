@@ -1,0 +1,25 @@
+<%@ page import="xtk:shared/nl.js" %><%
+// NovaBank ACC Bootcamp | JSSP course Level 1: introspection page (cus:pulseDebug.jssp)
+// Everything is printed through <%= %> so it is escaped. Test with ?x=<b>hi</b>
+response.setContentType("text/html;charset=utf-8")
+response.addHeader("Cache-Control", "no-store")
+%><!doctype html>
+<html><body style="font-family:Arial,sans-serif">
+<h1>Request</h1>
+<ul>
+<li>method = <%= request.method %></li>
+<li>requestURI = <%= request.requestURI %></li>
+<li>queryString = <%= request.queryString %></li>
+<li>scheme = <%= request.scheme %></li>
+<li>serverName = <%= request.serverName %> : <%= request.serverPort %></li>
+<li>serverURL = <%= request.serverURL %></li>
+<li>contextPath = <%= request.contextPath %> · servletPath = <%= request.servletPath %> · pathInfo = <%= request.pathInfo %></li>
+<li>client IP (or last proxy) = <%= request.getRemoteAddr() %></li>
+</ul>
+<h1>Headers</h1>
+<ul><li>Host = <%= request.getHeader("host") %></li><li>User-Agent = <%= request.getHeader("user-agent") %></li></ul>
+<h1>Parameters</h1>
+<ul><% var ps = request.parameters; for (var p in ps) { %><li><%= p %> = <%= ps[p] %></li><% } %></ul>
+<h1>Cookies</h1>
+<ul><% var cs = request.cookies; for (var c in cs) { %><li><%= c %> = <%= cs[c].value %></li><% } %></ul>
+</body></html>

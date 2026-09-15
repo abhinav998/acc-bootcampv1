@@ -1,0 +1,22 @@
+<!-- NovaBank ACC Bootcamp | nvb:txnStaging | Fixed staging table
+     Used in: A9, A11
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="txnStaging" namespace="nvb" label="Transaction staging (fixed)" labelSingular="Staged transaction">
+  <element name="txnStaging" autopk="true" label="Staged transaction">
+    <dbindex name="txnId"><keyfield xpath="@txnId"/></dbindex>
+    <dbindex name="accountNumber"><keyfield xpath="@accountNumber"/></dbindex>
+    <dbindex name="loadDate"><keyfield xpath="@loadDate"/></dbindex>
+    <attribute name="txnId" type="string" length="32" label="Transaction ID"/>
+    <attribute name="accountNumber" type="string" length="20" label="Account number"/>
+    <attribute name="amount" type="double" label="Amount"/>
+    <attribute name="currency" type="string" length="3" label="Currency"/>
+    <attribute name="direction" type="string" length="2" label="Direction"/>
+    <attribute name="channel" type="string" length="3" label="Channel"/>
+    <attribute name="merchantCategory" type="string" length="30" label="Merchant category"/>
+    <attribute name="txnDate" type="datetime" label="Transaction date"/>
+    <attribute name="fileName" type="string" length="255" label="Source file"/>
+    <attribute name="loadDate" type="datetime" label="Loaded at"/>
+  </element>
+</srcSchema>

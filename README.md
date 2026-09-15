@@ -11,6 +11,7 @@ A zero-to-expert, hands-on bootcamp for Adobe Campaign Classic (v7 and v8). All 
 | Levels | 7 (+ capstone) |
 | Modules | 60 |
 | Graded assignments | 14 |
+| Lab resources | 82 files: data, schemas, email/web HTML, scripts, 2 Excel workbooks |
 | Mock exam | 75 questions, mapped to the AD0-E331 developer exam areas and practitioner topics |
 | Effort | ~8–10 weeks part-time |
 
@@ -26,6 +27,16 @@ A zero-to-expert, hands-on bootcamp for Adobe Campaign Classic (v7 and v8). All 
 | L5 Dev + technical workflows | JSAPI, libraries, personalisation, web apps, JSSP, content management, technical workflow design | M44–M50 | A9 Daily ingestion · A10 Housekeeping · A11 Orchestration |
 | L6 Integration + admin | SOAP, v8 staging APIs, external accounts, Message Center, Interaction, Experience Cloud, security, packages, deliverability, privacy, v7→v8 | M51–M60 | A12 Transactional OTP · A13 Security + packages · A14 FFDA redesign |
 | Capstone | NovaBank Lifecycle Program | — | 100 pts |
+
+## Resources
+
+The [`Resources`](Resources) folder is the lab kit. It holds the synthetic NovaBank data, importable schema XML, email and web page HTML, SMS templates, JSSP pages, workflow scripts, Message Center payloads, workflow designs, checklists and SQL. Start with:
+
+- [`Resources/NovaBank_Data_Mapping.xlsx`](Resources/NovaBank_Data_Mapping.xlsx): database mapping and definitions for every schema
+- [`Resources/ACC_Bootcamp_Master.xlsx`](Resources/ACC_Bootcamp_Master.xlsx): curriculum, assignments, rubrics, inventory, schedule, learner tracker and question bank
+- [`Resources/README.md`](Resources/README.md): gap analysis, folder map and build order
+
+The page also has a **Resources** tab that links every file, and each assignment lists the files it needs.
 
 ## Using it
 

@@ -1,0 +1,18 @@
+<!-- NovaBank ACC Bootcamp | nvb:score | v8 FFDA custom, staged
+     Used in: A14
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="score" namespace="nvb" label="Propensity scores (FFDA)" labelSingular="Propensity score" dataSource="nms:extAccount:ffda">
+  <!-- VERIFY: placement of dataSource (root vs element) on your v8 build -->
+  <element name="score" autopk="true" autouuid="true" autoStg="true" label="Propensity score">
+    <compute-string expr="@modelCode"/>
+    <key name="modelCode"><keyfield xpath="@modelCode"/><keyfield xpath="recipient"/></key>
+    <!-- FFDA: no dbindex on the cloud DB; Snowflake does not enforce key unicity (Unicity alerting workflow) -->
+    <attribute name="modelCode" type="string" length="20" label="Model"/>
+    <attribute name="score" type="double" label="Score 0-1"/>
+    <attribute name="decile" type="byte" label="Decile"/>
+    <attribute name="scoredOn" type="date" label="Scored on"/>
+    <element name="recipient" type="link" target="nms:recipient" label="Recipient" revLink="scores" integrity="own"/>
+  </element>
+</srcSchema>

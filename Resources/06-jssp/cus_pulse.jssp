@@ -1,0 +1,35 @@
+<%@ page import="xtk:shared/nl.js" %><%
+// NovaBank ACC Bootcamp | JSSP course Level 4 reference (cus:pulse.jssp, abridged). Post/Redirect/Get + cookie.
+NL.require('/nl/core/shared/xtk.js'); NL.require('/nl/core/shared/js.js')
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+if (request.method == "POST") {
+  var e = request.getUTF8Parameter("email"), op = request.getParameter("op")
+  if (EMAIL_RE.test(e || "") && (op == "sub" || op == "unsub")) {
+    var old = logon("pulse_api", "")
+    try {
+      var rcp = {recipient: {_key: "email", email: e}}
+      if (op == "sub") NLWS.nmsSubscription.Subscribe("pulseNews", rcp, false)
+      else NLWS.nmsSubscription.Unsubscribe("pulseNews", rcp)
+    } finally { logon(old) }
+    response.addHeader("Set-Cookie", "pulseEmail=" + escapeUrl(e) + "; Max-Age=1800; Path=/; Secure; HttpOnly")
+    response.sendRedirect("pulse.jssp?done=1&email=" + escapeUrl(e))
+  } else response.sendError(400)
+} else {
+  var email = request.getUTF8Parameter("email")
+  var c = request.cookies
+  if (!email && c && c.pulseEmail) email = decodeURIComponent(c.pulseEmail.value)
+  response.setContentType("text/html;charset=utf-8")
+  response.addHeader("Cache-Control", "no-store")
+%><!doctype html>
+<html><body style="font-family:Arial,sans-serif;max-width:560px;margin:40px auto">
+<h1>Pulse Newsletter</h1>
+<% if (request.getParameter("done") == "1") { %><p>Your preference is saved.</p><% } %>
+<form method="post" action="pulse.jssp">
+  <input name="email" type="email" value="<%= email || "" %>" required>
+  <button name="op" value="sub">Subscribe</button>
+  <button name="op" value="unsub">Unsubscribe</button>
+</form>
+<script>var current = "<%== NL.JS.escape(email || "") %>";</script>
+</body></html>
+<% } %>

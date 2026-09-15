@@ -1,0 +1,11 @@
+email,expected_outcome
+nobody.0@novabank.test,User unknown (hard)
+full.mailbox@novabank.test,Mailbox full (soft) - simulate on your test MTA
+x@invalid-domain-nvb.test,Invalid domain
+disabled@novabank.test,Account disabled
+spaces in@novabank.test,Malformed address
+a@b,Malformed address
+postmaster@novabank.test,Refused / role address
+bounce.7@novabank.test,User unknown (hard)
+abuse@novabank.test,Role address
+inactive.user@novabank.test,Inactive user

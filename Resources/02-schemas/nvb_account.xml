@@ -1,0 +1,33 @@
+<!-- NovaBank ACC Bootcamp | nvb:account | Custom (targetable)
+     Used in: A7, A9, Capstone
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="account" namespace="nvb" label="Accounts" labelSingular="Account">
+  <enumeration name="accType" basetype="string">
+    <value name="savings" value="SAV" label="Savings"/>
+    <value name="current" value="CUR" label="Current"/>
+    <value name="fd" value="FD" label="Fixed deposit"/>
+  </enumeration>
+  <enumeration name="accStatus" basetype="byte" default="active">
+    <value name="active" value="1" label="Active"/>
+    <value name="dormant" value="2" label="Dormant"/>
+    <value name="closed" value="3" label="Closed"/>
+  </enumeration>
+  <element name="account" autopk="true" label="Account">
+    <compute-string expr="@accountNumber"/>
+    <key name="accountNumber"><keyfield xpath="@accountNumber"/></key>
+    <dbindex name="accountNumber" unique="true"><keyfield xpath="@accountNumber"/></dbindex>
+    <dbindex name="email"><keyfield xpath="@email"/></dbindex>
+    <attribute name="accountNumber" type="string" length="20" label="Account number"/>
+    <attribute name="type" type="string" length="3" label="Type" enum="accType"/>
+    <attribute name="status" type="byte" label="Status" enum="accStatus" default="1"/>
+    <attribute name="balance" type="double" label="Balance (INR)"/>
+    <attribute name="openedOn" type="date" label="Opened on"/>
+    <attribute name="email" type="string" length="80" label="Email" dataPolicy="email"/>
+    <attribute name="mobilePhone" type="string" length="20" label="Mobile"/>
+    <attribute name="blackList" type="boolean" label="No longer contact" default="false"/>
+    <attribute name="balanceBand" type="string" label="Balance band" expr="Iif(@balance &gt;= 500000, 'HIGH', Iif(@balance &gt;= 50000, 'MID', 'LOW'))"/>
+    <element name="recipient" type="link" target="nms:recipient" label="Owner" revLink="accounts" integrity="own"/>
+  </element>
+</srcSchema>

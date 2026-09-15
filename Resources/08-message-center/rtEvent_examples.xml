@@ -1,0 +1,23 @@
+<!-- NovaBank ACC Bootcamp | A12 Message Center payloads (entity passed to nms:rtEvent#PushEvent)
+     Event types to create on the CONTROL instance: NVB_OTP (email + SMS), NVB_STMT (email), NVB_LOWBAL (email + SMS).
+     VERIFY wishedChannel values on your build (commonly 0 = email, 1 = mobile). -->
+<examples>
+  <rtEvent type="NVB_OTP" email="asha@novabank.test" origin="nvb-auth" externalId="REQ-8841" wishedChannel="0">
+    <ctx><otp>482913</otp><validMinutes>5</validMinutes></ctx>
+  </rtEvent>
+
+  <rtEvent type="NVB_OTP" mobilePhone="+919812345678" origin="nvb-auth" externalId="REQ-8842" wishedChannel="1">
+    <ctx><otp>731055</otp><validMinutes>5</validMinutes></ctx>
+  </rtEvent>
+
+  <rtEvent type="NVB_STMT" email="meera.iyer@novabank.test" origin="nvb-statements" externalId="STMT-2026-09-0001">
+    <ctx><month>September 2026</month><last4>4521</last4><opening>42,180.00</opening><closing>51,902.35</closing>
+      <statementUrl>https://www.novabank.test/statements/2026-09</statementUrl></ctx>
+  </rtEvent>
+
+  <rtEvent type="NVB_LOWBAL" email="rohan.gupta@novabank.test" origin="nvb-core" externalId="LB-778120">
+    <ctx><last4>9087</last4><balance>812.40</balance><threshold>1000</threshold></ctx>
+  </rtEvent>
+
+  <!-- Batch form (nms:batchEvent#PushEvents) wraps several events in <eventCollection> (VERIFY element name). -->
+</examples>

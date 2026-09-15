@@ -1,0 +1,14 @@
+<!-- NovaBank ACC Bootcamp | nvb:accountProduct | Relation (N-N)
+     Used in: A7
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="accountProduct" namespace="nvb" label="Account products" labelSingular="Account product">
+  <element name="accountProduct" autopk="true" label="Account product">
+    <!-- VERIFY keyfield syntax for link-based keys against nms:rcpGrpRel -->
+    <key name="pair"><keyfield xpath="account"/><keyfield xpath="product"/></key>
+    <attribute name="since" type="date" label="Holding since"/>
+    <element name="account" type="link" target="nvb:account" label="Account" revLink="products" integrity="own"/>
+    <element name="product" type="link" target="nvb:product" label="Product" revLink="holders" integrity="own"/>
+  </element>
+</srcSchema>

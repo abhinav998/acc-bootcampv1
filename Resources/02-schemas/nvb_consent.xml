@@ -1,0 +1,32 @@
+<!-- NovaBank ACC Bootcamp | nvb:consent | Custom (DPDP)
+     Used in: Capstone, M60
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="consent" namespace="nvb" label="Consent per purpose" labelSingular="Consent">
+  <enumeration name="purpose" basetype="string">
+    <value name="marketing" value="MKT" label="Marketing offers"/>
+    <value name="insights" value="INS" label="Insights newsletter"/>
+    <value name="service" value="SRV" label="Service updates"/>
+    <value name="profiling" value="PRF" label="Personalisation / profiling"/>
+  </enumeration>
+  <enumeration name="status" basetype="byte" default="granted">
+    <value name="granted" value="1" label="Granted"/>
+    <value name="withdrawn" value="2" label="Withdrawn"/>
+  </enumeration>
+  <enumeration name="sourceChannel" basetype="string">
+    <value name="web" value="WEB" label="Website"/>
+    <value name="app" value="APP" label="Mobile app"/>
+    <value name="branch" value="BR" label="Branch"/>
+    <value name="import" value="IMP" label="Import"/>
+  </enumeration>
+  <element name="consent" autopk="true" label="Consent">
+    <dbindex name="eventDate"><keyfield xpath="@eventDate"/></dbindex>
+    <attribute name="purpose" type="string" length="3" label="Purpose" enum="purpose"/>
+    <attribute name="status" type="byte" label="Status" enum="status"/>
+    <attribute name="sourceChannel" type="string" length="3" label="Source" enum="sourceChannel"/>
+    <attribute name="eventDate" type="datetime" label="Recorded at"/>
+    <attribute name="noticeVersion" type="string" length="10" label="Notice version"/>
+    <element name="recipient" type="link" target="nms:recipient" label="Recipient" revLink="consents" integrity="own"/>
+  </element>
+</srcSchema>

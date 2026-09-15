@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- NovaBank ACC Bootcamp | A5 / Capstone landing page (web app nvbPlatinum)
+     Preloaded by encrypted id: https://<server>/webApp/nvbPlatinum?id=<%= escapeUrl(recipient.cryptedId) %>&code=<offer>
+     The "Apply" form stores an application flag in a Storage activity (e.g. an nvb:consent / response table) for the A5 hypothesis. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Platinum | Pre-approved offer</title>
+<style>
+body{margin:0;font:16px/1.55 Arial,Helvetica,sans-serif;color:#1d2a27;background:#fff}
+header{background:#0B3B5B;color:#fff;padding:16px 20px;font-weight:bold;font-size:20px}header span{color:#7FD3B8}
+.hero{background:linear-gradient(135deg,#0B3B5B,#0F7B5F);color:#fff;padding:44px 20px}
+.wrap{max-width:900px;margin:0 auto}
+.hero h1{font-size:34px;line-height:1.15;margin:0 0 10px}.hero p{max-width:52ch;margin:0 0 20px;opacity:.9}
+.card{display:inline-block;width:280px;max-width:100%;aspect-ratio:1.586;border-radius:14px;background:linear-gradient(120deg,#d9dee3,#9aa6b0);color:#0B3B5B;padding:18px;font:bold 14px 'Courier New',monospace;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:36px 20px}
+.b{border:1px solid #dfe6e3;border-radius:10px;padding:18px}.b b{display:block;color:#0B3B5B;font-size:18px;margin-bottom:4px}
+form{background:#F4F6F5;padding:26px 20px}label{display:block;margin:10px 0 4px;font-weight:bold}
+input[type=text],input[type=tel]{width:100%;max-width:360px;padding:10px;border:1px solid #c9d3cf;border-radius:6px;font:inherit}
+button{margin-top:16px;background:#0F7B5F;color:#fff;border:0;border-radius:6px;padding:13px 26px;font:bold 16px Arial,sans-serif;cursor:pointer}
+.fine{font-size:12px;color:#5b6b67}
+</style></head><body>
+<header>Nova<span>Bank</span></header>
+<section class="hero"><div class="wrap">
+  <h1><%= ctx.recipient.@firstName || "You" %>, you're pre-selected for Nova Platinum</h1>
+  <p>Offer <b><%= ctx.vars.code || "OF-PLAT-LTF" %></b>: lifetime free, 5x rewards on travel, airport lounge access. Apply in two minutes.</p>
+  <div class="card">NOVA PLATINUM<br><br>XXXX XXXX XXXX 0000<br><br><%= (ctx.recipient.@firstName || "CARD HOLDER").toUpperCase() %></div>
+</div></section>
+<section class="wrap grid">
+  <div class="b"><b>Lifetime free</b>No joining or annual fee.</div>
+  <div class="b"><b>5x travel rewards</b>On flights and hotels booked with the card.</div>
+  <div class="b"><b>Lounge access</b>8 domestic visits a year.</div>
+</section>
+<form class="wrap" method="post">
+  <h2 style="margin:0 0 6px;color:#0B3B5B">Confirm your details</h2>
+  <label for="fullName">Name on card</label><input id="fullName" name="fullName" type="text" value="<%= ctx.recipient.@firstName %> <%= ctx.recipient.@lastName %>">
+  <label for="mobile">Mobile</label><input id="mobile" name="mobile" type="tel" value="<%= ctx.recipient.@mobilePhone %>">
+  <label style="font-weight:normal"><input type="checkbox" name="consent" required> I agree to the terms and to NovaBank checking my eligibility.</label>
+  <button type="submit" name="action" value="apply">Apply now</button>
+  <p class="fine">Fictional product for training. Do not collect real card or ID numbers in Campaign.</p>
+</form>
+</body></html>

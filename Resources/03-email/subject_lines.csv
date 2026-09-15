@@ -1,0 +1,16 @@
+file,assignment,subject,preheader,sender,notes
+01_A1_welcome.html,A1,"Welcome to NovaBank, <%= recipient.firstName || 'friend' %>",Your savings account is ready,NovaBank <hello@news.novabank.test>,HI variant: NovaBank में आपका स्वागत है
+02_A2_insights_reminder.html,A2,"This month's Insights, picked for you",Three short reads,NovaBank Insights <insights@news.novabank.test>,
+03_A5_platinum_crosssell_A.html,A5,"Pre-approved: Nova Platinum, lifetime free",Apply in 2 minutes,NovaBank Cards <cards@news.novabank.test>,A/B cell A (10%)
+04_A5_platinum_crosssell_B.html,A5,"5x rewards on every trip, <%= recipient.firstName %>",Your Platinum offer ends soon,NovaBank Cards <cards@news.novabank.test>,A/B cell B (10%); winner by CTR after 4h
+05_A7_account_high_balance.html,A7,A better home for your savings,FD rates for high balances,NovaBank <hello@news.novabank.test>,Target mapping nvbAccountMapping
+07_CAP_winback_dormant.html,Capstone,We've missed you,₹250 when you reactivate,NovaBank <hello@news.novabank.test>,Control group 10%
+08_MC_otp.html,A12,Your NovaBank OTP,Valid for 5 minutes,NovaBank Alerts <alerts@notify.novabank.test>,"Transactional, no tracking"
+09_MC_statement.html,A12,Your <%= rtEvent.ctx.month %> statement is ready,,NovaBank Alerts <alerts@notify.novabank.test>,Transactional
+10_MC_low_balance.html,Capstone,Low balance alert,,NovaBank Alerts <alerts@notify.novabank.test>,Transactional
+11_A2_double_optin_confirmation.html,A2,Please confirm your subscription,One click to confirm,NovaBank Insights <insights@news.novabank.test>,Service confirmation message
+06_CAP_onboarding_day00.html,Capstone,Welcome aboard,Set up the app and MPIN,NovaBank <hello@news.novabank.test>,Journey day 0
+06_CAP_onboarding_day03.html,Capstone,Your first UPI payment,Link UPI in under a minute,NovaBank <hello@news.novabank.test>,Journey day 3
+06_CAP_onboarding_day07.html,Capstone,Add a nominee,Protect your family in 3 taps,NovaBank <hello@news.novabank.test>,Journey day 7
+06_CAP_onboarding_day14.html,Capstone,Grow with a recurring deposit,Start from ₹500 a month,NovaBank <hello@news.novabank.test>,Journey day 14
+06_CAP_onboarding_day30.html,Capstone,Your first month with NovaBank,Here's what you've done so far,NovaBank <hello@news.novabank.test>,Journey day 30

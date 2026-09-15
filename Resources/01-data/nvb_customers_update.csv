@@ -1,0 +1,21 @@
+customer_id,first_name,last_name,email,mobile,gender,date_of_birth,city,state,pin_code,address_line1,branch_code,preferred_language,loyalty_tier,kyc_status,last_login_date,is_staff,account_open_date,app_installed,preferred_channel,email_optin,sms_optin,created_date
+NVB000001,Karan,Chopra,karan.chopra1@novabank.test,+919888721495,1,1991-10-20,Delhi,DL,110001,"113, Linking Road",DEL,EN,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-27,N,EML,Y,N,2026-09-27
+NVB000002,Harsh,Pandey,harsh.pandey2@novabank.test,+919820243483,1,1992-07-09,Hyderabad,TG,500001,"186, Anna Salai",HYD,EN,PLT,0,2026-10-01T09:00:00+05:30,N,2026-09-29,N,SMS,Y,Y,2026-09-29
+NVB000003,Ananya,Agarwal,ananya.agarwal3@novabank.test,+919890552815,2,1982-08-14,Hyderabad,TG,500001,"225, FC Road",HYD,HI,PLT,1,2026-10-01T09:00:00+05:30,N,2026-10-01,Y,PSH,Y,Y,2026-10-01
+NVB000004,Simran,Chopra,simran.chopra4@novabank.test,+919867634371,2,1969-04-25,Mumbai,MH,400001,"121, Hazratganj",MUM,HI,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-30,N,EML,Y,Y,2026-09-30
+NVB000005,Anjali,Kulkarni-Rao,anjali.joshi5@novabank.test,+919849510228,2,1963-05-18,Chennai,TN,600001,"213, Park Street",CHE,EN,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-25,N,EML,Y,Y,2026-09-25
+NVB000006,Simran,Pillai,simran.pillai6@novabank.test,+919814512393,2,1993-05-23,Hyderabad,TG,500001,"213, Park Street",HYD,EN,PLT,1,2026-10-01T09:00:00+05:30,N,2026-09-28,N,SMS,Y,Y,2026-09-28
+NVB000007,Asha,Iyer,asha.iyer7@novabank.test,+919865205206,2,1959-08-03,Chennai,TN,600001,"38, FC Road",CHE,EN,GLD,1,2026-10-01T09:00:00+05:30,Y,2026-09-26,Y,PSH,Y,Y,2026-09-26
+NVB000008,Varun,Nair,varun.nair8@novabank.test,+919810688684,1,1998-10-02,Lucknow,UP,226001,"81, Indiranagar 100ft Rd",LKO,HI,PLT,1,2026-10-01T09:00:00+05:30,N,2026-09-25,N,SMS,Y,Y,2026-09-25
+NVB000009,Varun,Agarwal,varun.agarwal9@novabank.test,+919879797368,1,2000-07-22,Pune,MH,411001,"207, Linking Road",PUN,HI,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-30,Y,EML,Y,N,2026-09-30
+NVB000010,,Sharma,aditi.sharma10@novabank.test,+919886721298,2,1973-08-11,Mumbai,MH,400001,"159, Hazratganj",MUM,EN,PLT,1,2026-10-01T09:00:00+05:30,N,2026-09-26,N,EML,Y,Y,2026-09-26
+NVB000011,Arjun,Malhotra,arjun.malhotra11@novabank.test,+919896013797,1,2003-04-21,Chennai,TN,600001,"49, FC Road",CHE,MR,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-30,Y,PSH,Y,Y,2026-09-30
+NVB000012,Zoë,Pandey,aditya.pandey12@novabank.test,+919845358813,1,1981-05-14,Bengaluru,KA,560001,"119, FC Road",BLR,TA,PLT,1,2026-10-01T09:00:00+05:30,N,2026-09-27,Y,PSH,Y,Y,2026-09-27
+NVB000013,Asha,Singh,asha.singh13@novabank.test,+919899979425,2,1999-04-08,Pune,MH,411001,"47, MG Road",PUN,EN,GLD,1,2026-10-01T09:00:00+05:30,N,2026-10-01,N,EML,Y,Y,2026-10-01
+NVB000014,Rohan,Mishra,rohan.mishra14@novabank.test,+919845394922,1,1970-10-24,Pune,MH,411001,"25, Banjara Hills Rd 2",PUN,EN,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-30,N,EML,Y,Y,2026-09-30
+NVB000015,Rohan,Chopra,rohan.chopra15@novabank.test,,1,1988-10-27,Hyderabad,TG,500001,"106, Park Street",HYD,HI,GLD,1,2026-10-01T09:00:00+05:30,N,2026-10-01,Y,EML,Y,N,2026-10-01
+NVB000016,Rohan,Pandey,rohan.pandey16@novabank.test,+919889733040,1,1985-08-20,Hyderabad,TG,500001,"119, Banjara Hills Rd 2",HYD,MR,GLD,1,2026-10-01T09:00:00+05:30,N,2026-09-26,N,EML,Y,Y,2026-09-26
+NVB000017,Shreya,Kulkarni,shreya.kulkarni17@novabank.test,+919826416872,2,2002-12-23,Hyderabad,TG,500001,"77, Banjara Hills Rd 2",HYD,EN,GLD,0,2026-10-01T09:00:00+05:30,N,2026-09-28,N,EML,Y,Y,2026-09-28
+NVB000018,Rohan,Iyer,rohan.iyer18@novabank.test,+919865740367,1,1998-01-05,Delhi,DL,110001,"99, Banjara Hills Rd 2",DEL,EN,PLT,1,2026-10-01T09:00:00+05:30,N,2026-09-27,Y,SMS,Y,Y,2026-09-27
+NVB000019,Dev,Pandey,dev.pandey19@novabank.test,+919852244317,1,1989-03-08,Chennai,TN,600001,"36, Indiranagar 100ft Rd",CHE,EN,GLD,0,2026-10-01T09:00:00+05:30,Y,2026-10-01,Y,EML,N,Y,2026-10-01
+NVB000020,Neha,Tiwari,neha.tiwari20@novabank.test,+919830246318,2,2002-11-27,Hyderabad,TG,500001,"238, Banjara Hills Rd 2",HYD,MR,PLT,1,2026-10-01T09:00:00+05:30,N,2026-10-01,Y,PSH,Y,Y,2026-10-01

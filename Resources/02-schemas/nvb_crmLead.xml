@@ -1,0 +1,15 @@
+<!-- NovaBank ACC Bootcamp | nvb:crmLead | FDA mapping (view)
+     Used in: M40
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="crmLead" namespace="nvb" label="CRM leads (FDA view)" labelSingular="CRM lead">
+  <element name="crmLead" sqltable="CRM_LEADS" dataSource="nms:extAccount:nvbCrm" view="true" label="CRM lead">
+    <compute-string expr="@leadId"/>
+    <key name="leadId"><keyfield xpath="@leadId"/></key>
+    <attribute name="leadId" type="string" length="20" label="Lead ID" sqlname="LEAD_ID"/>
+    <attribute name="email" type="string" length="80" label="Email" sqlname="EMAIL" dataPolicy="email"/>
+    <attribute name="productInterest" type="string" length="20" label="Product interest" sqlname="PRODUCT_INTEREST"/>
+    <attribute name="createdOn" type="datetime" label="Created" sqlname="CREATED_ON"/>
+  </element>
+</srcSchema>

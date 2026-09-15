@@ -1,0 +1,37 @@
+<!-- NovaBank ACC Bootcamp | nvb:recipient | Extension of nms:recipient
+     Used in: A1, A2, A4, A5, A6, Capstone
+     Generated from the bootcamp data mapping (NovaBank_Data_Mapping.xlsx). Review on a DEV instance
+     before saving; items marked VERIFY differ across Campaign builds. -->
+
+<srcSchema name="recipient" namespace="nvb" label="Recipients (NovaBank extension)" extendedSchema="nms:recipient">
+  <enumeration name="loyaltyTier" basetype="string">
+    <value name="silver" value="SLV" label="Silver"/>
+    <value name="gold" value="GLD" label="Gold"/>
+    <value name="platinum" value="PLT" label="Platinum"/>
+  </enumeration>
+  <enumeration name="kycStatus" basetype="byte" default="pending">
+    <value name="pending" value="0" label="Pending"/>
+    <value name="verified" value="1" label="Verified"/>
+    <value name="expired" value="2" label="Expired"/>
+  </enumeration>
+  <enumeration name="preferredChannel" basetype="string">
+    <value name="email" value="EML" label="Email"/>
+    <value name="sms" value="SMS" label="SMS"/>
+    <value name="push" value="PSH" label="Push"/>
+  </enumeration>
+  <element name="recipient">
+    <dbindex name="customerId" unique="true"><keyfield xpath="@customerId"/></dbindex>
+    <dbindex name="lastLoginDate"><keyfield xpath="@lastLoginDate"/></dbindex>
+    <attribute name="customerId" type="string" length="20" label="Customer ID"/>
+    <attribute name="loyaltyTier" type="string" length="3" label="Loyalty tier" enum="loyaltyTier"/>
+    <attribute name="kycStatus" type="byte" label="KYC status" enum="kycStatus" default="0"/>
+    <attribute name="preferredLanguage" type="string" length="2" label="Preferred language" userEnum="nvbPreferredLanguage" default="'EN'"/>
+    <attribute name="preferredChannel" type="string" length="3" label="Preferred channel" enum="preferredChannel"/>
+    <attribute name="appInstalled" type="boolean" label="App installed" default="false"/>
+    <attribute name="lastLoginDate" type="datetime" label="Last digital login"/>
+    <attribute name="isStaff" type="boolean" label="Staff member" default="false"/>
+    <attribute name="accountOpenDate" type="date" label="First account opened"/>
+    <attribute name="branchCity" type="string" length="3" label="Home branch city" userEnum="nvbBranchCity"/>
+    <attribute name="isDigitalActive" type="boolean" label="Digitally active (30d)" expr="Iif(@lastLoginDate &gt;= DaysAgo(30), 1, 0)"/>
+  </element>
+</srcSchema>

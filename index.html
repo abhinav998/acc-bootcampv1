@@ -410,7 +410,7 @@ Count([broadLog-id])   // aggregate over a collection link</pre>
 <div class="lab"><b>Mini-lab</b><br>For any past delivery, reconcile the report numbers against a query on <code>nms:broadLogRcp</code> (status counts) and <code>nms:trackingLogRcp</code> (distinct recipients by URL type). Explain any gap.</div>
 </div></details>
 
-<article class="asg" id="a1"><header><div class="k2">Assignment 1 · Level 1 · 100 pts</div><h3>NovaBank welcome email</h3></header><div class="in">
+<article class="asg" id="a1"><header><div class="k2">Assignment 1 · Level 1 · 100 pts</div><h3>NovaBank welcome email</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_customers.csv; 00_NVB_Email_Base.html; 01_A1_welcome.html; subject_lines.csv; sms_templates.csv · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> NovaBank wants a welcome email for customers who opened a savings account in the last 7 days.</p>
 <h4>Tasks</h4><ol>
 <li>Import <code>nvb_customers.csv</code> (create 200 rows: id, first name, last name, email, mobile, city, date of birth, account open date, preferred language EN/HI) into <code>NovaBank / Recipients</code>. Deduplicate on email.</li>
@@ -423,7 +423,7 @@ Count([broadLog-id])   // aggregate over a collection link</pre>
 <h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Import quality and dedup</td><td class="num">20</td></tr><tr><td>Targeting correctness</td><td class="num">20</td></tr><tr><td>Personalisation with fallbacks</td><td class="num">25</td></tr><tr><td>Proof discipline (seed, rounds, fixes)</td><td class="num">20</td></tr><tr><td>Tracking and reporting evidence</td><td class="num">15</td></tr></table></div>
 </div></article>
 
-<article class="asg" id="a2"><header><div class="k2">Assignment 2 · Level 1 · 100 pts</div><h3>Multi-channel reminder with consent handling</h3></header><div class="in">
+<article class="asg" id="a2"><header><div class="k2">Assignment 2 · Level 1 · 100 pts</div><h3>Multi-channel reminder with consent handling</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_insights_subscribers.csv; 02_A2_insights_reminder.html; 11_A2_double_optin_confirmation.html; sms_templates.csv · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> Customers who subscribed to "NovaBank Insights" but haven't clicked any email in 60 days get an email reminder; those with a mobile number and no email engagement also get an SMS.</p>
 <h4>Tasks</h4><ol>
 <li>Create information service <code>nvbInsights</code> with a double opt-in confirmation message.</li>
@@ -616,7 +616,7 @@ xtk.workflow.PostEvent(
 <tr><td><code>NVB_TPL_SEGMENT_MONTHLY</code></td><td>Template</td></tr></table></div>
 </div></details>
 
-<article class="asg" id="a3"><header><div class="k2">Assignment 3 · Level 2 · 100 pts</div><h3>Activity drills: ten mini-labs</h3></header><div class="in">
+<article class="asg" id="a3"><header><div class="k2">Assignment 3 · Level 2 · 100 pts</div><h3>Activity drills: ten mini-labs</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> workflow_designs.md (A3); nvb_dedup_drill.csv; nvb_products.csv; wf_A3_A4_A5_snippets.js · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p>Each drill is a small standalone workflow. For each, submit a screenshot of the workflow, the count on every transition, and one sentence explaining the count.</p>
 <div class="tw"><table><tr><th>#</th><th>Drill</th><th>Activities</th><th>Expected outcome</th></tr>
 <tr><td>D1</td><td>Query with additional data</td><td>Query</td><td>Savings customers in Mumbai with a computed <code>@ageBand</code> column</td></tr>
@@ -633,7 +633,7 @@ xtk.workflow.PostEvent(
 <h4>Rubric</h4><p>10 points per drill: 4 for correct configuration, 3 for correct counts, 3 for the explanation.</p>
 </div></article>
 
-<article class="asg" id="a4"><header><div class="k2">Assignment 4 · Level 2 · 100 pts</div><h3>Monthly segmentation workflow</h3></header><div class="in">
+<article class="asg" id="a4"><header><div class="k2">Assignment 4 · Level 2 · 100 pts</div><h3>Monthly segmentation workflow</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> workflow_designs.md (A4); nvb_staff.csv; wf_A3_A4_A5_snippets.js; 12_A4_segmentation_alert.html · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> On the 1st of each month NovaBank refreshes four value segments and saves them as lists used by later campaigns.</p>
 <h4>Tasks</h4><ol>
 <li>Scheduler (1st of month, 06:00 IST) → Query active customers (not blocklisted, has email or mobile).</li>
@@ -752,7 +752,7 @@ instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ?
 <div class="lab"><b>Mini-lab</b><br>Turn the table into a reusable checklist (spreadsheet or Campaign "task" list) and run it against Assignment 1.</div>
 </div></details>
 
-<article class="asg" id="a5"><header><div class="k2">Assignment 5 · Level 3 · 100 pts</div><h3>Credit card cross-sell program</h3></header><div class="in">
+<article class="asg" id="a5"><header><div class="k2">Assignment 5 · Level 3 · 100 pts</div><h3>Credit card cross-sell program</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> workflow_designs.md (A5); 03/04_A5_platinum_crosssell_*.html; typology_rules_A5.js; nvb_landing_platinum.html; nvb_offers.csv; checklists.md · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> NovaBank wants to sell the "Nova Platinum" card to savings customers with steady balances, over email, SMS and push, without exceeding contact limits.</p>
 <h4>Tasks</h4><ol>
 <li>Create program "NVB 2026 Cards" and a campaign from <code>NVB_TPL_Campaign</code>.</li>
@@ -942,7 +942,7 @@ instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ?
 <div class="note">Confirm where <code>dataSource</code> belongs (root vs element) and the exact external account name on your v8 build before saving.</div>
 </div></details>
 
-<article class="asg" id="a6"><header><div class="k2">Assignment 6 · Level 4 · 100 pts</div><h3>Schema build (basic): extend the recipient</h3></header><div class="in">
+<article class="asg" id="a6"><header><div class="k2">Assignment 6 · Level 4 · 100 pts</div><h3>Schema build (basic): extend the recipient</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_recipient.xml; form_nms_recipient_novabank_tab.xml; nvb_customers.csv; nvb_customers_update.csv; Data mapping workbook · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> NovaBank needs customer attributes on the profile for segmentation.</p>
 <h4>Tasks</h4><ol>
 <li>Create <code>nvb:recipient</code> extending <code>nms:recipient</code> with: <code>customerId</code> (string 20, unique index), <code>loyaltyTier</code> (closed enum SLV/GLD/PLT), <code>kycStatus</code> (byte enum: 0 Pending, 1 Verified, 2 Expired), <code>preferredLanguage</code> (user enum), <code>lastLoginDate</code> (datetime), <code>isStaff</code> (boolean, default false), and a computed <code>isDigitalActive</code> = last login within 30 days.</li>
@@ -957,7 +957,7 @@ instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ?
   expr="Iif(@lastLoginDate &gt;= DaysAgo(30), 1, 0)"/&gt;</pre></details>
 </div></article>
 
-<article class="asg" id="a7"><header><div class="k2">Assignment 7 · Level 4 · 100 pts</div><h3>Schema build (advanced): the NovaBank data model</h3></header><div class="in">
+<article class="asg" id="a7"><header><div class="k2">Assignment 7 · Level 4 · 100 pts</div><h3>Schema build (advanced): the NovaBank data model</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_product/account/transaction/accountProduct.xml; forms; navtree; nvb_accounts.csv; nvb_products.csv; nvb_account_products.csv; 05_A7_account_high_balance.html; Target_Mapping sheet · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> Campaigns must target <b>accounts</b>, not just people, and use transaction and product data.</p>
 <pre class="raw">nms:recipient 1 ──── N nvb:account 1 ──── N nvb:transaction
                          │
@@ -1043,7 +1043,7 @@ instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ?
 </details>
 </div></article>
 
-<article class="asg" id="a8"><header><div class="k2">Assignment 8 · Level 4 · 50 pts</div><h3>Schema review: find ten defects</h3></header><div class="in">
+<article class="asg" id="a8"><header><div class="k2">Assignment 8 · Level 4 · 50 pts</div><h3>Schema review: find ten defects</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> A8_flawed_schema_for_review.xml · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p>Review this schema as if it were a pull request. List every defect, its impact, and your fix.</p>
 <pre class="raw">&lt;srcSchema name="Loans" namespace="nms" label="loans"&gt;
   &lt;element name="loan"&gt;
@@ -1254,7 +1254,7 @@ setOption("NVB_LOCK_" + instance.internalName, "0");</pre>
 <ul class="done"><li>Naming and description follow the convention</li><li>Owner and supervisor group set</li><li>Fixed staging table, no dynamic table names</li><li>Rerun is safe (idempotent)</li><li>Lock + stale-lock handling</li><li>Zero-count and volume-deviation guards</li><li>Every data activity has an error route</li><li>Run log rows written for start, end and failure</li><li>Keep interim results off, SQL logging off</li><li>Schedule checked against heatmap and cleanup window</li><li>Runbook written</li></ul>
 </div></details>
 
-<article class="asg" id="a9"><header><div class="k2">Assignment 9 · Level 5 · 100 pts</div><h3>Technical workflow: daily transaction ingestion</h3></header><div class="in">
+<article class="asg" id="a9"><header><div class="k2">Assignment 9 · Level 5 · 100 pts</div><h3>Technical workflow: daily transaction ingestion</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_txnStaging.xml; nvb_runLog.xml; nvb_txn_20260930..20261003.csv; nvb_utils.js; wf_A9_ingestion.js; workflow_designs.md (A9); verification_queries.md · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> Core banking drops <code>nvb_txn_YYYYMMDD.csv</code> on SFTP every day by 02:00 IST. Load it into <code>nvb:transaction</code> by 04:00.</p>
 <pre class="raw">Scheduler 02:15
   └─ JS: init vars + lock ─ Test(skip?) ─┐
@@ -1307,7 +1307,7 @@ if (vars.recCount == 0 || (avg &gt; 0 &amp;&amp; vars.recCount &lt; avg * 0.5)) 
 </details>
 </div></article>
 
-<article class="asg" id="a10"><header><div class="k2">Assignment 10 · Level 5 · 60 pts</div><h3>Technical workflow: nightly housekeeping</h3></header><div class="in">
+<article class="asg" id="a10"><header><div class="k2">Assignment 10 · Level 5 · 60 pts</div><h3>Technical workflow: nightly housekeeping</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> wf_A10_A11_housekeeping_master.js; 13_A10_health_report.html; checklists.md · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <h4>Tasks</h4><ol>
 <li>Purge <code>nvb:txnStaging</code> rows older than 14 days and <code>nvb:runLog</code> rows older than 180 days, in batches (Update data, delete mode, batch size set).</li>
 <li>List workflows in your folder that are paused &gt; 3 days or in error, and workflows with "Keep interim results" on (queryDef on <code>xtk:workflow</code>).</li>
@@ -1328,7 +1328,7 @@ var rows = q.ExecuteQuery();
 // Verify the state enumeration values (paused / started / finished) in xtk:workflow on your build.</pre></details>
 </div></article>
 
-<article class="asg" id="a11"><header><div class="k2">Assignment 11 · Level 5 · 80 pts</div><h3>Technical workflow: orchestration</h3></header><div class="in">
+<article class="asg" id="a11"><header><div class="k2">Assignment 11 · Level 5 · 80 pts</div><h3>Technical workflow: orchestration</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> wf_A10_A11_housekeeping_master.js; wf_A9_ingestion.js; workflow_designs.md (A11) · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> A master workflow runs the nightly chain: ingest transactions → refresh segments → export audience file for the CDP. Children must run in order and only if the previous one succeeded.</p>
 <h4>Tasks</h4><ol>
 <li>Refactor Assignments 9 and 4 into child workflows that start with an External signal and finish with a JS activity that signals the master back (PostEvent) with <code>status</code> and <code>count</code>.</li>
@@ -1475,7 +1475,7 @@ In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtE
 <div class="note">The project's <i>Campaign v7 to v8 replatform</i> doc has the detailed plan; use this checklist as the summary.</div>
 </div></details>
 
-<article class="asg" id="a12"><header><div class="k2">Assignment 12 · Level 6 · 100 pts</div><h3>Transactional OTP and statement alerts</h3></header><div class="in">
+<article class="asg" id="a12"><header><div class="k2">Assignment 12 · Level 6 · 100 pts</div><h3>Transactional OTP and statement alerts</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> 08-message-center/*; 08/09_MC_*.html; sms_templates.csv; nvb_mcBridge.jssp · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <h4>Tasks</h4><ol>
 <li>On the control instance, create event types <code>NVB_OTP</code> (email + SMS) and <code>NVB_STMT</code> (email with statement month and a link).</li>
 <li>Build and publish transactional templates using <code>rtEvent.ctx</code>; include a fallback when a value is missing.</li>
@@ -1486,7 +1486,7 @@ In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtE
 <h4>Rubric</h4><div class="tw"><table><tr><th>Area</th><th class="num">Pts</th></tr><tr><td>Event types and templates</td><td class="num">30</td></tr><tr><td>API client</td><td class="num">30</td></tr><tr><td>Status tracking and evidence</td><td class="num">20</td></tr><tr><td>Security of secrets and data</td><td class="num">20</td></tr></table></div>
 </div></article>
 
-<article class="asg" id="a13"><header><div class="k2">Assignment 13 · Level 6 · 80 pts</div><h3>Security model and package promotion</h3></header><div class="in">
+<article class="asg" id="a13"><header><div class="k2">Assignment 13 · Level 6 · 80 pts</div><h3>Security model and package promotion</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_security_matrix.csv; Security_Matrix sheet · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <h4>Tasks</h4><ol>
 <li>Translate this matrix into operator groups, named rights and folder permissions:
 <div class="tw"><table><tr><th>Role</th><th>Needs</th></tr>
@@ -1501,7 +1501,7 @@ In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtE
 <h4>Done when</h4><ul class="done"><li>Logging in as each role proves the allowed and denied actions (screenshots).</li><li>The QA import produces no errors and the smoke test passes.</li></ul>
 </div></article>
 
-<article class="asg" id="a14"><header><div class="k2">Assignment 14 · Level 6 · 70 pts</div><h3>FFDA-ready redesign of a v7 workflow</h3></header><div class="in">
+<article class="asg" id="a14"><header><div class="k2">Assignment 14 · Level 6 · 70 pts</div><h3>FFDA-ready redesign of a v7 workflow</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> nvb_score.xml; nvb_event.xml; nvb_scores_20261001.csv; generate_scores.py; m52_ffda_ingest.js · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Given</b>: a v7 workflow that loops over 200,000 recipients in JavaScript, calling <code>xtk.session.Write</code> per row, writes to a table named <code>NVB_SCORES_&lt;date&gt;</code> each run, and joins it to recipients with SQL code.</p>
 <h4>Tasks</h4><ol>
 <li>List every v8/FFDA problem with the design.</li>
@@ -1534,7 +1534,7 @@ In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtE
   <div class="meta"><span class="chip both">v7 · v8</span><span class="chip">100 pts</span><span class="chip">Presented to a review panel</span></div>
 </div>
 <div class="grid2"><div>
-<article class="asg" id="cap1"><header><div class="k2">Capstone brief</div><h3>Build the customer lifecycle program end to end</h3></header><div class="in">
+<article class="asg" id="cap1"><header><div class="k2">Capstone brief</div><h3>Build the customer lifecycle program end to end</h3></header><div class="in"><p class="asg-res" style="font-size:13.5px;background:var(--rule-2);padding:8px 12px;border-radius:6px;margin-top:12px"><b>Resources:</b> All folders; nvb_consents.csv; 06/07/10 capstone emails; 05-webapps; workflow_designs.md (Capstone) · <a href="#RES" data-go="RES">open the Resources tab</a></p>
 <p><b>Scenario.</b> NovaBank is launching a digital savings account. Build the Campaign side of the lifecycle: onboarding, engagement, cross-sell, service alerts and win-back, with the data, operations and governance a real bank would demand.</p>
 <h4>Scope</h4><ol>
 <li><b>Data model</b>: recipient extension, accounts, transactions, products, consent-per-purpose, run log (Level 4).</li>
@@ -1578,6 +1578,134 @@ In the template: Your code is &lt;%= rtEvent.ctx.otp %&gt;, valid for &lt;%= rtE
 <div class="toolbar" style="margin:14px 0"><button class="btn" id="scoreBtn" type="button">Score my answers</button><button class="btn" id="clearExam" type="button">Clear answers</button><span id="scoreOut" style="font-family:var(--f-mono);font-size:14px;align-self:center"></span></div>
 <div id="domainOut" class="tw"></div>
 <ol id="exam" class="exam"></ol>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="level" id="RES" data-tab="RES" data-label="Resources" hidden>
+<div class="lvhead">
+  <div class="eyebrow">Lab kit · GitHub: abhinav998/acc-bootcampv1 / Resources</div>
+  <h2>Resources for every lab</h2>
+  <div class="meta"><span class="chip">82 files</span><span class="chip">2 workbooks</span><span class="chip">Synthetic NovaBank data</span></div>
+</div>
+<div class="grid2"><div>
+<div class="outcomes"><h3>Start here</h3><ul>
+<li><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/NovaBank_Data_Mapping.xlsx"><b>NovaBank_Data_Mapping.xlsx</b></a>: every table, field, link, enumeration, index and file-to-schema mapping. The schema XML files were generated from it.</li>
+<li><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/ACC_Bootcamp_Master.xlsx"><b>ACC_Bootcamp_Master.xlsx</b></a>: curriculum, assignments, rubrics, resource inventory, schedule, learner tracker, question bank and checklists.</li>
+<li><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/README.md">Resources README</a>: gap analysis, folder map and build order.</li></ul></div>
+<h3 id="res-01-data" style="margin:26px 0 6px">01 · Data files <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/01-data" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_account_products.csv"><code>nvb_account_products.csv</code></a></td><td>N-N holdings between accounts and products (466 rows)</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_accounts.csv"><code>nvb_accounts.csv</code></a></td><td>Accounts linked to customers (1-3 each), balances across LOW/MID/HIGH bands (328 rows)</td><td>A7, A9</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_bounce_test.csv"><code>nvb_bounce_test.csv</code></a></td><td>Deliberately bad addresses for bounce/quarantine lab. Use only against your own test domain/MTA (10 rows)</td><td>M29</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_consents.csv"><code>nvb_consents.csv</code></a></td><td>Consent per purpose (DPDP) for every customer (800 rows)</td><td>Capstone, M60</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_customers.csv"><code>nvb_customers.csv</code></a></td><td>200 valid customers + 4 invalid rows (missing id, bad email, bad date, unknown tier) + 2 duplicate emails with different IDs (206 rows)</td><td>A1, A6, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_customers_update.csv"><code>nvb_customers_update.csv</code></a></td><td>Same 20 customer_ids with changed loyalty tier and last login: re-import must update, not duplicate (20 rows)</td><td>A6</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_dedup_drill.csv"><code>nvb_dedup_drill.csv</code></a></td><td>Duplicates on email (some upper-case) with different updated_on: keep most recent (47 rows)</td><td>A3 D5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_direct_mail_extract_spec.csv"><code>nvb_direct_mail_extract_spec.csv</code></a></td><td>Column spec for the direct mail extraction file (6 rows)</td><td>M13</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_events.csv"><code>nvb_events.csv</code></a></td><td>Behavioural events for the FFDA Ingest lab (300 rows)</td><td>M52</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_insights_subscribers.csv"><code>nvb_insights_subscribers.csv</code></a></td><td>Subscribers to service nvbInsights (all subscribed &gt; 60 days ago) (60 rows)</td><td>A2</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_offers.csv"><code>nvb_offers.csv</code></a></td><td>Offer catalogue with eligibility by loyalty tier and weights (5 rows)</td><td>M55, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_products.csv"><code>nvb_products.csv</code></a></td><td>Product catalogue (1 inactive) (8 rows)</td><td>A7, M55</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_scores_20261001.csv"><code>nvb_scores_20261001.csv</code></a></td><td>Model scores (sample of the 200k-row feed; scale with 07-scripts/generate_scores.py) (400 rows)</td><td>A14</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_security_matrix.csv"><code>nvb_security_matrix.csv</code></a></td><td>User management matrix to translate into groups and rights (5 rows)</td><td>A13</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_staff.csv"><code>nvb_staff.csv</code></a></td><td>Staff list (matches is_staff=Y) for &#x27;NVB Staff&#x27; list and exclusions (6 rows)</td><td>A4, A5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_txn_20260930.csv"><code>nvb_txn_20260930.csv</code></a></td><td>Clean daily file: expect 1,000 inserts (1000 rows)</td><td>A9 test 1-2, A11</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_txn_20261001.csv"><code>nvb_txn_20261001.csv</code></a></td><td>970 valid + 20 invalid (empty id, bad amount, bad date, bad direction) + 10 unknown accounts (1000 rows)</td><td>A9 test 3</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_txn_20261002.csv"><code>nvb_txn_20261002.csv</code></a></td><td>50 txn_ids from 20260930 with amounts +10% (must UPDATE) + 50 new (100 rows)</td><td>A9 test 4</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/01-data/nvb_txn_20261003.csv"><code>nvb_txn_20261003.csv</code></a></td><td>Header only: triggers the zero-volume guard (0 rows)</td><td>A9 test 5</td></tr>
+</table></div>
+<h3 id="res-02-schemas" style="margin:26px 0 6px">02 · Schemas, forms, navtree <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/02-schemas" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/A8_flawed_schema_for_review.xml"><code>A8_flawed_schema_for_review.xml</code></a></td><td>Deliberately broken schema for the review exercise</td><td>A8</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/form_nms_recipient_novabank_tab.xml"><code>form_nms_recipient_novabank_tab.xml</code></a></td><td>NovaBank tab for the recipient form</td><td>A6</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/form_nvb_account.xml"><code>form_nvb_account.xml</code></a></td><td>Account input form</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/form_nvb_product.xml"><code>form_nvb_product.xml</code></a></td><td>Product input form</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/navtree_nvb_accounts.xml"><code>navtree_nvb_accounts.xml</code></a></td><td>Navigation hierarchy for account folders</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_account.xml"><code>nvb_account.xml</code></a></td><td>Source schema nvb:account (Custom (targetable))</td><td>A7, A9, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_accountProduct.xml"><code>nvb_accountProduct.xml</code></a></td><td>Source schema nvb:accountProduct (Relation (N-N))</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_consent.xml"><code>nvb_consent.xml</code></a></td><td>Source schema nvb:consent (Custom (DPDP))</td><td>Capstone, M60</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_crmLead.xml"><code>nvb_crmLead.xml</code></a></td><td>Source schema nvb:crmLead (FDA mapping (view))</td><td>M40</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_event.xml"><code>nvb_event.xml</code></a></td><td>Source schema nvb:event (v8 FFDA custom, staged)</td><td>M52, A14 reference</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_product.xml"><code>nvb_product.xml</code></a></td><td>Source schema nvb:product (Custom)</td><td>A7, A5, M55</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_recipient.xml"><code>nvb_recipient.xml</code></a></td><td>Source schema nvb:recipient (Extension of nms:recipient)</td><td>A1, A2, A4, A5, A6, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_runLog.xml"><code>nvb_runLog.xml</code></a></td><td>Source schema nvb:runLog (Audit)</td><td>A9, A10, A11</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_score.xml"><code>nvb_score.xml</code></a></td><td>Source schema nvb:score (v8 FFDA custom, staged)</td><td>A14</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_transaction.xml"><code>nvb_transaction.xml</code></a></td><td>Source schema nvb:transaction (Custom (high volume, pkSequence))</td><td>A7, A9, A11</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/02-schemas/nvb_txnStaging.xml"><code>nvb_txnStaging.xml</code></a></td><td>Source schema nvb:txnStaging (Fixed staging table)</td><td>A9, A11</td></tr>
+</table></div>
+<h3 id="res-03-email" style="margin:26px 0 6px">03 · Email HTML <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/03-email" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/00_NVB_Email_Base.html"><code>00_NVB_Email_Base.html</code></a></td><td>Email HTML: NVB Email Base</td><td>M09, all emails</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/01_A1_welcome.html"><code>01_A1_welcome.html</code></a></td><td>Email HTML: A1 welcome</td><td>A1</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/02_A2_insights_reminder.html"><code>02_A2_insights_reminder.html</code></a></td><td>Email HTML: A2 insights reminder</td><td>A2</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/03_A5_platinum_crosssell_A.html"><code>03_A5_platinum_crosssell_A.html</code></a></td><td>Email HTML: A5 platinum crosssell A</td><td>A5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/04_A5_platinum_crosssell_B.html"><code>04_A5_platinum_crosssell_B.html</code></a></td><td>Email HTML: A5 platinum crosssell B</td><td>A5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/05_A7_account_high_balance.html"><code>05_A7_account_high_balance.html</code></a></td><td>Email HTML: A7 account high balance</td><td>A7</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/06_CAP_onboarding_day00.html"><code>06_CAP_onboarding_day00.html</code></a></td><td>Email HTML: CAP onboarding day00</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/06_CAP_onboarding_day03.html"><code>06_CAP_onboarding_day03.html</code></a></td><td>Email HTML: CAP onboarding day03</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/06_CAP_onboarding_day07.html"><code>06_CAP_onboarding_day07.html</code></a></td><td>Email HTML: CAP onboarding day07</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/06_CAP_onboarding_day14.html"><code>06_CAP_onboarding_day14.html</code></a></td><td>Email HTML: CAP onboarding day14</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/06_CAP_onboarding_day30.html"><code>06_CAP_onboarding_day30.html</code></a></td><td>Email HTML: CAP onboarding day30</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/07_CAP_winback_dormant.html"><code>07_CAP_winback_dormant.html</code></a></td><td>Email HTML: CAP winback dormant</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/08_MC_otp.html"><code>08_MC_otp.html</code></a></td><td>Email HTML: MC otp</td><td>A12</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/09_MC_statement.html"><code>09_MC_statement.html</code></a></td><td>Email HTML: MC statement</td><td>A12</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/10_MC_low_balance.html"><code>10_MC_low_balance.html</code></a></td><td>Email HTML: MC low balance</td><td>Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/11_A2_double_optin_confirmation.html"><code>11_A2_double_optin_confirmation.html</code></a></td><td>Email HTML: A2 double optin confirmation</td><td>A2</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/12_A4_segmentation_alert.html"><code>12_A4_segmentation_alert.html</code></a></td><td>Email HTML: A4 segmentation alert</td><td>A4</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/13_A10_health_report.html"><code>13_A10_health_report.html</code></a></td><td>Email HTML: A10 health report</td><td>A10</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/03-email/subject_lines.csv"><code>subject_lines.csv</code></a></td><td>Subject lines, preheaders and senders for every email (15 rows)</td><td>All emails</td></tr>
+</table></div>
+<h3 id="res-04-sms" style="margin:26px 0 6px">04 · SMS <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/04-sms" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/04-sms/sms_templates.csv"><code>sms_templates.csv</code></a></td><td>SMS templates with computed encoding, length and parts (9 rows)</td><td>A1, A2, A5, A12, M11, Capstone</td></tr>
+</table></div>
+<h3 id="res-05-webapps" style="margin:26px 0 6px">05 · Web apps <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/05-webapps" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/05-webapps/nvb_landing_platinum.html"><code>nvb_landing_platinum.html</code></a></td><td>Nova Platinum landing page with apply form</td><td>A5, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/05-webapps/nvb_preference_center.html"><code>nvb_preference_center.html</code></a></td><td>Preference center page (web app nvbPreferences)</td><td>M47, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/05-webapps/nvb_preference_thanks.html"><code>nvb_preference_thanks.html</code></a></td><td>Confirmation / unsubscribed page</td><td>M47, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/05-webapps/nvb_webapp_scripts.js"><code>nvb_webapp_scripts.js</code></a></td><td>Preload and storage scripts for the preference center</td><td>M47, Capstone</td></tr>
+</table></div>
+<h3 id="res-06-jssp" style="margin:26px 0 6px">06 · JSSP <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/06-jssp" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/06-jssp/cus_pulse.jssp"><code>cus_pulse.jssp</code></a></td><td>Customer page with Post/Redirect/Get</td><td>M48 / JSSP course L4</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/06-jssp/cus_pulseApi.jssp"><code>cus_pulseApi.jssp</code></a></td><td>JSON status + subscribe API reference solution</td><td>M48 / JSSP course L2-3</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/06-jssp/cus_pulseDebug.jssp"><code>cus_pulseDebug.jssp</code></a></td><td>Request introspection page</td><td>M48 / JSSP course L1</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/06-jssp/nvb_mcBridge.jssp"><code>nvb_mcBridge.jssp</code></a></td><td>Partner JSON → Message Center PushEvent bridge</td><td>A12 stretch</td></tr>
+</table></div>
+<h3 id="res-07-scripts" style="margin:26px 0 6px">07 · Scripts <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/07-scripts" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/generate_bootcamp_data.py"><code>generate_bootcamp_data.py</code></a></td><td>Regenerates every CSV in 01-data (seeded)</td><td>All</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/generate_scores.py"><code>generate_scores.py</code></a></td><td>Generates a 200k-row score file</td><td>A14</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/m52_ffda_ingest.js"><code>m52_ffda_ingest.js</code></a></td><td>xtk.session.Ingest example (v8 FFDA)</td><td>M52, A14</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/nvb_utils.js"><code>nvb_utils.js</code></a></td><td>Shared library: audit, lock, count, mask, HTML table</td><td>A9, A10, A11, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/typology_rules_A5.js"><code>typology_rules_A5.js</code></a></td><td>Control rules for typology NVB_Marketing</td><td>A5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/wf_A10_A11_housekeeping_master.js"><code>wf_A10_A11_housekeeping_master.js</code></a></td><td>Health checks and master orchestration</td><td>A10, A11</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/wf_A3_A4_A5_snippets.js"><code>wf_A3_A4_A5_snippets.js</code></a></td><td>Signal drill, segmentation counters, A/B winner</td><td>A3, A4, A5</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/07-scripts/wf_A9_ingestion.js"><code>wf_A9_ingestion.js</code></a></td><td>Init, guard, end and fail scripts for the ingestion workflow</td><td>A9, A11</td></tr>
+</table></div>
+<h3 id="res-08-message-center" style="margin:26px 0 6px">08 · Message Center <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/08-message-center" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/08-message-center/event_types.csv"><code>event_types.csv</code></a></td><td>Event types, channels, templates and ctx fields (3 rows)</td><td>A12, Capstone</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/08-message-center/events_sample.json"><code>events_sample.json</code></a></td><td>20 test events: 16 valid, 4 invalid, with expected outcomes</td><td>A12</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/08-message-center/push_events.mjs"><code>push_events.mjs</code></a></td><td>Node.js client: logon (v7) / bearer token (v8) + PushEvent</td><td>A12</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/08-message-center/rtEvent_examples.xml"><code>rtEvent_examples.xml</code></a></td><td>Event payload examples</td><td>A12</td></tr>
+</table></div>
+<h3 id="res-09-workflows" style="margin:26px 0 6px">09 · Workflow designs <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/09-workflows" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/09-workflows/workflow_designs.md"><code>workflow_designs.md</code></a></td><td>Build specs, diagrams and expected counts</td><td>A3, A4, A5, A9, A10, A11, Capstone</td></tr>
+</table></div>
+<h3 id="res-10-checklists" style="margin:26px 0 6px">10 · Checklists <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/10-checklists" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/10-checklists/checklists.md"><code>checklists.md</code></a></td><td>Lab setup, QC, design review, runbook template, verify list</td><td>All</td></tr>
+</table></div>
+<h3 id="res-11-sql" style="margin:26px 0 6px">11 · SQL <a href="https://github.com/abhinav998/acc-bootcampv1/tree/main/Resources/11-sql" style="font-size:13px;font-weight:400">open folder</a></h3>
+<div class="tw"><table><tr><th>File</th><th>What it is</th><th>Used in</th></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/11-sql/crm_leads_fda.sql"><code>crm_leads_fda.sql</code></a></td><td>External table + rows for the FDA lab</td><td>M40</td></tr>
+<tr><td><a href="https://github.com/abhinav998/acc-bootcampv1/blob/main/Resources/11-sql/verification_queries.md"><code>verification_queries.md</code></a></td><td>SQL checks for expected results</td><td>A1, A6, A7, A9, A10</td></tr>
+</table></div>
+<div class="note">Anything marked VERIFY in these files differs across Campaign builds. See the Verify_List sheet in the master workbook.</div>
+</div><aside class="toc"></aside></div>
 </section>
 
 <section class="level" id="REF" data-tab="REF" data-label="Glossary + sources" hidden>
@@ -1753,7 +1881,7 @@ levels.forEach(function(s){
     if(el.classList.contains('mod')) label=el.querySelector('.no').textContent+' '+el.querySelector('.t').textContent;
     else if(el.classList.contains('asg')) label=el.querySelector('.k2').textContent.split('·')[0].trim()+': '+el.querySelector('h3').textContent;
     else if(el.classList.contains('quiz')) label='Self-check quiz';
-    else label=el.textContent;
+    else label=(el.firstChild&&el.firstChild.nodeType===3?el.firstChild.textContent:el.textContent).trim();
     h+='<a href="#'+el.id+'" data-go="'+el.id+'"'+(el.classList.contains('asg')?' class="asg-l"':'')+'>'+label+'</a>';
   });
   if(s.querySelector('.mod')) h+='<div class="prog"><span data-p="'+s.id+'"></span><div class="bar"><i data-b="'+s.id+'"></i></div></div>';
@@ -1762,7 +1890,10 @@ levels.forEach(function(s){
 document.addEventListener('click',function(e){
   var a=e.target.closest('a[data-go]');if(!a)return;
   var el=document.getElementById(a.dataset.go);if(!el)return;
-  e.preventDefault(); if(el.tagName==='DETAILS') el.open=true;
+  e.preventDefault();
+  if(el.classList.contains('level')){show(el.id,true);return;}
+  var lv=el.closest('.level'); if(lv&&lv.hidden) show(lv.id,false);
+  if(el.tagName==='DETAILS') el.open=true;
   el.scrollIntoView({behavior:'smooth',block:'start'});
 });
 document.querySelectorAll('.mod').forEach(function(m){

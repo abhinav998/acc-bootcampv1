@@ -1,0 +1,20 @@
+<!-- NovaBank ACC Bootcamp | A6: add a "NovaBank" tab to the recipient form.
+     VERIFY: the recipient form structure differs by build. Duplicate the OOTB nms:recipient form into
+     your namespace or add this container where your build allows form extension. -->
+<container label="NovaBank" img="nms:recipient.png">
+  <input xpath="@customerId"/>
+  <input xpath="@loyaltyTier"/>
+  <input xpath="@kycStatus"/>
+  <input xpath="@preferredLanguage"/>
+  <input xpath="@preferredChannel"/>
+  <input xpath="@appInstalled"/>
+  <input xpath="@branchCity"/>
+  <input xpath="@lastLoginDate"/>
+  <input xpath="@isDigitalActive" readOnly="true"/>
+  <input xpath="@isStaff"/>
+  <input xpath="accounts" type="list" readOnly="true">
+    <input xpath="@accountNumber"/>
+    <input xpath="@type"/>
+    <input xpath="@balance"/>
+  </input>
+</container>

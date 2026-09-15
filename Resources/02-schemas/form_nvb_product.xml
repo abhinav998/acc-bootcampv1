@@ -1,0 +1,12 @@
+<!-- NovaBank ACC Bootcamp | input form for nvb:product (A7) -->
+<form name="product" namespace="nvb" type="default" label="Product">
+  <input xpath="@code"/>
+  <input xpath="@label"/>
+  <input xpath="@family"/>
+  <input xpath="@annualFee"/>
+  <input xpath="@active"/>
+  <input xpath="holders" type="list" readOnly="true">
+    <input xpath="account"/>
+    <input xpath="@since"/>
+  </input>
+</form>

@@ -1,0 +1,32 @@
+<!-- NovaBank ACC Bootcamp | input form for nvb:account (A7) -->
+<form name="account" namespace="nvb" type="notebook" label="Account" img="nms:recipient.png">
+  <container label="General">
+    <input xpath="@accountNumber"/>
+    <input xpath="@type"/>
+    <input xpath="@status"/>
+    <input xpath="@balance"/>
+    <static label="Balance band"/>
+    <input xpath="@balanceBand" readOnly="true"/>
+    <input xpath="@openedOn"/>
+    <input xpath="recipient"/>
+  </container>
+  <container label="Contact">
+    <input xpath="@email"/>
+    <input xpath="@mobilePhone"/>
+    <input xpath="@blackList"/>
+  </container>
+  <container label="Products">
+    <input xpath="products" type="list" nodeName="accountProduct">
+      <input xpath="product"/>
+      <input xpath="@since"/>
+    </input>
+  </container>
+  <container label="Transactions">
+    <input xpath="transactions" type="list" readOnly="true">
+      <input xpath="@txnDate"/>
+      <input xpath="@direction"/>
+      <input xpath="@amount"/>
+      <input xpath="@channel"/>
+    </input>
+  </container>
+</form>
