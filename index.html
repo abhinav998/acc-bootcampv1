@@ -1068,7 +1068,7 @@ instance.vars.winner = rate(instance.vars.dlvA) &gt;= rate(instance.vars.dlvB) ?
 <li><code>status</code> free text: use an enumeration.</li>
 <li><code>disbursedOn</code> as string: use <code>date</code>.</li>
 <li>Index on a <code>memo</code>: memos aren't indexable; remove.</li>
-<li>Link with <code>noDbIndex="true"</code>, no <code>revLink</code>, no <code>integrity</code>, no label: joins will be slow and deletion behaviour undefined.</li>
+<li>Link has <code>noDbIndex="true"</code>: no index on the foreign key, so joins to recipient will be slow; remove it. Also no label, and <code>revLink</code>/<code>integrity</code> are left to defaults (auto-named reverse link, <code>normal</code> integrity). Set them explicitly so the deletion behaviour is a deliberate choice.</li>
 <li>Bonus: no labels on attributes, lowercase schema label, no <code>labelSingular</code>.</li></ol></details>
 </div></article>
 
