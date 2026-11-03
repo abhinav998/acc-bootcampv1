@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+<script>try{var t=JSON.parse(localStorage.getItem("acc.theme"));if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 </head>
 <body>
 <title>Campaign Classic Bootcamp</title>
@@ -165,6 +166,71 @@ pre .c{color:var(--code-dim)}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.tabs,.toc,.toolbar{display:none}.level{display:block!important}}
+
+/* ---- interactive extras ---- */
+.tabs-in{display:flex;gap:12px;align-items:center}
+.tabs-in .row{flex:1;min-width:0}
+.search{position:relative;flex:none;width:260px}
+.search input{width:100%;font:14px var(--f-body);padding:7px 34px 7px 10px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink)}
+.search input:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.search kbd{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--ink-3);border:1px solid var(--rule);background:var(--ground)}
+.search input:focus~kbd,.search input:not(:placeholder-shown)~kbd{display:none}
+.sr{position:absolute;right:0;top:calc(100% + 6px);width:min(520px,calc(100vw - 32px));max-height:min(70vh,520px);overflow:auto;background:var(--paper);border:1px solid var(--rule);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.18);padding:6px;z-index:20}
+.sr .hit{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);font:inherit;padding:8px 10px;border-radius:7px;cursor:pointer}
+.sr .hit[aria-selected="true"],.sr .hit:hover{background:var(--accent-soft)}
+.sr .hit b{font-family:var(--f-display);font-size:15px}
+.sr .hit small{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.4;margin-top:2px}
+.sr .hit .lv{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);margin-right:6px}
+.sr .empty{padding:10px;color:var(--ink-3);font-size:13.5px}
+.sr mark,.flash-hl{background:var(--amber-soft);color:inherit;border-radius:3px;padding:0 1px}
+@media (max-width:700px){.tabs-in{flex-wrap:wrap;gap:0}.search{width:100%;padding-bottom:8px}.sr{left:0;right:auto}}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 0 0 3px transparent}}
+.flash{animation:flash 1.8s ease-out;border-radius:8px}
+
+.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.dash .card{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:grid;gap:6px;align-content:start}
+.dash .card .k{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.dash .card .v{font:600 24px var(--f-display);font-variant-numeric:tabular-nums}
+.dash .card .v small{font-size:14px;color:var(--ink-3);font-weight:500}
+.dash .card a{font-size:14px;text-decoration:none}
+.dash .card a:hover{text-decoration:underline}
+.dash .lvbars{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:2px}
+.dash .lvbars span{display:grid;gap:3px;font:10.5px var(--f-mono);color:var(--ink-3);text-align:center;cursor:pointer}
+
+.pre-wrap{position:relative}
+.pre-wrap>pre{padding-right:64px}
+.copy{position:absolute;top:8px;right:8px;font:500 11.5px var(--f-mono);padding:3px 8px;border-radius:5px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:var(--code-ink);cursor:pointer;opacity:.75}
+.copy:hover,.copy:focus-visible{opacity:1}
+
+.asg-track{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13.5px;color:var(--ink-2)}
+.asg-track label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.asg-track input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent)}
+.asg-track input[type=number]{width:70px;font:14px var(--f-mono);padding:3px 6px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);color:var(--ink)}
+.asg.is-done header{background:var(--accent-soft)}
+.asg.is-done header .k2{color:var(--accent)}
+
+.smscalc{border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:12px 14px;margin:14px 0;display:grid;gap:8px}
+.smscalc>b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.smscalc textarea{width:100%;min-height:84px;font:14px var(--f-mono);padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--ground);color:var(--ink);resize:vertical}
+.smscalc .stats{display:flex;flex-wrap:wrap;gap:6px 18px;font:13px var(--f-mono);color:var(--ink-2)}
+.smscalc .stats b{color:var(--ink);font-weight:500}
+.smscalc .enc-u{color:var(--red)}
+.smscalc .enc-g{color:var(--accent)}
+.smscalc .why{font-size:13px;color:var(--ink-2)}
+.smscalc .why code{color:var(--red)}
+
+.extools{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px;font-size:13.5px;color:var(--ink-2)}
+.extools select{font:13px var(--f-body);padding:5px 8px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink)}
+.extools label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.extools .count,.extools .timer{font-family:var(--f-mono);font-size:13px}
+.extools .timer.low{color:var(--red)}
+
+.resfilter{display:flex;gap:10px;align-items:center;margin:0 0 16px;font-size:13px;color:var(--ink-3)}
+.resfilter input{flex:1;max-width:420px;font:14px var(--f-body);padding:7px 10px;border:1px solid var(--rule);border-radius:7px;background:var(--paper);color:var(--ink)}
+
+.totop{position:fixed;right:16px;bottom:16px;z-index:6;font:500 13px var(--f-body);padding:8px 12px;border-radius:99px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);box-shadow:var(--shadow);cursor:pointer}
+.totop:hover{border-color:var(--accent);color:var(--accent)}
+@media print{.search,.copy,.totop,.dash,.extools,.resfilter,.asg-track{display:none!important}}
 </style>
 
 <div class="wrap">
@@ -1951,6 +2017,249 @@ var start=store.get('acc.tab','L0');
 if(!document.getElementById(start)||!document.getElementById(start).classList.contains('level'))start='L0';
 show(start,false);
 if(location.hash){var el=document.getElementById(location.hash.slice(1));if(el){var lv=el.closest('.level');if(lv)show(lv.id,false);if(el.tagName==='DETAILS')el.open=true;}}
+// ================= interactive extras =================
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function flash(el){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
+function goTo(id,opts){
+  var el=document.getElementById(id);if(!el)return false;
+  if(el.classList.contains('level')){show(el.id,true);return true;}
+  var lv=el.closest('.level');if(lv&&lv.hidden)show(lv.id,false);
+  if(el.tagName==='DETAILS')el.open=true;
+  var host=el.closest('details:not([open])');while(host){host.open=true;host=host.parentElement.closest('details:not([open])');}
+  el.scrollIntoView({behavior:(opts&&opts.instant)?'auto':'smooth',block:'start'});
+  flash(el.tagName==='DETAILS'?el.querySelector('summary'):el);
+  return true;
+}
+
+// ---- theme toggle (auto / light / dark)
+var THEMES=['auto','light','dark'],theme=store.get('acc.theme','auto');
+var tbtn=document.createElement('button');tbtn.className='btn';tbtn.type='button';tbtn.id='themeBtn';
+function applyTheme(){
+  if(theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',theme);
+  tbtn.textContent='Theme: '+theme.charAt(0).toUpperCase()+theme.slice(1);
+}
+tbtn.onclick=function(){theme=THEMES[(THEMES.indexOf(theme)+1)%3];store.set('acc.theme',theme);applyTheme();};
+applyTheme();
+document.querySelector('.top .toolbar').appendChild(tbtn);
+
+// ---- copy buttons on code blocks
+document.querySelectorAll('main pre').forEach(function(pre){
+  var w=document.createElement('div');w.className='pre-wrap';pre.parentNode.insertBefore(w,pre);w.appendChild(pre);
+  var b=document.createElement('button');b.type='button';b.className='copy';b.textContent='Copy';b.setAttribute('aria-label','Copy code');
+  b.onclick=function(){
+    var txt=pre.innerText;
+    var ok=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1400);};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok,fallback);}else fallback();
+    function fallback(){var t=document.createElement('textarea');t.value=txt;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');ok();}catch(e){b.textContent='Press Ctrl+C';}document.body.removeChild(t);}
+  };
+  w.appendChild(b);
+});
+
+// ---- assignment tracker
+var asgState=store.get('acc.asg',{});
+var asgs=[].slice.call(document.querySelectorAll('.asg'));
+asgs.forEach(function(a){
+  var m=(a.querySelector('.k2').textContent.match(/(\d+)\s*pts/)||[])[1];var max=m?+m:100;a.dataset.max=max;
+  var st=asgState[a.id]||{};
+  var d=document.createElement('div');d.className='asg-track';
+  d.innerHTML='<label><input type="checkbox" class="asg-done"> Submitted</label><label>My score <input type="number" class="asg-score" min="0" max="'+max+'" step="1" inputmode="numeric" aria-label="Score for '+esc(a.querySelector('h3').textContent)+'"> / '+max+'</label>';
+  a.querySelector('header').appendChild(d);
+  var cb=d.querySelector('.asg-done'),sc=d.querySelector('.asg-score');
+  cb.checked=!!st.done;if(st.score!=null)sc.value=st.score;a.classList.toggle('is-done',cb.checked);
+  function save(){
+    var v=sc.value===''?null:Math.max(0,Math.min(max,Math.round(+sc.value)));
+    if(v!==null&&String(v)!==sc.value)sc.value=v;
+    if(v!==null&&!cb.checked){cb.checked=true;}
+    asgState[a.id]={done:cb.checked,score:v};store.set('acc.asg',asgState);
+    a.classList.toggle('is-done',cb.checked);dash();
+  }
+  cb.addEventListener('change',save);sc.addEventListener('change',save);
+});
+
+// ---- progress dashboard
+var dashEl=document.createElement('div');dashEl.className='dash';dashEl.id='dash';dashEl.setAttribute('aria-live','polite');
+document.querySelector('.top').appendChild(dashEl);
+var allMods=[].slice.call(document.querySelectorAll('.mod'));
+function dash(){
+  var nd=0,next=null;allMods.forEach(function(m){if(done[m.id])nd++;else if(!next)next=m;});
+  var sub=0,pts=0,maxAll=0;asgs.forEach(function(a){var s=asgState[a.id]||{};maxAll+=+a.dataset.max;if(s.done)sub++;if(s.score!=null)pts+=s.score;});
+  var best=store.get('acc.examBest',null);
+  var bars='';levels.forEach(function(s){var ms=s.querySelectorAll('.mod');if(!ms.length)return;var n=0;ms.forEach(function(m){if(done[m.id])n++;});
+    bars+='<span data-lv="'+s.id+'" title="'+esc(s.dataset.label)+': '+n+' of '+ms.length+'"><div class="bar"><i style="width:'+(100*n/ms.length)+'%"></i></div>'+s.id+'</span>';});
+  dashEl.innerHTML=
+    '<div class="card"><span class="k">Modules</span><span class="v">'+nd+' <small>/ '+allMods.length+'</small></span><div class="lvbars">'+bars+'</div></div>'+
+    '<div class="card"><span class="k">Up next</span>'+(next?'<a href="#'+next.id+'" data-go="'+next.id+'">'+esc(next.querySelector('.no').textContent+' · '+next.querySelector('.t').textContent)+' →</a>':'<span>All modules done 🎉</span>')+'</div>'+
+    '<div class="card"><span class="k">Assignments</span><span class="v">'+sub+' <small>/ '+asgs.length+' submitted</small></span><span style="font-size:13px;color:var(--ink-2)">'+pts+' of '+maxAll+' points recorded</span></div>'+
+    '<div class="card"><span class="k">Mock exam best</span><span class="v">'+(best?best.pct+'%':'—')+'</span><a href="#EXAM" data-go="EXAM">'+(best?(best.pct>=68?'Pass. Try again →':'Below 68%. Try again →'):'Take the mock exam →')+'</a></div>';
+}
+dashEl.addEventListener('click',function(e){var s=e.target.closest('[data-lv]');if(s)show(s.dataset.lv,true);});
+document.addEventListener('change',function(e){if(e.target.classList&&e.target.classList.contains('done-box'))dash();});
+document.getElementById('resetProg').addEventListener('click',function(){
+  asgState={};store.set('acc.asg',asgState);
+  document.querySelectorAll('.asg-done').forEach(function(c){c.checked=false;});document.querySelectorAll('.asg-score').forEach(function(c){c.value='';});
+  asgs.forEach(function(a){a.classList.remove('is-done');});dash();
+});
+dash();
+
+// ---- search
+function txt(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),o=[],n;while((n=w.nextNode()))o.push(n.nodeValue);return o.join(' ');}
+var idx=[];
+levels.forEach(function(s){
+  var lvl=s.dataset.tab;
+  s.querySelectorAll('.mod').forEach(function(m){idx.push({id:m.id,lv:lvl,t:m.querySelector('.no').textContent+' '+m.querySelector('.t').textContent,b:txt(m.querySelector('.body'))});});
+  s.querySelectorAll('.asg').forEach(function(a){idx.push({id:a.id,lv:lvl,t:a.querySelector('.k2').textContent.split('·')[0].trim()+': '+a.querySelector('h3').textContent,b:txt(a.querySelector('.in'))});});
+  s.querySelectorAll('h3[id]').forEach(function(h){var t=h.textContent.trim();var nx=h.nextElementSibling;idx.push({id:h.id,lv:lvl,t:t,b:nx?txt(nx):''});});
+});
+idx.forEach(function(r){r.tl=r.t.toLowerCase();r.bl=r.b.replace(/\s+/g,' ').replace(/ ([,.:;)])/g,'$1');r.bll=r.bl.toLowerCase();});
+var sbox=document.createElement('div');sbox.className='search';sbox.setAttribute('role','search');
+sbox.innerHTML='<input type="search" id="q" placeholder="Search modules, assignments…" aria-label="Search the bootcamp" autocomplete="off" aria-controls="sr" aria-expanded="false"><kbd>/</kbd><div class="sr" id="sr" role="listbox" hidden></div>';
+var nav=document.querySelector('.tabs'),row=nav.querySelector('.row'),tin=document.createElement('div');tin.className='tabs-in';
+nav.insertBefore(tin,row);tin.appendChild(row);tin.appendChild(sbox);
+var qi=sbox.querySelector('input'),sr=sbox.querySelector('.sr'),sel=-1,hits=[];
+function hl(text,words){var out=esc(text);words.forEach(function(w){if(!w)return;out=out.replace(new RegExp('('+esc(w).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'),'<mark>$1</mark>');});return out;}
+function search(){
+  var q=qi.value.trim().toLowerCase();sel=-1;
+  if(q.length<2){sr.hidden=true;qi.setAttribute('aria-expanded','false');return;}
+  var words=q.split(/\s+/);
+  hits=idx.map(function(r){
+    var sc=0;for(var i=0;i<words.length;i++){var w=words[i],inT=r.tl.indexOf(w)>=0,inB=r.bll.indexOf(w)>=0;if(!inT&&!inB)return null;sc+=inT?10:1;}
+    if(r.tl.indexOf(q)>=0)sc+=20;return {r:r,sc:sc};
+  }).filter(Boolean).sort(function(a,b){return b.sc-a.sc;}).slice(0,12);
+  if(!hits.length){sr.innerHTML='<div class="empty">No matches for “'+esc(qi.value.trim())+'”</div>';}
+  else sr.innerHTML=hits.map(function(h,i){
+    var r=h.r,p=r.bll.indexOf(words[0]),snip='';
+    if(p>=0){var a=Math.max(0,p-50);snip=(a?'…':'')+r.bl.slice(a,p+110).trim()+'…';}else snip=r.bl.slice(0,140).trim()+'…';
+    return '<button type="button" class="hit" role="option" id="hit'+i+'" data-id="'+r.id+'"><span class="lv">'+esc(r.lv)+'</span><b>'+hl(r.t,words)+'</b><small>'+hl(snip,words)+'</small></button>';
+  }).join('');
+  sr.hidden=false;qi.setAttribute('aria-expanded','true');
+}
+function pick(id){sr.hidden=true;qi.setAttribute('aria-expanded','false');qi.blur();goTo(id);}
+function mark(){sr.querySelectorAll('.hit').forEach(function(b,i){b.setAttribute('aria-selected',i===sel?'true':'false');if(i===sel)b.scrollIntoView({block:'nearest'});});}
+qi.addEventListener('input',search);
+qi.addEventListener('focus',function(){if(qi.value.trim().length>=2)search();});
+qi.addEventListener('keydown',function(e){
+  var n=sr.querySelectorAll('.hit').length;
+  if(e.key==='ArrowDown'&&n){e.preventDefault();sel=(sel+1)%n;mark();}
+  else if(e.key==='ArrowUp'&&n){e.preventDefault();sel=(sel-1+n)%n;mark();}
+  else if(e.key==='Enter'&&n){e.preventDefault();pick(hits[Math.max(sel,0)].r.id);}
+  else if(e.key==='Escape'){qi.value='';sr.hidden=true;qi.blur();}
+});
+sr.addEventListener('mousedown',function(e){e.preventDefault();});
+sr.addEventListener('click',function(e){var b=e.target.closest('.hit');if(b)pick(b.dataset.id);});
+document.addEventListener('click',function(e){if(!sbox.contains(e.target)){sr.hidden=true;qi.setAttribute('aria-expanded','false');}});
+
+// ---- keyboard: "/" to search, arrows on the level tabs
+document.addEventListener('keydown',function(e){
+  var t=e.target,typing=t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t.tagName==='SELECT'||t.isContentEditable);
+  if(e.key==='/'&&!typing&&!e.ctrlKey&&!e.metaKey){e.preventDefault();qi.focus();qi.select();}
+});
+tl.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+  var tabs=[].slice.call(tl.querySelectorAll('.tab')),i=tabs.indexOf(document.activeElement);if(i<0)return;
+  e.preventDefault();var j=(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[j].focus();tabs[j].click();
+});
+
+// ---- deep links: opening a module puts it in the URL
+allMods.forEach(function(m){
+  m.querySelector('summary').addEventListener('click',function(){
+    setTimeout(function(){
+      if(m.open)history.replaceState(null,'','#'+m.id);
+      else if(location.hash==='#'+m.id)history.replaceState(null,'',location.pathname+location.search);
+    },0);
+  });
+});
+window.addEventListener('hashchange',function(){if(location.hash)goTo(location.hash.slice(1));});
+
+// ---- SMS encoding calculator (M11)
+(function(){
+  var host=document.querySelector('#m11 .lab');if(!host)return;
+  var GSM='@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !"#¤%&\'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà';
+  var EXT='^{}\\[~]|€\f';
+  var c=document.createElement('div');c.className='smscalc';
+  c.innerHTML='<b>Try it: SMS length and parts</b>'+
+    '<textarea aria-label="SMS text" spellcheck="false">Hi Asha, your NovaBank card is ready. Activate in the app: https://nvb.test/a1b2</textarea>'+
+    '<div class="toolbar"><button class="btn" type="button" data-n="é">Name with “é”</button><button class="btn" type="button" data-n="अ">Name with “अ”</button><button class="btn" type="button" data-n="🎉">Add an emoji</button><button class="btn" type="button" data-n="">Reset</button></div>'+
+    '<div class="stats"></div><div class="why"></div>';
+  host.parentNode.insertBefore(c,host.nextSibling);
+  var ta=c.querySelector('textarea'),st=c.querySelector('.stats'),why=c.querySelector('.why'),base=ta.value;
+  function calc(){
+    var s=ta.value,gsm=true,units=0,bad=[],ext=0;
+    for(var ch of s){if(GSM.indexOf(ch)>=0)units++;else if(EXT.indexOf(ch)>=0){units+=2;ext++;}else{gsm=false;if(bad.indexOf(ch)<0)bad.push(ch);}}
+    var len=gsm?units:s.length,single=gsm?160:70,multi=gsm?153:67;
+    var parts=len===0?0:(len<=single?1:Math.ceil(len/multi));
+    var left=len<=single?single-len:parts*multi-len;
+    st.innerHTML='<span>Encoding <b class="'+(gsm?'enc-g">GSM 7-bit':'enc-u">UCS-2')+'</b></span><span>Length <b>'+len+'</b></span><span>Parts <b>'+parts+'</b></span><span>Left in this part <b>'+left+'</b></span><span>Limits <b>'+single+' / '+multi+'</b> per part</span>';
+    why.innerHTML=gsm?(ext?ext+' extension character'+(ext>1?'s':'')+' (e.g. <code>€ [ ] { } ~ ^ | \\</code>) count as 2 each.':'All characters are in the GSM 7-bit set.'):
+      'Switched to UCS-2 because of: '+bad.slice(0,12).map(function(ch){return '<code>'+esc(ch)+'</code>';}).join(' ')+'. One such character changes the whole message. Emoji count as 2.';
+  }
+  c.addEventListener('click',function(e){var b=e.target.closest('[data-n]');if(!b)return;
+    ta.value=b.dataset.n===''?base:(b.dataset.n==='🎉'?ta.value+' 🎉':ta.value.replace(/^Hi [^,]+,/,'Hi '+({'é':'Renée','अ':'अमित'})[b.dataset.n]+','));calc();});
+  ta.addEventListener('input',calc);calc();
+})();
+
+// ---- mock exam: practice tools
+(function(){
+  var tb=document.getElementById('domainOut');if(!tb)return;
+  var x=document.createElement('div');x.className='extools';
+  var opts='<option value="all">All domains</option>'+Object.keys(D).map(function(k){return '<option value="'+k+'">'+D[k]+'</option>';}).join('')+'<option value="wrong">Wrong or unanswered only</option>';
+  x.innerHTML='<label>Show <select id="exFilter">'+opts+'</select></label><label><input type="checkbox" id="exInstant"> Instant feedback</label><span class="count" id="exCount"></span><button class="btn" type="button" id="exTimer">Start 90-min timer</button><span class="timer" id="exClock"></span>';
+  tb.parentNode.insertBefore(x,tb);
+  var fsel=x.querySelector('#exFilter'),inst=x.querySelector('#exInstant'),cnt=x.querySelector('#exCount'),tbtn2=x.querySelector('#exTimer'),clk=x.querySelector('#exClock');
+  inst.checked=!!store.get('acc.instant',false);
+  function fb(i){var q=Q[i],f=document.querySelector('#x'+i+' .fb');if(ans[i]===undefined){f.textContent='';return;}
+    if(ans[i]===q[3]){f.textContent='✓ correct';f.style.color='var(--accent)';}else{f.textContent='✗ Answer: '+q[2][q[3]];f.style.color='var(--red)';}}
+  function count(){var n=0;Q.forEach(function(q,i){if(ans[i]!==undefined)n++;});cnt.textContent=n+' / '+Q.length+' answered';}
+  function filt(){var v=fsel.value;Q.forEach(function(q,i){var li=document.getElementById('x'+i);
+    li.hidden=v==='all'?false:(v==='wrong'?ans[i]===q[3]:q[0]!==v);});}
+  ol.addEventListener('change',function(e){var i=+e.target.name.slice(1);if(inst.checked)fb(i);count();});
+  inst.addEventListener('change',function(){store.set('acc.instant',inst.checked);Q.forEach(function(q,i){if(inst.checked)fb(i);else document.querySelector('#x'+i+' .fb').textContent='';});});
+  fsel.addEventListener('change',filt);
+  if(inst.checked)Q.forEach(function(q,i){fb(i);});
+  count();
+  document.getElementById('scoreBtn').addEventListener('click',function(){
+    var ok=0;Q.forEach(function(q,i){if(ans[i]===q[3])ok++;});var pct=Math.round(100*ok/Q.length);
+    var best=store.get('acc.examBest',null);if(!best||pct>best.pct)store.set('acc.examBest',{pct:pct,ok:ok});
+    dash();filt();document.getElementById('scoreOut').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('clearExam').addEventListener('click',function(){count();filt();});
+  // timer (end time kept so a reload continues the countdown)
+  var tick=null;
+  function run(){
+    var end=store.get('acc.examEnd',null);
+    if(!end){clk.textContent='';clk.classList.remove('low');tbtn2.textContent='Start 90-min timer';clearInterval(tick);tick=null;return;}
+    tbtn2.textContent='Stop timer';
+    var left=Math.round((end-Date.now())/1000);
+    if(left<=0){clk.textContent='Time’s up: score your answers';clk.classList.add('low');clearInterval(tick);tick=null;return;}
+    clk.textContent=Math.floor(left/60)+':'+('0'+left%60).slice(-2)+' left';clk.classList.toggle('low',left<600);
+    if(!tick)tick=setInterval(run,1000);
+  }
+  tbtn2.onclick=function(){store.set('acc.examEnd',store.get('acc.examEnd',null)?null:Date.now()+90*60000);run();};
+  run();
+})();
+
+// ---- resources filter
+(function(){
+  var res=document.getElementById('RES');if(!res)return;
+  var col=res.querySelector('.grid2>div');if(!col)return;
+  var rows=[].slice.call(res.querySelectorAll('table tr')).filter(function(r){return !r.querySelector('th');});
+  var f=document.createElement('div');f.className='resfilter';
+  f.innerHTML='<input type="search" placeholder="Filter files: name, purpose or assignment (e.g. A9, schema, csv)" aria-label="Filter resources"><span></span>';
+  col.insertBefore(f,col.firstChild);
+  var inp=f.querySelector('input'),out=f.querySelector('span');
+  inp.addEventListener('input',function(){
+    var ws=inp.value.trim().toLowerCase().split(/\s+/).filter(Boolean),n=0;
+    rows.forEach(function(r){var t=r.textContent.toLowerCase();var ok=ws.every(function(w){return t.indexOf(w)>=0;});r.hidden=!ok;if(ok)n++;});
+    res.querySelectorAll('table').forEach(function(t){var any=[].some.call(t.querySelectorAll('tr'),function(r){return !r.querySelector('th')&&!r.hidden;});
+      var w=t.closest('.tw')||t;w.hidden=!any;var h=w.previousElementSibling;if(h&&h.tagName==='H3')h.hidden=!any;});
+    out.textContent=ws.length?n+' of '+rows.length+' files':'';
+  });
+})();
+
+// ---- back to top
+var toTop=document.createElement('button');toTop.type='button';toTop.className='totop';toTop.textContent='↑ Top';toTop.hidden=true;
+toTop.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};document.body.appendChild(toTop);
+window.addEventListener('scroll',function(){toTop.hidden=window.scrollY<900;},{passive:true});
+if(location.hash)setTimeout(function(){goTo(location.hash.slice(1),{instant:true});},60);
 })();
 </script>
 

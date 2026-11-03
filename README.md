@@ -2,7 +2,12 @@
 
 A zero-to-expert, hands-on bootcamp for Adobe Campaign Classic (v7 and v8). All labs use **NovaBank**, a fictional retail bank, so no real client data is involved.
 
-**Open `index.html` in a browser** (or enable GitHub Pages on this repo) to use the interactive version: level tabs, collapsible modules, per-module progress tracking and a self-scoring mock exam.
+**Open `index.html` in a browser** (or enable GitHub Pages on this repo) to use the interactive version:
+
+- level tabs, collapsible modules and a full-text search (press `/`)
+- a progress dashboard: modules done, the next module, assignments submitted with your own scores, and your best mock exam result
+- a self-scoring mock exam with instant feedback, domain filters, a review mode for wrong answers and a 90-minute timer
+- an SMS length and encoding calculator in M11, copy buttons on code samples, a filter on the Resources tab, links to individual modules and a light/dark theme toggle
 
 ## At a glance
 
